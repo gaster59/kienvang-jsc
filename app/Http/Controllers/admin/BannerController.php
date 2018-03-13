@@ -154,4 +154,25 @@ class BannerController extends BaseController
         $this->bannerRepository->update($banner, $request->id);
     }
 
+    public function delete($id)
+    {
+        $banner = $this->bannerRepository->findWhere([
+            'id' => $id,
+        ]);
+
+        if (count($banner) == 0) {
+            return redirect(route('banner'));
+        }
+
+        $destination = public_path('/banner');
+        $fileName = $banner[0]->avatar;
+        $fileSystem = new Filesystem();
+        if ($fileSystem->exists($destination.'/'.$fileName)) {
+            $fileSystem->delete($destination.'/'.$fileName);
+        }
+
+        $this->bannerRepository->delete($id);
+        return redirect(route('banner'));
+    }
+
 }

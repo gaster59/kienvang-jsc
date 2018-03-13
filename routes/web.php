@@ -13,9 +13,10 @@
 
 use App\Http\Middleware\CheckRole;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [
+    'as' => 'front.index',
+    'uses' => 'IndexController@index'
+]);
 
 /*
  * Login

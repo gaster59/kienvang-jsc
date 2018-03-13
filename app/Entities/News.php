@@ -18,6 +18,7 @@ class News extends Model implements Transformable
         'summary',
         'avatar',
         'type',
+        'is_hot',
         'status',
         'meta_keyword',
         'meta_description'

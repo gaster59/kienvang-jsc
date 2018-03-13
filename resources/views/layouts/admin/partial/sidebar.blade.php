@@ -2,31 +2,38 @@
 
     <ul class="nav menu">
         <li>
-            <a href="{{ route('category') }}">
+            <a href="{{ route('banner') }}">
                 <svg class="glyph stroked table">
                     <use xlink:href="#stroked-table"></use>
-                </svg> Danh mục
+                </svg> Banner
             </a>
         </li>
         <li>
-            <a href="{{ route('product') }}">
+            <a href="{{ route('news') }}">
                 <svg class="glyph stroked table">
                     <use xlink:href="#stroked-table"></use>
-                </svg> Sản phẩm
+                </svg> Tin tức
             </a>
         </li>
         <li>
-            <a href="{{ route('expense') }}">
+            <a href="{{ route('job') }}">
                 <svg class="glyph stroked table">
                     <use xlink:href="#stroked-table"></use>
-                </svg> Chi tiêu
+                </svg> Việc làm
             </a>
         </li>
         <li>
-            <a href="{{ route('statistic') }}">
+            <a href="{{ route('major') }}">
                 <svg class="glyph stroked table">
                     <use xlink:href="#stroked-table"></use>
-                </svg> Thống kê
+                </svg> Ngành nghề
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('company') }}">
+                <svg class="glyph stroked table">
+                    <use xlink:href="#stroked-table"></use>
+                </svg> Công ty
             </a>
         </li>
         <li role="presentation" class="divider"></li>

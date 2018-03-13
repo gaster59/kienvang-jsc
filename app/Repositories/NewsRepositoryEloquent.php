@@ -40,6 +40,7 @@ class NewsRepositoryEloquent extends BaseRepository implements NewsRepository
             'news.avatar',
             'news.description',
             'news.summary',
+            'news.is_hot',
             'news.meta_keyword',
             'news.meta_description',
         ]);

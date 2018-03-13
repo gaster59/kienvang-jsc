@@ -116,37 +116,51 @@
                                 {{--</div>--}}
                             {{--</div>--}}
 
-                        <!-- Meta keyword -->
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="name">
-                                Meta keyword
-                            </label>
-                            <div class="col-md-9">
-                                <input type="text" name="meta_keyword" id="meta_keyword"
-                                       maxlength="100"
-                                       value="{{ old('meta_keyword') }}"
-                                       placeholder="Meta keyword" class="form-control">
-                                <label class="color-red">
-                                    {{--{{ error.meta_keyword }}--}}
+                            <!-- Meta keyword -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">
+                                    Meta keyword
                                 </label>
+                                <div class="col-md-9">
+                                    <input type="text" name="meta_keyword" id="meta_keyword"
+                                           maxlength="100"
+                                           value="{{ old('meta_keyword') }}"
+                                           placeholder="Meta keyword" class="form-control">
+                                    <label class="color-red">
+                                        {{--{{ error.meta_keyword }}--}}
+                                    </label>
 
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Meta description -->
-                        <div class="form-group">
-                            <label class="col-md-3 control-label" for="name">
-                                Meta description
-                            </label>
-                            <div class="col-md-9">
-                                <textarea name="meta_description"
-                                          class="form-control">{{ old('meta_description') }}</textarea>
-                                <label class="color-red">
-                                    {{--{{ error.meta_description }}--}}
+                            <!-- Meta description -->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">
+                                    Meta description
                                 </label>
+                                <div class="col-md-9">
+                                    <textarea name="meta_description"
+                                              class="form-control">{{ old('meta_description') }}</textarea>
+                                    <label class="color-red">
+                                        {{--{{ error.meta_description }}--}}
+                                    </label>
 
+                                </div>
                             </div>
-                        </div>
+
+                            <!-- Description input-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">
+                                    Tin hot
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="checkbox" name="is_hot" value="1" />
+                                    <label class="color-red">
+                                        {{--{{ error.description }}--}}
+                                    </label>
+
+                                </div>
+                            </div>
 
                             <!-- Form actions -->
                             <div class="form-group">

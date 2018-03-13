@@ -17,8 +17,8 @@
         <ol class="breadcrumb">
             <li><a href="#"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
             <li class="active">
-                <a href="{{ url('admin/product') }}">
-                    Sản phẩm
+                <a href="{{ url('admin/news') }}">
+                    Tin tức
                 </a>
             </li>
             <li class="active">Cập nhật</li>
@@ -26,7 +26,7 @@
     </div><!--/.row-->
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Sản phẩm</h1>
+            <h1 class="page-header">Tin tức</h1>
         </div>
     </div><!--/.row-->
 

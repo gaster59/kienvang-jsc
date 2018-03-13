@@ -8,6 +8,13 @@
 
 @section('js_path')
     @parent
+    <script type="text/javascript">
+        function fnDelete(url) {
+            if (confirm('Bạn có muốn xóa không ?')) {
+                window.location.href = url;
+            }
+        }
+    </script>
 @endsection
 
 @section('content')
@@ -55,6 +62,9 @@
                                 <th>
                                     Tên tin tức
                                 </th>
+                                <th>
+                                    Tin hot
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -70,18 +80,26 @@
                                     </a>
                                 </td>
                                 <td>
+                                    @if($item->is_hot == 1)
+                                        <span class="newtag">Hot</span>
+                                    @endif
+                                </td>
+                                <td>
                                     <a href="{{ route('news.edit',['id'=>$item->id])  }}">Edit</a>
                                     |
+                                    @php(
+                                        $urlDelete = route('news.delete', ['id'=>$item->id])
+                                    )
                                     <a data-link="#"
                                        href="javascript:void(0)"
-                                       onclick="common.fnDelete(this)">Delete</a>
+                                       onclick="fnDelete('{{ $urlDelete }}')">Delete</a>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3" style="text-align: center;">
+                                <td colspan="4" style="text-align: center;">
                                     {{ $news->links() }}
                                 </td>
                             </tr>

@@ -109,11 +109,13 @@ class NewsController extends BaseController
      */
     private function handleAddNews($request)
     {
+
         $name = $request->post('name', '');
         $description = $request->post('description', '');
         $summary = $request->post('summary', '');
         $metaKeyword = $request->post('meta_keyword', '');
         $metaDescription = $request->post('meta_description', '');
+        $isHot = $request->post('is_hot', 0);
         $status = 1;
         $type = 1;
 
@@ -122,6 +124,7 @@ class NewsController extends BaseController
             'description' => $description,
             'summary' => $summary,
             'type' => $type,
+            'is_hot' => $isHot,
             'status' => $status,
             'meta_keyword' => $metaKeyword,
             'meta_description' => $metaDescription,
@@ -144,6 +147,7 @@ class NewsController extends BaseController
         $summary = $request->post('summary', '');
         $metaKeyword = $request->post('meta_keyword', '');
         $metaDescription = $request->post('meta_description', '');
+        $isHot = $request->post('is_hot', 0);
         $status = 1;
         $type = 1;
 
@@ -153,9 +157,30 @@ class NewsController extends BaseController
             'summary' => $summary,
             'status' => $status,
             'type' => $type,
+            'is_hot' => $isHot,
             'meta_keyword' => $metaKeyword,
             'meta_description' => $metaDescription,
         ];
         $this->newsRepository->update($news, $request->id);
+    }
+
+    public function delete($id)
+    {
+        $news = $this->newsRepository->findWhere([
+            'id' => $id,
+            'type' => 1,
+            'status' => 1
+        ]);
+
+        if (count($news) == 0) {
+            return redirect(route('news'));
+        }
+
+        $news = $news[0];
+        $attributes = [
+            'status' => 0
+        ];
+        $this->newsRepository->update($attributes, $id);
+        return redirect(route('news'));
     }
 }

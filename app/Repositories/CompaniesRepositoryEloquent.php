@@ -62,6 +62,22 @@ class CompaniesRepositoryEloquent extends BaseRepository implements CompaniesRep
         return $res;
     }
 
+    public function getCompanyAboutNum($status = 1, $num)
+    {
+        $res = $this->scopeQuery(function($query) use($status) {
+            return $query
+                ->orderBy('id','desc')
+                ->where('companies.status', $status);
+        })->paginate(3, [
+            'companies.id',
+            'companies.name',
+            'companies.avatar',
+            'companies.scale',
+            'companies.founding',
+        ]);
+        return $res;
+    }
+
     /**
      * Boot up the repository, pushing criteria
      */

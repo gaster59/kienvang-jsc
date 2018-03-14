@@ -50,6 +50,29 @@ class JobRepositoryEloquent extends BaseRepository implements JobRepository
         return $res;
     }
 
+    public function getJobAboutNum($status = 1, $num)
+    {
+        $res = $this->scopeQuery(function($query) use($status) {
+            return $query
+                ->join('majors', function ($join) {
+                    $join->on('jobs.major_id', '=', 'majors.id')
+                        ->where('majors.status','=', '1');
+                })
+                ->join('companies', function ($join) {
+                    $join->on('jobs.company_id', '=', 'companies.id')
+                        ->where('companies.status','=', '1');
+                })
+                ->orderBy('id','desc')
+                ->where('jobs.status', $status);
+        })->paginate($num, [
+            'jobs.id',
+            'jobs.name',
+            'majors.name as major_name',
+            'companies.name as company_name',
+        ]);
+        return $res;
+    }
+
     /**
      * Boot up the repository, pushing criteria
      */

@@ -18,4 +18,14 @@ interface JobRepository extends RepositoryInterface
      * @return array
      */
     public function getJob($status = 1);
+
+    /**
+     * Get job has status = 1 and num record
+     *
+     * @param int $status
+     * @param $num
+     *
+     * @return array
+     */
+    public function getJobAboutNum($status = 1, $num);
 }

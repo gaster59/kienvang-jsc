@@ -56,5 +56,233 @@
         <samp>Đăng nhập làm thành viên sẽ được chuyên viên hỗ trợ tìm việc miễn phí</samp>
     </div>
 </div>
+<div class="row">
+    <div class="col-lg-9 col-md-12">
+        <section>
+            <div id="exTab2" class="padding-top20">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a href="#1" data-toggle="tab">Việc làm mới nhất</a>
+                    </li>
+                    {{--<li><a href="#2" data-toggle="tab">Việc tìm kiếm nhiều nhất</a>--}}
+                    {{--</li>--}}
+                    {{--<li><a href="#3" data-toggle="tab">XKLĐ Nhật Bản</a>--}}
+                    {{--</li>--}}
+                </ul>
+                <div class="tab-content ">
+                    <div class="tab-pane active" id="1">
+                        <div class="bd-example">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Việc làm</th>
+                                    <th scope="col">Tên công ty</th>
+                                    <th scope="col">Ngành nghề</th>
+                                    {{--<th scope="col">Ngày hết hạn</th>--}}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($jobs as $job)
+                                        <tr>
+                                            <th scope="row">
+                                                <a class="link" href="#">{{ $job->name }}</a>
+                                            </th>
+                                            <td>{{ $job->company_name }}</td>
+                                            <td>{{ $job->major_name }}</td>
+                                            {{--<td>21-10-2018</td>--}}
+                                        </tr>
+                                    @endforeach
+                                    {{--<tr>--}}
+                                        {{--<th scope="row">--}}
+                                            {{--<a class="link" href="#">TUYỂN KỸ SƯ XÂY DỰNG LÀM VIỆC TẠI LÂM ĐỒNG</a>--}}
+                                        {{--</th>--}}
+                                        {{--<td>400 - 750 USD</td>--}}
+                                        {{--<td>Lâm Đồng</td>--}}
+                                        {{--<td>21-10-2018</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<th scope="row">--}}
+                                            {{--<a class="link" href="#">TUYỂN KỸ SƯ XÂY DỰNG LÀM VIỆC TẠI LÂM ĐỒNG</a>--}}
+                                        {{--</th>--}}
+                                        {{--<td>400 - 750 USD</td>--}}
+                                        {{--<td>Lâm Đồng</td>--}}
+                                        {{--<td>21-10-2018</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<th scope="row">--}}
+                                            {{--<a class="link" href="#">TUYỂN KỸ SƯ XÂY DỰNG LÀM VIỆC TẠI LÂM ĐỒNG</a>--}}
+                                        {{--</th>--}}
+                                        {{--<td>400 - 750 USD</td>--}}
+                                        {{--<td>Lâm Đồng</td>--}}
+                                        {{--<td>21-10-2018</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<th scope="row">--}}
+                                            {{--<a class="link" href="#">TUYỂN KỸ SƯ XÂY DỰNG LÀM VIỆC TẠI LÂM ĐỒNG</a>--}}
+                                        {{--</th>--}}
+                                        {{--<td>400 - 750 USD</td>--}}
+                                        {{--<td>Lâm Đồng</td>--}}
+                                        {{--<td>21-10-2018</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<th scope="row">--}}
+                                            {{--<a class="link" href="#">TUYỂN KỸ SƯ XÂY DỰNG LÀM VIỆC TẠI LÂM ĐỒNG</a>--}}
+                                        {{--</th>--}}
+                                        {{--<td>400 - 750 USD</td>--}}
+                                        {{--<td>Lâm Đồng</td>--}}
+                                        {{--<td>21-10-2018</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<th scope="row">--}}
+                                            {{--<a class="link" href="#">TUYỂN KỸ SƯ XÂY DỰNG LÀM VIỆC TẠI LÂM ĐỒNG</a>--}}
+                                        {{--</th>--}}
+                                        {{--<td>400 - 750 USD</td>--}}
+                                        {{--<td>Lâm Đồng</td>--}}
+                                        {{--<td>21-10-2018</td>--}}
+                                    {{--</tr>--}}
+                                </tbody>
+                            </table>
+                            <div class="text-center margin-top10">
+                                {{--<ul class="pagination">--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">Previous</a></li>--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">1</a></li>--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">2</a></li>--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">Next</a></li>--}}
+                                {{--</ul>--}}
+                            </div>
+                        </div>
+                    </div>
+                    {{--<div class="tab-pane" id="2">--}}
+                        {{--<div class="bd-example">--}}
+                            {{--<table class="table table-hover">--}}
+                                {{--<thead>--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="col">Việc làm</th>--}}
+                                    {{--<th scope="col">Lương</th>--}}
+                                    {{--<th scope="col">Nơi làm việc</th>--}}
+                                    {{--<th scope="col">Ngày hết hạn</th>--}}
+                                {{--</tr>--}}
+                                {{--</thead>--}}
+                                {{--<tbody>--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="row">--}}
+                                        {{--<a class="link" href="#">TUYỂN KỸ SƯ XÂY DỰNG LÀM VIỆC TẠI LÂM ĐỒNG</a>--}}
+                                    {{--</th>--}}
+                                    {{--<td>400 - 750 USD</td>--}}
+                                    {{--<td>Lâm Đồng</td>--}}
+                                    {{--<td>21-10-2018</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="row">--}}
+                                        {{--<a class="link" href="#">TUYỂN KỸ SƯ XÂY DỰNG LÀM VIỆC TẠI LÂM ĐỒNG</a>--}}
+                                    {{--</th>--}}
+                                    {{--<td>400 - 750 USD</td>--}}
+                                    {{--<td>Lâm Đồng</td>--}}
+                                    {{--<td>21-10-2018</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="row">--}}
+                                        {{--<a class="link" href="#">TUYỂN KỸ SƯ XÂY DỰNG LÀM VIỆC TẠI LÂM ĐỒNG</a>--}}
+                                    {{--</th>--}}
+                                    {{--<td>400 - 750 USD</td>--}}
+                                    {{--<td>Lâm Đồng</td>--}}
+                                    {{--<td>21-10-2018</td>--}}
+                                {{--</tr>--}}
+                                {{--</tbody>--}}
+                            {{--</table>--}}
+                            {{--<div class="text-center margin-top10">--}}
+                                {{--<ul class="pagination">--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">Previous</a></li>--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">1</a></li>--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">2</a></li>--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">Next</a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="tab-pane" id="3">--}}
+                        {{--<div class="bd-example">--}}
+                            {{--<table class="table table-hover">--}}
+                                {{--<thead>--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="col">Việc làm</th>--}}
+                                    {{--<th scope="col">Lương</th>--}}
+                                    {{--<th scope="col">Nơi làm việc</th>--}}
+                                    {{--<th scope="col">Ngày hết hạn</th>--}}
+                                {{--</tr>--}}
+                                {{--</thead>--}}
+                                {{--<tbody>--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="row">--}}
+                                        {{--<a class="link" href="#">TUYỂN KỸ SƯ KINH DOANH KIÊM QUẢN LÝ LÀM VIỆC TẠI NHẬT BẢN</a>--}}
+                                    {{--</th>--}}
+                                    {{--<td>4100 - 7150 USD</td>--}}
+                                    {{--<td>Tokyo</td>--}}
+                                    {{--<td>21-10-2018</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="row">--}}
+                                        {{--<a class="link" href="#">TUYỂN KỸ SƯ KINH DOANH KIÊM QUẢN LÝ LÀM VIỆC TẠI NHẬT BẢN</a>--}}
+                                    {{--</th>--}}
+                                    {{--<td>4100 - 7150 USD</td>--}}
+                                    {{--<td>Tokyo</td>--}}
+                                    {{--<td>21-10-2018</td>--}}
+                                {{--</tr>--}}
+                                {{--<tr>--}}
+                                    {{--<th scope="row">--}}
+                                        {{--<a class="link" href="#">TUYỂN KỸ SƯ KINH DOANH KIÊM QUẢN LÝ LÀM VIỆC TẠI NHẬT BẢN</a>--}}
+                                    {{--</th>--}}
+                                    {{--<td>4100 - 7150 USD</td>--}}
+                                    {{--<td>Tokyo</td>--}}
+                                    {{--<td>21-10-2018</td>--}}
+                                {{--</tr>--}}
+                                {{--</tbody>--}}
+                            {{--</table>--}}
+                            {{--<div class="text-center margin-top10">--}}
+                                {{--<ul class="pagination">--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">Previous</a></li>--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">1</a></li>--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">2</a></li>--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+                                    {{--<li class="page-item"><a class="page-link" href="#">Next</a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="col-lg-3 col-md-12">
+        <div class="tabs-pane">
+            <div class="block background text-center">
+                @foreach($companies as $company)
+                    <div class="block-1 margin-bottom5">
+                        <a class="" href="#">
+                            <img style="width: 238px;"
+                                 src="{{ url('/company/'.$company->avatar) }}">
+                        </a>
+                    </div>
+                @endforeach
+                {{--<div class="block-1 margin-bottom5">--}}
+                    {{--<a class="" href="#"><img style="width: 238px;" src="https://data.tienganh123.com/images/v2/home/button_dk.jpg"></a>--}}
+                {{--</div>--}}
+                {{--<div class="block-2 margin-bottom5">--}}
+                    {{--<a href="#">--}}
+                        {{--<img style="width: 238px;" src="https://data.tienganh123.com/images/banner/banner-videochat.png" alt=""></a>--}}
+                {{--</div>--}}
+                {{--<div class="block-3 margin-bottom5">--}}
+                    {{--<a href="#">--}}
+                        {{--<img style="width: 238px;" src="https://data.tienganh123.com/images/banner/banner-videochat.png" alt=""></a>--}}
+                {{--</div>--}}
+            </div>
+        </div>
+    </div>
+
+</div>
 
 @endsection

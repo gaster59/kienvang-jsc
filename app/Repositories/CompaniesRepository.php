@@ -26,4 +26,13 @@ interface CompaniesRepository extends RepositoryInterface
      * @return array
      */
     public function getAllCompany($status = 1);
+
+    /**
+     * Get companies has status = 1
+     * @param int $status
+     * @param $num
+     *
+     * @return array
+     */
+    public function getCompanyAboutNum($status = 1, $num);
 }

@@ -47,6 +47,31 @@ class NewsRepositoryEloquent extends BaseRepository implements NewsRepository
         ]);
         return $res;
     }
+    /**
+     * [getNewsCustomize description]
+     * @param  [array] $where [description]
+     * @param  integer $limit [description]
+     * @return [array]        [description]
+     */
+
+    public function getNewsCustomize($where = null, $limit = 20){
+        $res = $this->scopeQuery(function($query) use($where) {
+            return $query
+                ->orderBy('id','desc')
+                ->where($where);
+        })->paginate(env('PAGINATION', $limit), [
+            'news.id',
+            'news.name',
+            'news.avatar',
+            'news.description',
+            'news.summary',
+            'news.is_hot',
+            'news.meta_keyword',
+            'news.meta_description',
+            'news.updated_at'
+        ]);
+        return $res;
+    }
 
     /**
      * Boot up the repository, pushing criteria

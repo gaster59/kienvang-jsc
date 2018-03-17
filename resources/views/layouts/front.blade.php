@@ -8,56 +8,37 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @section('css_path')
-            <link rel="stylesheet" href="css/bootstrap.css" media="screen">
-            <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
-            <link rel="stylesheet" href="css/custom.min.css">
-            <link rel="stylesheet" href="css/style.css" >
+            <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}" media="screen">
+            <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}" media="screen">
+            <link rel="stylesheet" href="{{ asset('/css/custom.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('/css/style.css') }}" >
         @show
 
     </head>
     <body>
         <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <div class="container">
-                <a href="" class="navbar-brand">WebTest</a>
+                <a href="{{ url(route('front.index')) }}" class="navbar-brand">Kiến vàng</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                  </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="">Trang chủ</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Thực tập sinh <span class="caret"></span></a>
-                            <div class="dropdown-menu" aria-labelledby="themes">
-                                <a class="dropdown-item" href="../default/">Default</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="../cerulean/">Cerulean</a>
-                                <a class="dropdown-item" href="../cosmo/">Cosmo</a>
-                                <a class="dropdown-item" href="../cyborg/">Cyborg</a>
-                                <a class="dropdown-item" href="../darkly/">Darkly</a>
-                                <a class="dropdown-item" href="../flatly/">Flatly</a>
-                                <a class="dropdown-item" href="../journal/">Journal</a>
-                                <a class="dropdown-item" href="../litera/">Litera</a>
-                                <a class="dropdown-item" href="../lumen/">Lumen</a>
-                                <a class="dropdown-item" href="../lux/">Lux</a>
-                                <a class="dropdown-item" href="../materia/">Materia</a>
-                                <a class="dropdown-item" href="../minty/">Minty</a>
-                                <a class="dropdown-item" href="../pulse/">Pulse</a>
-                                <a class="dropdown-item" href="../sandstone/">Sandstone</a>
-                                <a class="dropdown-item" href="../simplex/">Simplex</a>
-                                <a class="dropdown-item" href="../sketchy/">Sketchy</a>
-                                <a class="dropdown-item" href="../slate/">Slate</a>
-                                <a class="dropdown-item" href="../solar/">Solar</a>
-                                <a class="dropdown-item" href="../spacelab/">Spacelab</a>
-                                <a class="dropdown-item" href="../superhero/">Superhero</a>
-                                <a class="dropdown-item" href="../united/">United</a>
-                                <a class="dropdown-item" href="../yeti/">Yeti</a>
-                            </div>
+                            <a class="nav-link" target="_self" href="{{ url(route('front.index')) }}">Trang chủ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="" target="_blank">Kỹ sư</a>
+                            <a class="nav-link" target="_self" href="#">Thực tập sinh</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="" target="_blank">Du học sinh</a>
+                            <a class="nav-link" href="#" target="_self">Kỹ sư</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" target="_self">Du học sinh</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('front.news') }}" target="_self">Tin tức</a>
                         </li>
                     </ul>
                 </div>
@@ -108,10 +89,10 @@
             </div>
 
             @section('js_path')
-                <script src="js/jquery.min.js"></script>
-                <script src="js/popper.min.js"></script>
-                <script src="js/bootstrap.min.js"></script>
-                <script src="js/custom.js"></script>
+                <script src="{{ asset('/js/jquery.min.js') }}"></script>
+                <script src="{{ asset('/js/popper.min.js') }}"></script>
+                <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+                <script src="{{ asset('/js/custom.js') }}"></script>
             @show
 
         </div>

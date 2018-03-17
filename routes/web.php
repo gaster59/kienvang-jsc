@@ -69,7 +69,7 @@ Route::group([
 
 /*Route admin/... */
 Route::group([
-    'namespace' => 'Admin',
+    'namespace' => 'admin',
     'middleware' => 'checkRole:1',
     'prefix' => 'admin'], function () {
 

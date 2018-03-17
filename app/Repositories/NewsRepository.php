@@ -18,4 +18,11 @@ interface NewsRepository extends RepositoryInterface
      * @return array
      */
     public function getNews($status = 1, $numPage = 20);
+    /**
+     * [getNewsCustomize description]
+     * @param  [type]  $where [description]
+     * @param  integer $limit [description]
+     * @return [type]         [description]
+     */
+    public function getNewsCustomize($where = null, $limit = 20);
 }

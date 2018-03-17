@@ -28,26 +28,28 @@ class NewsController extends Controller
     public function detail($id, $slug)
     {
         if (!is_numeric($id)) {
-            redirect(route('front.news'));
+            return redirect(route('front.news'));
         }
         if (is_null($slug)) {
-            redirect(route('front.news'));
+            return redirect(route('front.news'));
         }
 
-        $news = $this->newsRepository->findWhere([
+        $dataNews = $this->newsRepository->findWhere([
             'id' => $id,
             'status' => 1
         ]);
-        if (count($news) == 0) {
-            // tin khong ton tai
-            return view('sdasdas', [
-                'asdasd' => 'sadasd'
-            ]);
+        if (count($dataNews) == 0) {
+            return redirect(route('front.news'));
         }
 
-        // tin ton tai
-        return view('adasd', [
-            'dsadas' => 'dasdasd'
+        /**
+         * List news
+         */
+        $arr = [['news.type', '=', '1'],['news.status', '=', '1'],['id', '<>', $id]];
+        $newsList = $this->newsRepository->getNewsCustomize( $arr  , 10);
+        return view('news.detail', [
+            'dataNews'  => $dataNews[0],
+            'newsList'  => $newsList
         ]);
 
 

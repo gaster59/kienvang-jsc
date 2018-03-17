@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-@section('title', 'Admin page')
+@section('title', 'Tin tức | Kiến vàng')
 
 @section('css_path')
     @parent
@@ -52,9 +52,12 @@
                     <li style="{{ $cls }}">
                         <div class="lng_right">
                             <div class="lng_right_top">
-                                <a href="" title="" target="_blank">
+                                <a href="{{-- {{ url(route('front.news.detail', ['id'=>$item->id] )) }} --}}" title="" target="_self">
                                     <span class="h1">{{ $item->name }}</span>
                                 </a>
+                                @if($item->is_hot == 1)
+                                    <span class="newtag">Hot</span>
+                                @endif
                                 <p class="des">
                                     {{ $item->description }}
                                 </p>

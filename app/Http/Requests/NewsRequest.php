@@ -43,7 +43,7 @@ class NewsRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Bạn chưa nhập tên sản phẩm',
+            'name.required' => 'Bạn chưa nhập tên tin tức',
             'name.max' => 'Bạn chỉ nhập tối đa :max ký tự',
 
             'description.max' => 'Bạn chỉ nhập tối đa :max ký tự',

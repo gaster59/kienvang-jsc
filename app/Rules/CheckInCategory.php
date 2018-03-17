@@ -53,6 +53,6 @@ class CheckInCategory implements Rule
      */
     public function message()
     {
-        return 'Danh mục bạn chọn không tồn tại.';
+        return 'Công ty bạn chọn không tồn tại.';
     }
 }

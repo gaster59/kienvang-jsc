@@ -11,6 +11,7 @@ class Banner extends Model implements Transformable
     use TransformableTrait;
 
     protected $fillable = [
+    	'title',
         'avatar',
         'description'
     ];

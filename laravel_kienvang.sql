@@ -30,18 +30,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `banners` (
   `id` int(11) NOT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `avatar` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `banners`
+-- Dumping data for table `banners`
 --
 
-INSERT INTO `banners` (`id`, `avatar`, `description`, `created_at`, `updated_at`) VALUES
-(2, '1520751869.jpg', 'slide 1', '2018-03-11 00:04:29', '2018-03-11 00:04:29');
+INSERT INTO `banners` (`id`, `title`, `avatar`, `description`, `created_at`, `updated_at`) VALUES
+(1, '1 slide label', '1521299250.jpg', 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.', '2018-03-17 15:59:05', '2018-03-17 17:04:01'),
+(2, '2 slide label', '1520751869.jpg', 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.', '2018-03-17 15:59:05', '2018-03-17 17:04:08'),
+(3, '3 slide label', '1521303649.jpg', 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.', '2018-03-17 16:20:49', '2018-03-17 17:04:14');
+
 
 -- --------------------------------------------------------
 
@@ -466,7 +470,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT cho bảng `categories`
 --

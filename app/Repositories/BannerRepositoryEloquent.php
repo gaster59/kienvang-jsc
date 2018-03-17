@@ -6,7 +6,7 @@ use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\BannerRepository;
 use App\Entities\Banner;
-use App\Validators\BannerValidator;
+//use App\Validators\BannerValidator;
 
 /**
  * Class BannerRepositoryEloquent
@@ -28,12 +28,20 @@ class BannerRepositoryEloquent extends BaseRepository implements BannerRepositor
     {
         $res = $this->all([
             'id',
+            'title',
             'avatar',
             'description'
         ]);
         return $res;
     }
-
+    public function getBannerAboutNum($limit = 3, $field= null)
+    {
+        $res = $this->scopeQuery(function($query) {
+        return $query
+                ->orderBy('id','desc');
+        })->paginate($limit, $field);
+        return $res;
+    }
     /**
      * Boot up the repository, pushing criteria
      */

@@ -62,6 +62,7 @@
                                 <th>
                                     Hình banner
                                 </th>
+                                <th>Tiêu đề</th>
                                 <th>Mô tả</th>
                                 <th></th>
                             </tr>
@@ -74,9 +75,10 @@
                                 <td>
                                     @if($item->avatar != '')
                                     <img src="{{ url('/banner/'.$item->avatar) }}" class="img-thumbnail"
-                                        style="width: 100px;height: 100px;"/>
+                                        style="width: 200px;height: 100px;"/>
                                     @endif
                                 </td>
+                                <td>{{ $item->title }}</td>
                                 <td>
                                     {{ $item->description }}
                                 </td>

@@ -23,12 +23,36 @@ class BannerRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'id',
-            'description' => 'max:100',
-            'avatar' => 'required|image',
-            'method'
-        ];
+        if(!empty($this->post('method')) && $this->post('method') == "add"){
+            return [
+                'id',
+                'title'         => 'max:100',
+                'description'   => 'max:100',
+                'avatar'        => 'required|image',
+                'method'
+            ];
+        }else
+        {
+            if(!empty($this->file('avatar'))){
+                return [
+                    'id',
+                    'title'         => 'max:100',
+                    'description'   => 'max:100',
+                    'avatar'        => 'required|image',
+                    'method'
+                ];
+            }else{
+                return [
+                    'id',
+                    'title'         => 'max:100',
+                    'description'   => 'max:100',
+                    //'avatar' => 'required|image',
+                    'method'
+                ];
+            }
+            
+        }
+        
     }
 
     /**
@@ -39,11 +63,10 @@ class BannerRequest extends FormRequest
     public function messages()
     {
         return [
-
-            'description.max' => 'Bạn chỉ nhập tối đa :max ký tự',
-
-            'avatar.image' => 'Bạn chỉ được upload hình ảnh',
-            'avatar.required' => 'Bạn chưa chọn file',
+            'title.max'         => 'Bạn chỉ nhập tối đa :max ký tự',
+            'description.max'   => 'Bạn chỉ nhập tối đa :max ký tự',
+            'avatar.image'      => 'Bạn chỉ được upload hình ảnh',
+            'avatar.required'   => 'Bạn chưa chọn file',
         ];
     }
 }

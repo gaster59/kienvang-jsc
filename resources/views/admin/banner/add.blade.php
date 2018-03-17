@@ -55,7 +55,15 @@
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="hidden" name="method" value="add">
                         <fieldset>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">
+                                    Tiêu đề
+                                </label>
+                                <div class="col-md-9">
+                                <input class="form-control" maxlength="100" type="text" name="title" value="{{ old('title') }}">
 
+                                </div>
+                            </div>
                             <!-- Description input-->
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="name">

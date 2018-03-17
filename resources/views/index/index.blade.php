@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-@section('title', 'Admin page 111')
+@section('title', 'Kiến vàng')
 
 @section('css_path')
     @parent
@@ -15,19 +15,39 @@
 <div class="slider">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            @foreach($slider as $key=>$sliderval)
+                @php
+                    $classactive = ''
+                @endphp
+                @if($key == 0)
+                    @php
+                        $classactive = 'active'
+                    @endphp
+                @endif
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}" class="{{ $classactive }}"></li>
+            @endforeach
         </ol>
         <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <img class="d-block img-fluid" src="images/5.jpg" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>First slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+
+            @foreach($slider as $key=>$sliderval)
+                @php
+                    $classactive = ''
+                @endphp
+                @if($key == 0)
+                    @php
+                        $classactive = 'active'
+                    @endphp
+                @endif
+                <div class="carousel-item {{ $classactive }}">
+                    <img class="d-block img-fluid" src="{{ url('/banner/'.$sliderval->avatar) }}" alt="{{ $sliderval->title }}">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>{{ $sliderval->title }}</h3>
+                        <p>{{ $sliderval->description }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="carousel-item">
+            @endforeach
+            
+            {{-- <div class="carousel-item">
                 <img class="d-block img-fluid" src="images/6.jpg" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h3>Second slide label</h3>
@@ -40,7 +60,7 @@
                     <h3>Third slide label</h3>
                     <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

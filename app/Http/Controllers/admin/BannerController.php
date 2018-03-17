@@ -108,6 +108,7 @@ class BannerController extends BaseController
     private function handleAddBanner($request)
     {
         $description = $request->post('description', '');
+        $title = $request->post('title', '');
         $avatar = $request->file('avatar');
         $destination = public_path('/banner');
 
@@ -117,6 +118,7 @@ class BannerController extends BaseController
             $avatar->move($destination, $fileName);
         }
         $banner = [
+            'title' => $title,
             'description' => $description,
             'avatar' => $fileName,
         ];
@@ -134,7 +136,7 @@ class BannerController extends BaseController
     private function handleEditBanner($request, $banner)
     {
         $description = $request->post('description', '');
-
+        $title = $request->post('title', '');
         $avatar = $request->file('avatar');
         $destination = public_path('/banner');
 
@@ -148,6 +150,7 @@ class BannerController extends BaseController
             $avatar->move($destination, $fileName);
         }
         $banner = [
+            'title' => $title,
             'description' => $description,
             'avatar' => $fileName,
         ];

@@ -27,14 +27,14 @@ class NewsRepositoryEloquent extends BaseRepository implements NewsRepository
     /**
      * @inheritdoc
      */
-    public function getNews($status = 1)
+    public function getNews($status = 1, $numPage = 20)
     {
         $res = $this->scopeQuery(function($query) use($status) {
             return $query
                 ->orderBy('id','desc')
                 ->where('news.type', 1)
                 ->where('news.status', $status);
-        })->paginate(env('PAGINATION',20), [
+        })->paginate(env('PAGINATION', $numPage), [
             'news.id',
             'news.name',
             'news.avatar',
@@ -43,6 +43,7 @@ class NewsRepositoryEloquent extends BaseRepository implements NewsRepository
             'news.is_hot',
             'news.meta_keyword',
             'news.meta_description',
+            'news.updated_at'
         ]);
         return $res;
     }

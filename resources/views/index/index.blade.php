@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-@section('title', 'Admin page')
+@section('title', 'Admin page 111')
 
 @section('css_path')
     @parent

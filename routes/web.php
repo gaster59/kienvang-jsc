@@ -18,6 +18,16 @@ Route::get('/', [
     'uses' => 'IndexController@index'
 ]);
 
+Route::get('/tin-tuc', [
+    'as' => 'front.news',
+    'uses' => 'NewsController@index'
+]);
+
+Route::get('/tin-tuc/{id}-{slug}', [
+    'as' => 'front.news.detail',
+    'uses' => 'NewsController@detail'
+]);
+
 /*
  * Login
  */

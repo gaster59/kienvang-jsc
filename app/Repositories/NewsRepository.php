@@ -14,7 +14,8 @@ interface NewsRepository extends RepositoryInterface
      * Get news has status = 1
      *
      * @param int $status
+     * @param int $numPage
      * @return array
      */
-    public function getNews($status = 1);
+    public function getNews($status = 1, $numPage = 20);
 }

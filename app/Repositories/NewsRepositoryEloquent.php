@@ -37,6 +37,7 @@ class NewsRepositoryEloquent extends BaseRepository implements NewsRepository
         })->paginate(env('PAGINATION', $numPage), [
             'news.id',
             'news.name',
+            'news.slug',
             'news.avatar',
             'news.description',
             'news.summary',
@@ -62,6 +63,7 @@ class NewsRepositoryEloquent extends BaseRepository implements NewsRepository
         })->paginate(env('PAGINATION', $limit), [
             'news.id',
             'news.name',
+            'news.slug',
             'news.avatar',
             'news.description',
             'news.summary',

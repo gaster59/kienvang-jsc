@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Ho-Chi-Minh',
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -178,6 +178,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        //Slug EloquentSluggable
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
 
     ],
 

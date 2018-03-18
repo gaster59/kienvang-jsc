@@ -94,7 +94,7 @@ class NewsController extends BaseController
             if (count($news) == 0) {
                 return redirect(route('news'));
             }
-
+            $news[0]->slug = '';
             $this->handleEditNews($request, $news);
             return redirect(route('news'));
         }

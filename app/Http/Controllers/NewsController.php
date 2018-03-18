@@ -25,12 +25,9 @@ class NewsController extends Controller
         ]);
     }
 
-    public function detail($id, $slug)
+    public function detail($id, $slug=null)
     {
         if (!is_numeric($id)) {
-            return redirect(route('front.news'));
-        }
-        if (is_null($slug)) {
             return redirect(route('front.news'));
         }
 

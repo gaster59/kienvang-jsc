@@ -23,7 +23,7 @@ Route::get('/tin-tuc', [
     'uses' => 'NewsController@index'
 ]);
 
-Route::get('/tin-tuc/{id}-{slug}', [
+Route::get('/tin-tuc/{id}/{slug?}', [
     'as' => 'front.news.detail',
     'uses' => 'NewsController@detail'
 ]);

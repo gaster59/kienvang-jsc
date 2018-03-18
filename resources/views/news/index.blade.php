@@ -52,7 +52,7 @@
                     <li style="{{ $cls }}">
                         <div class="lng_right">
                             <div class="lng_right_top">
-                                <a href="{{-- {{ url(route('front.news.detail', ['id'=>$item->id] )) }} --}}" title="" target="_self">
+                                <a href="{{ url(route('front.news.detail', ['id'=>$item->id, 'slug'=> $item->slug] )) }}" title="" target="_self">
                                     <span class="h1">{{ $item->name }}</span>
                                 </a>
                                 @if($item->is_hot == 1)

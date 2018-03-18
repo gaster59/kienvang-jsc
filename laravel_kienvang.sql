@@ -276,6 +276,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `news` (
   `id` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `slug` varchar(220) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `summary` text COLLATE utf8_unicode_ci NOT NULL,
   `avatar` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -283,19 +284,20 @@ CREATE TABLE `news` (
   `meta_description` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `type` smallint(6) NOT NULL COMMENT '1: tin tuc, 2: tin nensai',
   `is_hot` smallint(6) NOT NULL COMMENT '0: binh thuong, 1: hot',
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `status` smallint(6) NOT NULL COMMENT '1: hien thi, 0: khong hien thi'
+  `status` smallint(6) NOT NULL COMMENT '1: hien thi, 0: khong hien thi',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `news`
 --
 
-INSERT INTO `news` (`id`, `name`, `description`, `summary`, `avatar`, `meta_keyword`, `meta_description`, `type`, `is_hot`, `created_at`, `updated_at`, `status`) VALUES
-(1, 'qweqwe', 'qweqwewq', '<p><img alt=\"\" src=\"/content/userfiles/images/tu-ho-so-cat08g_s881.png\" style=\"height:549px; width:550px\" /></p>\r\n\r\n<p>qweqwewq</p>', NULL, '213213', '213213213', 1, 0, '2018-03-06 15:56:45', '2018-03-06 08:56:45', 1),
-(2, 'xcxc111', 'xcxcx', '<p>xcxcxcxc</p>', NULL, 'xcxc2222', 'xcxcxc', 1, 0, '2018-03-06 15:57:08', '2018-03-06 08:58:06', 1),
-(3, '12312', '3123', '<p>12321</p>', NULL, '123', '213', 1, 1, '2018-03-13 08:42:14', '2018-03-13 09:10:24', 1);
+INSERT INTO `news` (`id`, `name`, `slug`, `description`, `summary`, `avatar`, `meta_keyword`, `meta_description`, `type`, `is_hot`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Kỹ sư Việt Nam', 'ky-su-viet-nam', 'ngày hôm qua', '<p><img alt=\"\" src=\"/content/userfiles/images/tu-ho-so-cat08g_s881.png\" style=\"height:549px; width:550px\" /></p>\r\n\r\n<p>qweqwewq</p>', NULL, '213213', '213213213', 1, 0, 1, '2018-03-18 06:26:01', '2018-03-17 23:47:08'),
+(2, 'xcxc111', NULL, 'xcxcx', '<p>xcxcxcxc</p>', NULL, 'xcxc2222', 'xcxcxc', 1, 0, 1, '2018-03-18 06:26:01', '2018-03-18 06:26:01'),
+(3, '12312', NULL, '3123', '<p>12321</p>', NULL, '123', '213', 1, 1, 1, '2018-03-18 06:26:01', '2018-03-18 06:26:01'),
+(4, 'Ngôi nhà chung cho chúng ta', 'ngoi-nha-chung-cho-chung-ta', 'Ngôi nhà chung cho chúng ta', '<p>How can I create URLs with slugs (i.e. like on stackoverflow)? I have a table of campaigns with ID and product name. How can I use this product name? So, instead of</p>', NULL, 'acv', 'ad', 1, 0, 1, '2018-03-17 23:59:34', '2018-03-18 00:20:53');
 
 -- --------------------------------------------------------
 
@@ -500,7 +502,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT cho bảng `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT cho bảng `products`
 --

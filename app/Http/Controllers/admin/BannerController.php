@@ -109,6 +109,7 @@ class BannerController extends BaseController
     {
         $description = $request->post('description', '');
         $title = $request->post('title', '');
+        $type = $request->post('type', 1);
         $avatar = $request->file('avatar');
         $destination = public_path('/banner');
 
@@ -119,6 +120,7 @@ class BannerController extends BaseController
         }
         $banner = [
             'title' => $title,
+            'type'  => $type,
             'description' => $description,
             'avatar' => $fileName,
         ];
@@ -137,6 +139,7 @@ class BannerController extends BaseController
     {
         $description = $request->post('description', '');
         $title = $request->post('title', '');
+        $type = $request->post('type', 1);
         $avatar = $request->file('avatar');
         $destination = public_path('/banner');
 
@@ -151,6 +154,7 @@ class BannerController extends BaseController
         }
         $banner = [
             'title' => $title,
+            'type'  => $type,
             'description' => $description,
             'avatar' => $fileName,
         ];

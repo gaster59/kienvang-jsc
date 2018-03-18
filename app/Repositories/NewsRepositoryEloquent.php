@@ -60,7 +60,7 @@ class NewsRepositoryEloquent extends BaseRepository implements NewsRepository
             return $query
                 ->orderBy('id','desc')
                 ->where($where);
-        })->paginate(env('PAGINATION', $limit), [
+        })->paginate( $limit, [
             'news.id',
             'news.name',
             'news.slug',

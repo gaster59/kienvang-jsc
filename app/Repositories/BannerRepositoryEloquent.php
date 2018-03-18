@@ -38,6 +38,7 @@ class BannerRepositoryEloquent extends BaseRepository implements BannerRepositor
     {
         $res = $this->scopeQuery(function($query) {
         return $query
+                ->where('banners.type', 1)
                 ->orderBy('id','desc');
         })->paginate($limit, $field);
         return $res;

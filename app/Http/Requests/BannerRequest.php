@@ -27,6 +27,7 @@ class BannerRequest extends FormRequest
             return [
                 'id',
                 'title'         => 'max:100',
+                'type',
                 'description'   => 'max:100',
                 'avatar'        => 'required|image',
                 'method'
@@ -37,6 +38,7 @@ class BannerRequest extends FormRequest
                 return [
                     'id',
                     'title'         => 'max:100',
+                    'type',
                     'description'   => 'max:100',
                     'avatar'        => 'required|image',
                     'method'
@@ -45,6 +47,7 @@ class BannerRequest extends FormRequest
                 return [
                     'id',
                     'title'         => 'max:100',
+                    'type',
                     'description'   => 'max:100',
                     //'avatar' => 'required|image',
                     'method'

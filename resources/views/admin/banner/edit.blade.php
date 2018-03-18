@@ -80,7 +80,19 @@
 
                                     </div>
                                 </div>
-
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="name">
+                                        Tùy chọn
+                                    </label>
+                                    <div class="col-md-9">
+                                        <select name="type" class="form-control">
+                                            
+                                            <option @if (1 == old('type', $banner->type)) {!!"selected"!!} @endif value="1">Slider</option>
+                                            <option @if (2 == old('type', $banner->type)) {!!"selected"!!} @endif value="2">Banner Main</option>
+                                            <option @if (3 == old('type', $banner->type)) {!!"selected"!!} @endif value="3">Banner Footer</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <!-- Summary input-->
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="name">

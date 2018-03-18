@@ -18,13 +18,15 @@
     <body>
         <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <div class="container">
-                <a href="{{ url(route('front.index')) }}" class="navbar-brand">Kiến vàng</a>
+                <a href="{{ url(route('front.index')) }}" class="navbar-brand">Kiến vàng
+                    {{-- <img class="logo" src="https://cdn.viblo.asia/img/logo_full.fbfe575.svg" alt="Kiến vàng"> --}}
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                   </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav"> {{-- ml-auto --}}
                         <li class="nav-item">
                             <a class="nav-link" target="_self" href="{{ url(route('front.index')) }}">Trang chủ</a>
                         </li>
@@ -42,6 +44,18 @@
                         </li>
                     </ul>
                 </div>
+                <ul class="nav-items nav-container navbar-right">
+                    <li class="nav-item hidden-md-up">
+                        <a href="#" class="nav-icon"><i aria-hidden="true" class="fa fa-search"></i></a>
+                    </li>
+                    <li class="nav-item hidden-sm-down">
+                        <div class="search">
+                            <input placeholder="Search Kiến vàng" value="" class="search-input">
+                            <button class="btn btn-primary" style=""><i class="fa fa-search"></i></button>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="#"><i class="fa fa-sign-in"></i>  Sign In/Sign up</a></li>
+                </ul>
             </div>
         </div>
 

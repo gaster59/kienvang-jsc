@@ -4010,8 +4010,8 @@ tbody.collapse.show {
 .navbar > .container,
 .navbar > .container-fluid {
   display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  /*display: -ms-flexbox;
+  display: flex;*/
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-align: center;
@@ -4030,6 +4030,8 @@ tbody.collapse.show {
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .navbar-brand:hover, .navbar-brand:focus {

@@ -35,7 +35,8 @@ class CompanyController extends BaseController
      */
     public function index(Request $request)
     {
-        $companies = $this->companyRepository->getCompany();
+        $arr = [];
+        $companies = $this->companyRepository->getCompany($arr, 20);
         return \view('admin.company.index',[
             'companies' => $companies,
             'title' => 'Danh sách công ty'
@@ -67,8 +68,7 @@ class CompanyController extends BaseController
     public function edit(Request $request, $id)
     {
         $company = $this->companyRepository->findWhere([
-            'id' => $id,
-            'status' => 1
+            'id' => $id
         ]);
 
         if (count($company) == 0) {
@@ -94,8 +94,7 @@ class CompanyController extends BaseController
             // Handle edit product
             $id = $request->id;
             $company = $this->companyRepository->findWhere([
-                'id' => $id,
-                'status' => 1
+                'id' => $id
             ]);
             if (count($company) == 0) {
                 return redirect(route('company'));
@@ -121,7 +120,8 @@ class CompanyController extends BaseController
         $founding = $request->post('founding', '');
         $metaKeyword = $request->post('meta_keyword', '');
         $metaDescription = $request->post('meta_description', '');
-        $status = 1;
+        $status = $request->post('status', 1);
+        $is_home = $request->post('is_home', 1);
 
         $avatar = $request->file('avatar');
         $destination = public_path('/company');
@@ -137,6 +137,7 @@ class CompanyController extends BaseController
             'summary' => $summary,
             'avatar' => $fileName,
             'status' => $status,
+            'is_home'=> $is_home,
             'founding' => $founding,
             'meta_keyword' => $metaKeyword,
             'meta_description' => $metaDescription,
@@ -160,7 +161,8 @@ class CompanyController extends BaseController
         $founding = $request->post('founding', '');
         $metaKeyword = $request->post('meta_keyword', '');
         $metaDescription = $request->post('meta_description', '');
-        $status = 1;
+        $status = $request->post('status', 1);
+        $is_home = $request->post('is_home', 1);
 
         $avatar = $request->file('avatar');
         $destination = public_path('/company');
@@ -180,6 +182,7 @@ class CompanyController extends BaseController
             'summary' => $summary,
             'avatar' => $fileName,
             'status' => $status,
+            'is_home'=> $is_home,
             'founding' => $founding,
             'meta_keyword' => $metaKeyword,
             'meta_description' => $metaDescription,

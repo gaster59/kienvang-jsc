@@ -85,7 +85,16 @@
     <div class="col-lg-3 col-md-12">
         <div class="tabs-pane">
             <div class="block background text-center">
-                <div class="block-1 margin-bottom5">
+
+                @foreach($companies as $company)
+                    <div class="block-1 margin-bottom5">
+                        <a class="" href="#">
+                            <img style="width: 238px;"
+                                 src="{{ url('/company/'.$company->avatar) }}">
+                        </a>
+                    </div>
+                @endforeach
+                {{-- <div class="block-1 margin-bottom5">
                     <a class="" href="#"><img style="width: 238px;" src="https://data.tienganh123.com/images/v2/home/button_dk.jpg"></a>
                 </div>
                 <div class="block-2 margin-bottom5">
@@ -110,7 +119,7 @@
                 <div class="block-3 margin-bottom5">
                     <a href="#">
                         <img style="width: 238px;" src="https://data.tienganh123.com/images/banner/banner-videochat.png" alt=""></a>
-                </div>
+                </div> --}}
 
             </div>
 

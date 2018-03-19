@@ -16,7 +16,7 @@ interface CompaniesRepository extends RepositoryInterface
      * @param int $status
      * @return array
      */
-    public function getCompany($status = 1);
+    public function getCompany($where = null,$limit=20);
 
     /**
      * Get all company has status = 1
@@ -26,7 +26,7 @@ interface CompaniesRepository extends RepositoryInterface
      * @return array
      */
     public function getAllCompany($status = 1);
-
+    public function getAllCompanyCustomize($where = null);
     /**
      * Get companies has status = 1
      * @param int $status

@@ -31,13 +31,14 @@ class IndexController extends Controller
         $this->jobRepository = $jobRepository;
         $this->companiesRepository = $companiesRepository;
         $this->bannerRepository = $bannerRepository;
-
+        parent::__construct();
     }
 
     public function index()
     {
         $jobs = $this->jobRepository->getJobAboutNum(1, 6);
-        $companies = $this->companiesRepository->getCompanyAboutNum(1, 3);
+        $arr = [['companies.status', '=', '1'], ['companies.is_home', '=', '1']];
+        $companies = $this->companiesRepository->getAllCompanyCustomize($arr);
         /**
          * Banner Slider
          */

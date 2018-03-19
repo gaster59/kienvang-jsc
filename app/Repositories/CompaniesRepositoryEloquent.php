@@ -27,13 +27,13 @@ class CompaniesRepositoryEloquent extends BaseRepository implements CompaniesRep
     /**
      * @inheritdoc
      */
-    public function getCompany($status = 1)
+    public function getCompany($where = null, $limit=20)
     {
-        $res = $this->scopeQuery(function($query) use($status) {
+        $res = $this->scopeQuery(function($query) use($where) {
             return $query
                     ->orderBy('id','desc')
-                    ->where('companies.status', $status);
-        })->paginate(env('PAGINATION',20), [
+                    ->where($where);
+        })->paginate($limit, [
             'companies.id',
             'companies.name',
             'companies.avatar',
@@ -61,6 +61,20 @@ class CompaniesRepositoryEloquent extends BaseRepository implements CompaniesRep
         ]);
         return $res;
     }
+    public function getAllCompanyCustomize($where = null){
+        $res = $this->scopeQuery(function($query) use($where) {
+            return $query
+                ->orderBy('id','desc')
+                ->where($where);
+        })->all([
+            'companies.id',
+            'companies.name',
+            'companies.avatar',
+            'companies.scale',
+            'companies.founding',
+        ]);
+        return $res;
+    }
 
     public function getCompanyAboutNum($status = 1, $num)
     {
@@ -68,7 +82,7 @@ class CompaniesRepositoryEloquent extends BaseRepository implements CompaniesRep
             return $query
                 ->orderBy('id','desc')
                 ->where('companies.status', $status);
-        })->paginate(3, [
+        })->paginate($num, [
             'companies.id',
             'companies.name',
             'companies.avatar',

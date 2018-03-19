@@ -68,7 +68,7 @@ class JobController extends BaseController
     public function add(Request $request)
     {
         $majors = $this->majorRepository->getMajor();
-        $companies = $this->companiesRepository->getCompany();
+        $companies = $this->companiesRepository->getAllCompany();
         return \view('admin.job.add', [
             'majors' => $majors,
             'companies' => $companies,
@@ -97,7 +97,8 @@ class JobController extends BaseController
 
         $job = $job[0];
         $majors = $this->majorRepository->getMajor();
-        $companies = $this->companiesRepository->getCompany();
+        $arr = [['companies.status', '=', '1']];
+        $companies = $this->companiesRepository->getAllCompany();
         return \view('admin.job.edit', [
             'job' => $job,
             'majors' => $majors,

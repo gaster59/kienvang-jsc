@@ -121,7 +121,28 @@
                                         </label>
                                     </div>
                                 </div>
-
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="name">
+                                        Tùy chọn
+                                    </label>
+                                    <div class="col-md-3">
+                                        <select name="status" class="form-control">
+                                            <option @if (0 == old('status', $company->status)) {!!"selected"!!} @endif value="0">Ẩn</option>
+                                            <option @if (1 == old('status', $company->status)) {!!"selected"!!} @endif value="1">Hiện</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="name">
+                                        Show home
+                                    </label>
+                                    <div class="col-md-3">
+                                        <select name="is_home" class="form-control">
+                                            <option @if (0 == old('is_home', $company->is_home)) {!!"selected"!!} @endif value="0">Ẩn</option>
+                                            <option @if (1 == old('is_home', $company->is_home)) {!!"selected"!!} @endif value="1">Hiện</option>
+                                        </select>
+                                    </div>
+                                </div>
                                 <!-- Meta keyword -->
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="name">

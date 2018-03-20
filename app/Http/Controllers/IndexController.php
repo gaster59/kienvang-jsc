@@ -31,7 +31,6 @@ class IndexController extends Controller
         $this->jobRepository = $jobRepository;
         $this->companiesRepository = $companiesRepository;
         $this->bannerRepository = $bannerRepository;
-        parent::__construct();
     }
 
     public function index()

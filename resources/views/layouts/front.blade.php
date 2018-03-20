@@ -54,7 +54,7 @@
                             <button class="btn btn-primary" style=""><i class="fa fa-search"></i></button>
                         </div>
                     </li>
-                    <li class="nav-item"><a href="#"><i class="fa fa-sign-in"></i>  Sign In/Sign up</a></li>
+                    <li class="nav-item"><a href="{{ url(route('front.user')) }}"><i class="fa fa-sign-in"></i>  Sign In/Sign up</a></li>
                 </ul>
             </div>
         </div>
@@ -64,14 +64,10 @@
 
                 <footer id="footer">
                     <div class="row">
-                        <div class="col-lg-12 text-center margin-top10">
-                            <a title="" href="" target="_self">
-                                <img class="img-fluid" src="https://data.tienganh123.com/images/v2/home/banner_test.jpg"></a>
-                        </div>
-                        <div class="col-lg-12 text-center margin-top10">
-                            <a title="" href="" target="_self">
-                                <img class="img-fluid" src="https://data.tienganh123.com/images/banner/lt123_1000_90_new2.jpg"></a>
-                        </div>
+
+                        @include('layouts.bannerfooter')
+
+
                         <div class="col-lg-12 margin-top10">
                             <ul class="list-unstyled">
                                 <li class="float-lg-right"><a href="#top">Back to top</a></li>

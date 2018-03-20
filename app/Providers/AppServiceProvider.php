@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        $bannersfooter = DB::table('banners')->where('type', 3)->get();
+        View::share('bannersfooter', $bannersfooter);
+        //dd($bannersfooter);
     }
 
     /**

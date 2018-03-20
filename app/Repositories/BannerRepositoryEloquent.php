@@ -43,6 +43,14 @@ class BannerRepositoryEloquent extends BaseRepository implements BannerRepositor
         })->paginate($limit, $field);
         return $res;
     }
+    public function getBannerMain($where = null)
+    {
+        $res = $this->scopeQuery(function($query) use($where) {
+            return $query
+                    ->where($where);
+        })->first();
+        return $res;
+    }
     /**
      * Boot up the repository, pushing criteria
      */

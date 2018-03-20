@@ -18,4 +18,5 @@ interface BannerRepository extends RepositoryInterface
     public function getBanner();
 
     public function getBannerAboutNum($limit=3, $field=null);
+    public function getBannerMain($where = null);
 }

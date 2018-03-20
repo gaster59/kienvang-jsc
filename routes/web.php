@@ -28,6 +28,11 @@ Route::get('/tin-tuc/{id}/{slug?}', [
     'uses' => 'NewsController@detail'
 ]);
 
+Route::get('/user', [
+    'as' => 'front.user',
+    'uses' => 'UsersController@index'
+]);
+
 /*
  * Login
  */

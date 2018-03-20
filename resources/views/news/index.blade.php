@@ -11,13 +11,14 @@
 @endsection
 
 @section('content')
-
+@if(!empty($bannerMain))
 <div class="row">
     <div class="col-lg-12 text-center margin-top10">
         <a title="" href="" target="_self">
             <img class="img-fluid" src="{{ url('/banner/'.$bannerMain->avatar) }}" title="{{ $bannerMain->title }}"></a>
     </div>
 </div>
+@endif
 
 <div class="row">
     <div class="col-lg-12 margin-top10">
@@ -88,38 +89,12 @@
 
                 @foreach($companies as $company)
                     <div class="block-1 margin-bottom5">
-                        <a class="" href="#">
+                        <a title="{{$company->name}}" class="" target="_blank" href="{{$company->website}}">
                             <img style="width: 238px;"
-                                 src="{{ url('/company/'.$company->avatar) }}">
+                                 src="{{ url('/company/'.$company->avatar) }}" alt="{{$company->name}}">
                         </a>
                     </div>
                 @endforeach
-                {{-- <div class="block-1 margin-bottom5">
-                    <a class="" href="#"><img style="width: 238px;" src="https://data.tienganh123.com/images/v2/home/button_dk.jpg"></a>
-                </div>
-                <div class="block-2 margin-bottom5">
-                    <a href="#">
-                        <img style="width: 238px;" src="https://data.tienganh123.com/images/banner/banner-videochat.png" alt=""></a>
-                </div>
-                <div class="block-3 margin-bottom5">
-                    <a href="#">
-                        <img style="width: 238px;" src="https://data.tienganh123.com/images/banner/banner-videochat.png" alt=""></a>
-                </div>
-                <div class="block-1 margin-bottom5">
-                    <a class="" href="#"><img style="width: 238px;" src="https://data.tienganh123.com/images/v2/home/button_dk.jpg"></a>
-                </div>
-                <div class="block-2 margin-bottom5">
-                    <a href="#">
-                        <img style="width: 238px;" src="https://data.tienganh123.com/images/banner/banner-videochat.png" alt=""></a>
-                </div>
-                <div class="block-3 margin-bottom5">
-                    <a href="#">
-                        <img style="width: 238px;" src="https://data.tienganh123.com/images/banner/banner-videochat.png" alt=""></a>
-                </div>
-                <div class="block-3 margin-bottom5">
-                    <a href="#">
-                        <img style="width: 238px;" src="https://data.tienganh123.com/images/banner/banner-videochat.png" alt=""></a>
-                </div> --}}
 
             </div>
 

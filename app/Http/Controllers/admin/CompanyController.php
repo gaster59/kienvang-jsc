@@ -122,6 +122,7 @@ class CompanyController extends BaseController
         $metaDescription = $request->post('meta_description', '');
         $status = $request->post('status', 1);
         $is_home = $request->post('is_home', 1);
+        $website = $request->post('website', '');
 
         $avatar = $request->file('avatar');
         $destination = public_path('/company');
@@ -138,6 +139,7 @@ class CompanyController extends BaseController
             'avatar' => $fileName,
             'status' => $status,
             'is_home'=> $is_home,
+            'website'=> $website,
             'founding' => $founding,
             'meta_keyword' => $metaKeyword,
             'meta_description' => $metaDescription,
@@ -163,6 +165,7 @@ class CompanyController extends BaseController
         $metaDescription = $request->post('meta_description', '');
         $status = $request->post('status', 1);
         $is_home = $request->post('is_home', 1);
+        $website = $request->post('website', '');
 
         $avatar = $request->file('avatar');
         $destination = public_path('/company');
@@ -183,6 +186,7 @@ class CompanyController extends BaseController
             'avatar' => $fileName,
             'status' => $status,
             'is_home'=> $is_home,
+            'website'=> $website,
             'founding' => $founding,
             'meta_keyword' => $metaKeyword,
             'meta_description' => $metaDescription,

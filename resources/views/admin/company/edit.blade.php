@@ -73,6 +73,19 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="website">
+                                        Website
+                                    </label>
+                                    <div class="col-md-9">
+                                        <input type="text" name="website" id="website"
+                                               maxlength="100"
+                                               value="{{ old('website', $company->website) }}"
+                                               placeholder="Website" class="form-control">
+
+                                    </div>
+                                </div>
+
                                 <!-- Summary input-->
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="name">

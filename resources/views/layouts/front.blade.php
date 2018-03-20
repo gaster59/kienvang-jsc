@@ -50,7 +50,7 @@
                     </li>
                     <li class="nav-item hidden-sm-down">
                         <div class="search">
-                            <input placeholder="Search Kiến vàng" value="" class="search-input">
+                            <input placeholder="Tìm kiếm" value="" class="search-input">
                             <button class="btn btn-primary" style=""><i class="fa fa-search"></i></button>
                         </div>
                     </li>

@@ -73,6 +73,7 @@ class CompaniesRepositoryEloquent extends BaseRepository implements CompaniesRep
             'companies.avatar',
             'companies.scale',
             'companies.founding',
+            'companies.website'
         ]);
         return $res;
     }

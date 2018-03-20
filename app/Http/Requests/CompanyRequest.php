@@ -27,6 +27,7 @@ class CompanyRequest extends FormRequest
             'id',
             'name' => 'required|max:100',
             'scale' => 'max:100',
+            'website'  => 'required|url',
             'founding',
             'summary',
             'avatar' => 'image',
@@ -48,7 +49,8 @@ class CompanyRequest extends FormRequest
             'name.max' => 'Bạn chỉ nhập tối đa :max ký tự',
 
             'scale.max' => 'Bạn chỉ nhập tối đa :max ký tự',
-
+            'website.required'  => 'Bạn chưa nhập website công ty',
+            'website.url'  => 'Website không đúng định dạng',
             'avatar.image' => 'Bạn chỉ được upload hình ảnh'
         ];
     }

@@ -21,6 +21,7 @@ class Companies extends Model implements Transformable
         'meta_description',
         'avatar',
         'is_home',
+        'website',
         'status'
     ];
 }

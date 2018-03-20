@@ -189,4 +189,38 @@ class CompanyController extends BaseController
         ];
         $this->companyRepository->update($company, $request->id);
     }
+    public function delete($id)
+    {
+        $company = $this->companyRepository->findWhere([
+            'id' => $id,
+        ]);
+
+        if (count($company) == 0) {
+            return redirect(route('company'));
+        }
+        $company = [
+            'status' => 0,
+        ];
+        $this->companyRepository->update($company, $id);
+        return redirect(route('company'));
+    }
+    public function delete_permanently($id)
+    {
+        $company = $this->companyRepository->findWhere([
+            'id' => $id,
+        ]);
+
+        if (count($company) == 0) {
+            return redirect(route('company'));
+        }
+
+        $destination = public_path('/company');
+        $fileName = $company[0]->avatar;
+        $fileSystem = new Filesystem();
+        if ($fileSystem->exists($destination.'/'.$fileName)) {
+            $fileSystem->delete($destination.'/'.$fileName);
+        }
+        $this->companyRepository->delete($id);
+        return redirect(route('company'));
+    }
 }

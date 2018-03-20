@@ -8,6 +8,13 @@
 
 @section('js_path')
     @parent
+    <script type="text/javascript">
+        function fnDelete(urlDelete) {
+            if (confirm('Bạn có muốn xóa không')) {
+                window.location.href = urlDelete;
+            }
+        }
+    </script>
 @endsection
 
 @section('content')
@@ -89,12 +96,26 @@
                                         style="width: 100px;height: 100px;"/>
                                     @endif
                                 </td>
-                                <td>
+                                <td>{{-- delete_permanently --}}
                                     <a href="{{ route('company.edit',['id'=>$item->id])  }}">Edit</a>
                                     |
-                                    <a data-link="#"
-                                       href="javascript:void(0)"
-                                       onclick="common.fnDelete(this)">Delete</a>
+                                    @if($item->status == 1)
+                                        @php
+                                            $urlDelete = route('company.delete',['id'=>$item->id])
+                                        @endphp
+                                        <a data-link="#"
+                                           href="javascript:void(0)"
+                                           onclick="fnDelete('{{ $urlDelete }}')">Delete</a>
+                                    @else
+
+                                        @php
+                                            $urlDelete = route('company.delete_permanently',['id'=>$item->id])
+                                        @endphp
+                                        <a data-link="#"
+                                           href="javascript:void(0)"
+                                           onclick="fnDelete('{{ $urlDelete }}')">Delete Permanently</a>
+                                    @endif
+                                    
                                 </td>
                             </tr>
                             @endforeach

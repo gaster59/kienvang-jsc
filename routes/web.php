@@ -189,6 +189,10 @@ Route::group([
             'as' => 'company.delete',
             'uses' => 'CompanyController@delete'
         ]);
+        Route::get('company/delete_permanently/{id}', [
+            'as' => 'company.delete_permanently',
+            'uses' => 'CompanyController@delete_permanently'
+        ]);
 
         /*
          * news

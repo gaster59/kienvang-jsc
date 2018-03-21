@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-@section('title', 'Tin tức | Kiến vàng')
+@section('title', 'Đăng ký tài khoản | Kiến vàng')
 
 @section('css_path')
     @parent
@@ -34,79 +34,81 @@
     <div class="col-lg-9 col-md-12 reset_padding_l_r">
         <div class="col-lg-12">
           <div class="title"> Đăng ký làm thành viên</div>
-          <span>Thông tin cơ bản</span>
+          <h3>Thông tin cơ bản</h3>
           <div class="res_notes">Các mục có dấu <span class="red"> * </span>  là bắt buộc</div>
-          <form>
+          @if ( $errors->any() )
+              <div class="alert bg-danger" role="alert">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
+          <form method="post" action="{{ url(route('front.checklogin')) }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputName">Họ và tên</label><span class="red"> (*) </span>
-                <input type="text" class="form-control" id="inputName" placeholder="Họ và tên">
+                <input name="name" type="text" class="form-control" id="inputName" placeholder="Họ và tên" value="{{ old('name') }}">
               </div>
               <div class="form-group col-md-6">
-                <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                <label for="inputEmail">Email</label><span class="red"> (*) </span>
+                <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email" value="{{ old('email') }}">
               </div>
             </div>
             <div class="form-group">
               <label for="inputAddress">Địa chỉ</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Nguyễn Thị MInh Khai">
+              <input name="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Nguyễn Thị MInh Khai" value="{{ old('address') }}">
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputBirthday">Ngày tháng năm sinh</label>
-                <input type="text" class="form-control" id="inputBirthday">
+                <input name="birthday" type="text" class="form-control" id="inputBirthday" value="{{ old('birthday') }}">
               </div>
               <div class="form-group col-md-6">
                 <label for="inputPhone">Điện thoại</label>
-                <input type="text" class="form-control" id="inputPhone" placeholder="Số điện thoại">
+                <input name="phone" type="text" class="form-control" id="inputPhone" placeholder="Số điện thoại" value="{{ old('phone') }}">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputCity">Thành Phố</label>
-                <input type="text" class="form-control" id="inputCity">
+                <input name="city" type="text" class="form-control" id="inputCity" value="{{ old('city') }}">
               </div>
               <div class="form-group col-md-6">
                 <label for="inputState">Quận</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
+                <input name="state" type="text" class="form-control" id="inputState" value="{{ old('state') }}">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputPassword">Mật khẩu</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Mật khẩu">
+                <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Mật khẩu">
               </div>
               <div class="form-group col-md-6">
-                <label for="inputPassword">Nhập lại Mật khẩu</label>
-                <input type="password" class="form-control" id="inputPassword2" placeholder="Mật khẩu">
+                <label for="inputPasswordRe">Nhập lại Mật khẩu</label>
+                <input name="passwordre" type="password" class="form-control" id="inputPasswordRe" placeholder="Mật khẩu">
               </div>
             </div>
-            {{-- <div class="form-group">
-              <label for="inputSex">Giới tính</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" checked type="radio" name="" id="" value="0">
-                <label class="form-check-label" for="">Nam</label>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputSex">Giới tính</label>
+                <select name="gerder" class="form-control">
+                    <option @if (0 == old('gerder')) {!!"selected"!!} @endif value="0">Nam</option>
+                    <option @if (1 == old('gerder')) {!!"selected"!!} @endif value="1">Nữ</option>
+                </select>
               </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="" id="" value="1">
-                <label class="form-check-label" for="">Nữ</label>
+              <div class="form-group col-md-6">
+                <label for="inputCouple">Tình trạng hôn nhân</label>
+                <select name="couple" class="form-control">
+                    <option @if (0 == old('couple')) {!!"selected"!!} @endif value="0">Độc thân</option>
+                    <option @if (1 == old('couple')) {!!"selected"!!} @endif value="1">Kết hôn</option>
+                </select>
               </div>
             </div>
-            <div class="form-group">
-              <label for="inputPassword">Tình trạng hôn nhân</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" checked type="radio" name="" id="" value="0">
-                <label class="form-check-label" for="">Kết hôn</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="" id="" value="1">
-                <label class="form-check-label" for="">Độc thân</label>
-              </div>
-            </div> --}}
-            <span>Học vấn và kỷ năng</span>
+            
+            <h3>Học vấn và kỷ năng</h3>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputhocvan">Học vấn</label><span class="red"> (*) </span>
@@ -192,7 +194,7 @@
                 <label class="form-check-label" for="inlineCheckbox4">4 </label>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Bước 2</button>
+            <button type="submit" class="btn btn-primary">Đăng ký</button>
           </form>
         </div>
         

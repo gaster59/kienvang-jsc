@@ -54,7 +54,7 @@
                             <button class="btn btn-primary" style=""><i class="fa fa-search"></i></button>
                         </div>
                     </li>
-                    <li class="nav-item"><a href="{{ url(route('front.user')) }}"><i class="fa fa-sign-in"></i>  Sign In/Sign up</a></li>
+                    <li class="nav-item"><a href="{{ url(route('front.register')) }}"><i class="fa fa-sign-in"></i>  Sign In/Sign up</a></li>
                 </ul>
             </div>
         </div>

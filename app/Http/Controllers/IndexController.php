@@ -35,7 +35,7 @@ class IndexController extends Controller
 
     public function index()
     {
-        $jobs = $this->jobRepository->getJobAboutNum(1, 6);
+        $jobs = $this->jobRepository->getJobAboutNum(1, 20);
         $arr = [['companies.status', '=', '1'], ['companies.is_home', '=', '1']];
         $companies = $this->companiesRepository->getAllCompanyCustomize($arr);
         /**

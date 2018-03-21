@@ -23,14 +23,18 @@ Route::get('/tin-tuc', [
     'uses' => 'NewsController@index'
 ]);
 
-Route::get('/tin-tuc/{id}/{slug?}', [
+Route::get('/tin-tuc/{id}/{slug?}.html', [
     'as' => 'front.news.detail',
     'uses' => 'NewsController@detail'
 ]);
 
-Route::get('/user', [
-    'as' => 'front.user',
+Route::get('/dang-ky', [
+    'as' => 'front.register',
     'uses' => 'UsersController@index'
+]);
+Route::post('/checkLogin', [
+    'as' => 'front.checklogin',
+    'uses' => 'UsersController@checkLogin'
 ]);
 
 /*

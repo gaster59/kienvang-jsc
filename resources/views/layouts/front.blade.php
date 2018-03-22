@@ -54,7 +54,7 @@
                             <button class="btn btn-primary" style=""><i class="fa fa-search"></i></button>
                         </div>
                     </li>
-                    <li class="nav-item"><a href="{{ url(route('front.register')) }}"><i class="fa fa-sign-in"></i>  Sign In/Sign up</a></li>
+                    <li class="nav-item"><a data-toggle="modal" data-target="#myModal" href="#"><i class="fa fa-sign-in"></i>  Sign In/Sign up</a></li>
                 </ul>
             </div>
         </div>
@@ -97,6 +97,36 @@
 
                 </footer>
             </div>
+
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Đăng nhập</h4>
+                      </div>
+                      <div class="modal-body">
+                          <div class="row">
+                              <div class="col-lg-12">
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" placeholder="Email">
+                                  </div>
+                                  <div class="form-group">
+                                      <input type="password" class="form-control" placeholder="Mật khẩu">
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-outline btn-danger">Đăng nhập</button>
+                      </div>
+                      <p class="text-center">Bạn chưa có tài khoản? <a href="{{ url(route('front.register')) }}"> Đăng ký</a></p>
+                  </div>
+                  <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
 
             @section('js_path')
                 <script src="{{ asset('/js/jquery.min.js') }}"></script>

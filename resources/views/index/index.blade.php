@@ -46,21 +46,6 @@
                     </div>
                 </div>
             @endforeach
-            
-            {{-- <div class="carousel-item">
-                <img class="d-block img-fluid" src="images/6.jpg" alt="Second slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Second slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img class="d-block img-fluid" src="images/7.jpg" alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h3>Third slide label</h3>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </div>
-            </div> --}}
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -273,6 +258,60 @@
                     {{--</div>--}}
                 </div>
             </div>
+        </section>
+        <section>
+            <div class="title-slogan">
+              <strong>Sau khi đăng nhập sẽ xem được thông tin việc làm dành cho thành viên</strong><br><br> <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Đăng nhập</a>
+            </div>
+            
+        </section>
+
+        <section>
+            <div class="" id="page-news">
+                <div class="col-lg-12 reset_padding">
+                    <div class="yellow_title_box">
+                    <div class="yellow_title_left">Tin tức</div>
+                    <div class="yellow_title_right"></div>
+                    </div>
+                    <div class="yellow_title_bottom"></div>
+                </div>
+                
+                <ul class="list-unstyled list-news">
+                    @php
+                        $i = 0;
+                    @endphp
+                    @foreach($news as $item)
+                        @php
+                            $cls = '';
+                            if ($i%2 == 1) {
+                                $cls = "background-color: rgb(239, 248, 250)";
+                            }
+                        @endphp
+                        <li style="{{ $cls }}">
+                            <div class="lng_right">
+                                <div class="lng_right_top">
+                                    <a href="{{ url(route('front.news.detail', ['id'=>$item->id, 'slug'=> $item->slug] )) }}" title="" target="_self">
+                                        <span class="h1">{{ $item->name }}</span>
+                                    </a>
+                                    @if($item->is_hot == 1)
+                                        <span class="newtag">Hot</span>
+                                    @endif
+                                    <p class="des">
+                                        {{ $item->description }}
+                                    </p>
+                                </div>
+                                <div class="lng_r_info">
+                                    <span class="date">{{ $item->updated_at }}</span>
+                                </div>
+                            </div>
+                        </li>
+                        @php
+                            $i++;
+                        @endphp
+                    @endforeach
+                </ul>
+            </div>
+            
         </section>
 
     </div>

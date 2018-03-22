@@ -18,7 +18,7 @@ Route::get('/', [
     'uses' => 'IndexController@index'
 ]);
 
-Route::get('/tin-tuc', [
+Route::get('/tin-tuc.html', [
     'as' => 'front.news',
     'uses' => 'NewsController@index'
 ]);

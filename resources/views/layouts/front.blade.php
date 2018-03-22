@@ -105,20 +105,23 @@
                           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                           <h4 class="modal-title" id="myModalLabel">Đăng nhập</h4>
                       </div>
-                      <div class="modal-body">
+                      <div class="modal-body" id="formlogin">
+                      <form action="#" method="POST">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           <div class="row">
                               <div class="col-lg-12">
                                   <div class="form-group">
-                                      <input type="text" class="form-control" placeholder="Email">
+                                      <input name="email" id="email" type="text" class="form-control" placeholder="Email">
                                   </div>
                                   <div class="form-group">
-                                      <input type="password" class="form-control" placeholder="Mật khẩu">
+                                      <input name="password" id="password" type="password" class="form-control" placeholder="Mật khẩu">
                                   </div>
                               </div>
                           </div>
+                      </form>
                       </div>
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-outline btn-danger">Đăng nhập</button>
+                          <button type="button" class="btn btn-outline btn-danger" id="login">Đăng nhập</button>
                       </div>
                       <p class="text-center">Bạn chưa có tài khoản? <a href="{{ url(route('front.register')) }}"> Đăng ký</a></p>
                   </div>
@@ -133,6 +136,29 @@
                 <script src="{{ asset('/js/popper.min.js') }}"></script>
                 <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
                 <script src="{{ asset('/js/custom.js') }}"></script>
+                <script type="text/javascript">
+                  $(function(){
+                    $("#login").click(function(e) {
+                      e.preventDefault();
+                      $.ajaxSetup({
+                          headers: {
+                              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                          }
+                      });
+                      $.ajax({
+                          'url': 'login',
+                          'type': 'POST',
+                          'data': {
+                            'email' : $("#email").val(),
+                            'password'  : $("#password").val()
+                          },
+                          success: function(data){
+                            console.log(data);
+                          }
+                      });
+                    })
+                  });
+                </script>
             @show
 
         </div>

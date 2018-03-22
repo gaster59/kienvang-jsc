@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: localhost
--- Thời gian đã tạo: Th3 17, 2018 lúc 05:33 AM
--- Phiên bản máy phục vụ: 10.1.22-MariaDB
--- Phiên bản PHP: 7.1.4
+-- Host: localhost
+-- Generation Time: Mar 23, 2018 at 12:14 AM
+-- Server version: 5.7.21-0ubuntu0.17.10.1
+-- PHP Version: 7.0.28-1+ubuntu17.10.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,18 +17,19 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `laravel_kienvang`
+-- Database: `kienvang.dev`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `banners`
+-- Table structure for table `banners`
 --
 
 CREATE TABLE `banners` (
   `id` int(11) NOT NULL,
   `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `type` tinyint(5) NOT NULL DEFAULT '1' COMMENT '1; slide, 2; banner main, 3; banner footer',
   `avatar` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -41,16 +40,17 @@ CREATE TABLE `banners` (
 -- Dumping data for table `banners`
 --
 
-INSERT INTO `banners` (`id`, `title`, `avatar`, `description`, `created_at`, `updated_at`) VALUES
-(1, '1 slide label', '1521299250.jpg', 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.', '2018-03-17 15:59:05', '2018-03-17 17:04:01'),
-(2, '2 slide label', '1520751869.jpg', 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.', '2018-03-17 15:59:05', '2018-03-17 17:04:08'),
-(3, '3 slide label', '1521303649.jpg', 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.', '2018-03-17 16:20:49', '2018-03-17 17:04:14');
-
+INSERT INTO `banners` (`id`, `title`, `type`, `avatar`, `description`, `created_at`, `updated_at`) VALUES
+(1, '1 slide label', 1, '1521299250.jpg', 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.', '2018-03-17 15:59:05', '2018-03-17 17:04:01'),
+(2, '2 slide label', 1, '1520751869.jpg', 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.', '2018-03-17 15:59:05', '2018-03-17 17:04:08'),
+(3, '3 slide label', 1, '1521303649.jpg', 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.', '2018-03-17 16:20:49', '2018-03-17 17:04:14'),
+(4, NULL, 2, '1521389662.png', NULL, '2018-03-18 08:53:12', '2018-03-20 16:36:15'),
+(5, NULL, 3, '1521389702.jpg', NULL, '2018-03-18 09:15:02', '2018-03-18 09:15:02');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -64,7 +64,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `slug`, `parent_id`, `status`, `created_at`, `updated_at`) VALUES
@@ -78,7 +78,7 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `parent_id`, `status`, `created_
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `companies`
+-- Table structure for table `companies`
 --
 
 CREATE TABLE `companies` (
@@ -115,7 +115,7 @@ INSERT INTO `companies` (`id`, `name`, `summary`, `scale`, `founding`, `meta_key
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `jobs`
+-- Table structure for table `jobs`
 --
 
 CREATE TABLE `jobs` (
@@ -133,7 +133,7 @@ CREATE TABLE `jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `jobs`
+-- Dumping data for table `jobs`
 --
 
 INSERT INTO `jobs` (`id`, `name`, `description`, `summary`, `major_id`, `company_id`, `meta_keyword`, `meta_description`, `status`, `created_at`, `updated_at`) VALUES
@@ -155,7 +155,7 @@ INSERT INTO `jobs` (`id`, `name`, `description`, `summary`, `major_id`, `company
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `majors`
+-- Table structure for table `majors`
 --
 
 CREATE TABLE `majors` (
@@ -167,7 +167,7 @@ CREATE TABLE `majors` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `majors`
+-- Dumping data for table `majors`
 --
 
 INSERT INTO `majors` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
@@ -245,7 +245,7 @@ INSERT INTO `majors` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -255,7 +255,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -272,7 +272,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `news`
+-- Table structure for table `news`
 --
 
 CREATE TABLE `news` (
@@ -304,7 +304,7 @@ INSERT INTO `news` (`id`, `name`, `slug`, `description`, `summary`, `avatar`, `m
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -316,7 +316,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -335,7 +335,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `summary`, `slug`, `avatar`, `price`, `category_id`, `info`, `status`, `created_at`, `updated_at`) VALUES
@@ -353,7 +353,7 @@ INSERT INTO `products` (`id`, `name`, `description`, `summary`, `slug`, `avatar`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `recruitments`
+-- Table structure for table `recruitments`
 --
 
 CREATE TABLE `recruitments` (
@@ -372,7 +372,7 @@ CREATE TABLE `recruitments` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -383,145 +383,149 @@ CREATE TABLE `users` (
   `address` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` smallint(6) NOT NULL COMMENT '1: admin',
+  `birthday` varchar(220) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gender` tinyint(1) NOT NULL DEFAULT '1',
+  `couple` tinyint(1) NOT NULL DEFAULT '1',
+  `info` text COLLATE utf8_unicode_ci,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `address`, `phone`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'tuan anh', 'trantuananh198610@gmail.com', '$2y$10$eJTy5S3fhU1K2fLoqP3eIex/HV9vfRyT/yxZAVuiXov3dw0k40V2O', 'day la address', '123123333', 1, 'lYZ4KEPiPBBQCPDL74yfealHTFq1xatLD0mVPPYuOwqNeAuK3GAv5jTnE6XU', '2017-10-13 09:17:50', '2017-10-13 09:17:50');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `address`, `phone`, `status`, `birthday`, `gender`, `couple`, `info`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'tuan anh', 'trantuananh198610@gmail.com', '$2y$10$eJTy5S3fhU1K2fLoqP3eIex/HV9vfRyT/yxZAVuiXov3dw0k40V2O', 'day la address', '123123333', 1, NULL, 1, 1, NULL, 'KO4yYLn8vttlRhfvci9PpB1zibNB5kCqZM8EZfO9fKygOlsCJyjgdsUoW8hR', '2017-10-13 09:17:50', '2017-10-13 09:17:50'),
+(2, 'Nguyễn Quốc Sử', 'su.nq@barista.co.jp', '$2y$10$buYJgqVGsDAzSBvR83nuneqFB1fp7O0cm/RrNQZ0PHYpOM5qTi5TS', 'abnd', '01674147774', 2, '09/07/2017', 0, 0, '{\"city\":null,\"state\":null,\"academiccareer\":\"2\",\"school\":\"d\\u00e1\",\"major\":\"cntt\",\"qualifications\":null}', '', '2018-03-22 07:45:16', '2018-03-22 07:45:16'),
+(3, 'Kỹ sư Việt Nam', 'add@yahoo.com', '$2y$10$RUvuGmShL0TGKn4JhWldier7qSbnNEC8UVHf/Lt2NW2qNT0qEDVm6', '121212', '0908989186', 2, NULL, 0, 0, '{\"city\":null,\"state\":null,\"academiccareer\":\"1\",\"school\":\"d\\u00e1d\",\"major\":\"\\u01b0q\\u01b0eq\\u01b0e\",\"qualifications\":null}', '', '2018-03-22 08:01:20', '2018-03-22 08:01:20');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `banners`
+-- Indexes for table `banners`
 --
 ALTER TABLE `banners`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `companies`
+-- Indexes for table `companies`
 --
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `jobs`
+-- Indexes for table `jobs`
 --
 ALTER TABLE `jobs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `majors`
+-- Indexes for table `majors`
 --
 ALTER TABLE `majors`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `news`
+-- Indexes for table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Chỉ mục cho bảng `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `recruitments`
+-- Indexes for table `recruitments`
 --
 ALTER TABLE `recruitments`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `banners`
+-- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- AUTO_INCREMENT cho bảng `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT cho bảng `companies`
+-- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT cho bảng `jobs`
+-- AUTO_INCREMENT for table `jobs`
 --
 ALTER TABLE `jobs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
--- AUTO_INCREMENT cho bảng `majors`
+-- AUTO_INCREMENT for table `majors`
 --
 ALTER TABLE `majors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
--- AUTO_INCREMENT cho bảng `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT cho bảng `news`
+-- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
--- AUTO_INCREMENT cho bảng `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT cho bảng `recruitments`
+-- AUTO_INCREMENT for table `recruitments`
 --
 ALTER TABLE `recruitments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;COMMIT;
-
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-ALTER TABLE `banners` ADD `type` TINYINT(5) NOT NULL DEFAULT '1' COMMENT '1; slide, 2; banner main, 3; banner footer' AFTER `title`;

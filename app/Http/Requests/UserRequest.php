@@ -54,10 +54,17 @@ class UserRequest extends FormRequest
             }
             
         }*/
+        dd(1);
         return [
             'id',
-            'name'         => 'required|max:100',
-            'email'        => 'required|email|unique:users,email'
+            'name'         => 'bail|required|max:100',
+            'email'        => 'bail|required|email|unique:users,email',
+            'phone'        => 'bail|required|numeric|phone',
+            'address'      => 'bail|required',
+            'password'     => 'bail|required|min:8|confirmed',
+            'password_confirmation'=> 'bail|required|min:8',
+            'school'        => 'bail|required',
+            'major'         => 'bail|required',
         ];
         
     }
@@ -75,6 +82,15 @@ class UserRequest extends FormRequest
             'email.required'    => 'Vui lòng nhập email',
             'email.email'       => 'Email không đúng định dạng',
             'email.unique'      => 'Email này đã tồn tại',
+            'phone.required'    => 'Nhập số điện thoại của bạn',
+            'phone.numeric'     => 'Số điện thoại không đúng',
+            'address.required'  => 'Nhập địa chỉ của bạn',
+            'password.required'  => 'Nhập mật khẩu của bạn',
+            'password.min'       => 'Mật khẩu không được nhỏ hơn :min ký tự',
+            'password_confirmation.required'  => 'Chưa xác nhận mật khẩu',
+            'password_confirmation.same'  => 'Mật khẩu xác nhận không chính xác',
+            'school.required'   => 'Nhập trường học của bạn',
+            'major.required'    => 'Nhập ngành học của bạn',
         ];
     }
 }

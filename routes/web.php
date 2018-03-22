@@ -32,11 +32,15 @@ Route::get('/dang-ky', [
     'as' => 'front.register',
     'uses' => 'UsersController@index'
 ]);
-Route::post('/checkLogin', [
-    'as' => 'front.checklogin',
-    'uses' => 'UsersController@checkLogin'
+Route::post('/checkRegister', [
+    'as' => 'front.checkRegister',
+    'uses' => 'UsersController@checkRegister'
 ]);
 
+Route::post('login', [
+    'as' => 'front.loginUser',
+    'uses' => 'UsersController@login'
+]);
 /*
  * Login
  */

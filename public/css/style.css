@@ -436,6 +436,13 @@ article .cover img {
 #rigister .red, #userinfo .red{
     color: red;
 }
+#rigister form{
+    padding-bottom: 10px;
+}
+#rigister .error{
+    color: red;
+}
+
 .title_r{
     background-color: #ececf6;
     text-transform: uppercase;

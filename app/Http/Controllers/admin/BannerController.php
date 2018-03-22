@@ -90,7 +90,7 @@ class BannerController extends BaseController
                 'id' => $id,
             ]);
             if (count($banner) == 0) {
-                return redirect(route('product'));
+                return redirect(route('banner'));
             }
 
             $this->handleEditBanner($request, $banner);

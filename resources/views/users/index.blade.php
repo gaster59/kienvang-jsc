@@ -112,88 +112,30 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputhocvan">Học vấn</label><span class="red"> (*) </span>
-                <select id="inputhocvan" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
+                <select name="academiccareer" class="form-control">
+                  <option @if (0 == old('academiccareer')) {!!"selected"!!} @endif value="0">Lựa chọn</option>
+                  <option @if (1 == old('academiccareer')) {!!"selected"!!} @endif value="1">Sau đại học</option>
+                  <option @if (2 == old('academiccareer')) {!!"selected"!!} @endif value="2">Cử nhân</option>
+                  <option @if (3 == old('academiccareer')) {!!"selected"!!} @endif value="3">Cao đẳng</option>
+                  <option @if (4 == old('academiccareer')) {!!"selected"!!} @endif value="4">Trung học chuyên nghiệp</option>
+                  <option @if (5 == old('academiccareer')) {!!"selected"!!} @endif value="5">Phổ thông trung học</option>
                 </select>
               </div>
               <div class="form-group col-md-6">
                 <label for="inputSchool">Trường</label>
-                <input type="text" class="form-control" id="inputSchool" placeholder="Trường học">
+                <input name="school" type="text" class="form-control" id="inputSchool" value="{{ old('school') }} placeholder="Trường học">
               </div>
             </div>
             <div class="form-group">
-              <label for="inputNganh">Ngành</label>
-              <input type="text" class="form-control" id="inputNganh" placeholder="Công nghệ thông tin">
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputBangCap">Bằng cấp</label>
-                <select id="inputBangCap" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
-              </div>
+              <label for="inputMajor">Ngành</label>
+              <input name="major" type="text" class="form-control" id="inputMajor" value="{{ old('major') }} placeholder="Công nghệ thông tin">
             </div>
 
             <div class="form-group">
-              <label for="inputViTinh">Vi tính</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                <label class="form-check-label" for="inlineCheckbox2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                <label class="form-check-label" for="inlineCheckbox3">3 </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
-                <label class="form-check-label" for="inlineCheckbox4">4 </label>
-              </div>
+              <label for="inputqualifications">Bằng cấp khác</label>
+              <textarea name="qualifications" class="form-control">{{ old('qualifications') }}</textarea>
             </div>
 
-            <div class="form-group">
-              <label for="inputTiengAnh">Tiếng Anh</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                <label class="form-check-label" for="inlineCheckbox2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                <label class="form-check-label" for="inlineCheckbox3">3 </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
-                <label class="form-check-label" for="inlineCheckbox4">4 </label>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputTiengNhat">Tiếng Nhật</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">1</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                <label class="form-check-label" for="inlineCheckbox2">2</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                <label class="form-check-label" for="inlineCheckbox3">3 </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
-                <label class="form-check-label" for="inlineCheckbox4">4 </label>
-              </div>
-            </div>
             <button type="submit" class="btn btn-primary">Đăng ký</button>
           </form>
         </div>

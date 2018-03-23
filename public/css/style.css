@@ -555,7 +555,7 @@ article .cover img {
 .search-input{
     outline: none;
     line-height: 1;
-    min-width: 20rem;
+    min-width: 18rem;
     padding: .50rem calc(45px + 1.5rem) .65rem 1.5rem;
     border-radius: 3px;
     border: 2px solid #d6d6d7;

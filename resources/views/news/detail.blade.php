@@ -1,6 +1,8 @@
 @extends('layouts.front')
 
 @section('title', $dataNews->name.' | Kiến vàng')
+@section('keywords', $dataNews->meta_keyword)
+@section('description', $dataNews->meta_description)
 
 @section('css_path')
     @parent

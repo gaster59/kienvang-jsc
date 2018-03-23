@@ -37,10 +37,23 @@ Route::post('/checkRegister', [
     'uses' => 'UsersController@checkRegister'
 ]);
 
-Route::post('login', [
-    'as' => 'front.loginUser',
-    'uses' => 'UsersController@login'
+Route::get('/dang-nhap', [
+    'as' => 'front.dangnhap',
+    'uses' =>'UsersController@getLogin'
 ]);
+Route::post('/checkDangNhap',[
+    'as'    => 'front.checkdangnhap',
+    'uses'  => 'UsersController@postLogin'
+]);
+Route::get('/dang-xuat',[
+    'as'    => 'front.getLogout',
+    'uses'  => 'UsersController@getLogout'
+]);
+// Route::group(['middleware' => 'checkUserLogin', 'prefix' => '', 'namespace' => ''], function() {
+//     Route::get('/', function() {
+//         return view('front.index');
+//     });
+// });
 /*
  * Login
  */

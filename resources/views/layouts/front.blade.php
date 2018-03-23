@@ -6,12 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="keywords" content="@hasSection('keywords')@yield('keywords'),Kiến Vàng @else Kiến Vàng @endif">
+        <meta name="description" content="@hasSection('description')@yield('description') - Kiến Vàng @else Kiến Vàng @endif">
 
         @section('css_path')
             <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}" media="screen">
             <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}" media="screen">
-            <link rel="stylesheet" href="{{ asset('/css/custom.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('/css/style.css') }}" >
+            <link rel="stylesheet" href="{{ asset('/css/custom.min.css') }}" media="screen">
+            <link rel="stylesheet" href="{{ asset('/css/style.css') }}" media="screen">
         @show
 
     </head>
@@ -23,10 +25,10 @@
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
-                  </button>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
-                    <ul class="nav navbar-nav"> {{-- ml-auto --}}
+                    <ul class="nav navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" target="_self" href="{{ url(route('front.index')) }}">Trang chủ</a>
                         </li>
@@ -54,7 +56,15 @@
                             <button class="btn btn-primary" style=""><i class="fa fa-search"></i></button>
                         </div>
                     </li>
-                    <li class="nav-item"><a data-toggle="modal" data-target="#myModal" href="#"><i class="fa fa-sign-in"></i>  Sign In/Sign up</a></li>
+                    <li class="nav-item">
+                      @if(\Illuminate\Support\Facades\Auth::check())
+                        Chào, {{\Illuminate\Support\Facades\Auth::user()['name']}}!
+                          <a href="{{ route('front.getLogout') }}">Đăng xuất</a>
+                      @else
+                          <a data-toggle="modal" data-target="#myModal" href="#"><i class="fa fa-sign-in"></i>  Đăng nhập/Đăng ký
+                          </a>
+                      @endif
+                    </li>
                 </ul>
             </div>
         </div>
@@ -97,7 +107,7 @@
 
                 </footer>
             </div>
-
+            @if(!\Illuminate\Support\Facades\Auth::check())
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                   <div class="modal-content">
@@ -107,14 +117,18 @@
                       </div>
                       <div class="modal-body" id="formlogin">
                       <form action="#" method="POST">
-                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          <div class="alert alert-danger error errorLogin" style="display: none;">
+                            <span style="color: red; display: none;" class="error errorLogin"></span>
+                          </div>
                           <div class="row">
                               <div class="col-lg-12">
                                   <div class="form-group">
                                       <input name="email" id="email" type="text" class="form-control" placeholder="Email">
+                                      <span style="color: red; display: none;" class="error errorEmail"></span>
                                   </div>
                                   <div class="form-group">
                                       <input name="password" id="password" type="password" class="form-control" placeholder="Mật khẩu">
+                                      <span style="color: red; display: none;" class="error errorPassword"></span>
                                   </div>
                               </div>
                           </div>
@@ -130,6 +144,7 @@
               <!-- /.modal-dialog -->
             </div>
             <!-- /.modal -->
+            @endif
 
             @section('js_path')
                 <script src="{{ asset('/js/jquery.min.js') }}"></script>
@@ -146,7 +161,7 @@
                           }
                       });
                       $.ajax({
-                          'url': 'login',
+                          'url': '{{ url(route('front.checkdangnhap')) }}',
                           'type': 'POST',
                           'data': {
                             'email' : $("#email").val(),
@@ -154,6 +169,20 @@
                           },
                           success: function(data){
                             console.log(data);
+                            if (data.error == true) {
+                              $('.error').hide();
+                              if (data.message.email != undefined) {
+                                $('.errorEmail').show().text(data.message.email[0]);
+                              }
+                              if (data.message.password != undefined) {
+                                $('.errorPassword').show().text(data.message.password[0]);
+                              }
+                              if (data.message.errorlogin != undefined) {
+                                $('.errorLogin').show().text(data.message.errorlogin[0]);
+                              }
+                            } else {
+                              window.location.href = "/"
+                            }
                           }
                       });
                     })

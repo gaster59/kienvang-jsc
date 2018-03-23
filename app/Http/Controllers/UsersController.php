@@ -10,6 +10,8 @@ use App\Repositories\UserRepository;
 use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 use Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\MessageBag;
 
 class UsersController extends Controller
 {
@@ -93,35 +95,58 @@ class UsersController extends Controller
         $request->session()->flash('alert-success', 'Đăng ký tài khoản thành công');
         return redirect(route('front.register'));
     }
-    public function login(Request $request)
+    public function getLogin(){
+        //return view('users.login');
+        $arr = [['companies.status', '=', '1'], ['companies.is_home', '=', '1']];
+        $companies = $this->companiesRepository->getAllCompanyCustomize($arr);
+        //Banner main
+        $w = [['banners.type', '=', '2']];
+        $bannerMain = $this->bannerMain->getBannerMain($w);
+        return view('users.login',[
+            'companies' => $companies,
+            'bannerMain'=> $bannerMain
+        ]);
+    }
+    public function postLogin(Request $request)
     {
-
         $rules = [
             'email'        => 'required|email',
             'password'     => 'required|min:8',
         ];
         $message = [
-            'email.required'    => "Nhap email",
-            'email.email'       => "Khong dung dih dang",
-            'password.required' => "Nhap pass",
-            'password.min'      => "8 ki tu"
+            'email.required'    => "Vui lòng nhập email",
+            'email.email'       => "Email không đúng định dạng",
+            'password.required' => "Vui lòng nhập mật khẩu",
+            'password.min'      => "Mật khẩu phải từ 8 kí tự trở lên"
         ];
 
-        $validator = Validator::make($request->all(), $rules, $me);
+        $validator = Validator::make($request->all(), $rules, $message);
         if($validator->fails()){
-return response()->json([
-            'error' => true,
-            'message'=> "djdaj jda"
-        ], 200);
+                return response()->json([
+                    'error' => true,
+                    'message'=> $validator->errors()
+                ], 200);
         }else{
-            return response()->json([
-            'error' => true,
-            'message'=> "djdaj jda"
-        ], 200);
+            $email          = $request->post('email');
+            $password          = $request->post('password');
+            if (Auth::attempt(['email' => $email,'password' => $password,'status' => 2], true)) {
+                return response()->json([
+                    'error' => false,
+                    'message'=> "success"
+                ], 200);
+            } else {
+                $error = new MessageBag(['errorlogin' => 'Email hoặc mật khẩu không đúng']);
+                return response()->json([
+                    'error' => true,
+                    'message'=> $error
+                ], 200);
+            }
         }
 
-        
-
+    }
+    public function getLogout(){
+        Auth::logout();
+        return redirect()->route('front.index');
     }
 
 }

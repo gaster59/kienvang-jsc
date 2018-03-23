@@ -14,6 +14,7 @@
 use App\Http\Middleware\CheckRole;
 
 Route::get('/', [
+    //'middleware' => 'checkRole:2',
     'as' => 'front.index',
     'uses' => 'IndexController@index'
 ]);
@@ -48,6 +49,10 @@ Route::post('/checkDangNhap',[
 Route::get('/dang-xuat',[
     'as'    => 'front.getLogout',
     'uses'  => 'UsersController@getLogout'
+]);
+Route::get('/jobs/{id}/{slug?}.html', [
+    'as' => 'front.jobs.detail',
+    'uses' => 'JobsController@detail'
 ]);
 // Route::group(['middleware' => 'checkUserLogin', 'prefix' => '', 'namespace' => ''], function() {
 //     Route::get('/', function() {

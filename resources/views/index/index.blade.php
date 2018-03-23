@@ -90,7 +90,7 @@
                                     @foreach($jobs as $job)
                                         <tr>
                                             <th scope="row">
-                                                <a class="link" href="#">{{ $job->name }}</a>
+                                                <a class="link" href="{{ url(route('front.jobs.detail', ['id'=>$job->id, 'slug'=> $job->slug] )) }}">{{ $job->name }}</a>
                                             </th>
                                             <td>{{ $job->company_name }}</td>
                                             <td>{{ $job->major_name }}</td>

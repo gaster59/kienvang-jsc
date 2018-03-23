@@ -56,10 +56,25 @@
                             <button class="btn btn-primary" style=""><i class="fa fa-search"></i></button>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item nav-user">
                       @if(\Illuminate\Support\Facades\Auth::check())
-                        Chào, {{\Illuminate\Support\Facades\Auth::user()['name']}}!
-                          <a href="{{ route('front.getLogout') }}">Đăng xuất</a>
+                          <div class="js-dropdown dropdown">
+                            <div class="js-dropdown-toggle">
+                              <div>
+                                <img alt="{{\Illuminate\Support\Facades\Auth::user()['name']}}" title="{{\Illuminate\Support\Facades\Auth::user()['name']}}" src="{{ url('/images/user.png') }}">
+                              </div>
+                            </div>
+                            <div id="myDropdown" class="dropdown-menu dropdown-menu-right">
+                              <a href="#" class="dropdown-item">
+                                <i class="fa fa-user"></i> Thông tin
+                              </a>
+                              <div class="dropdown-divider"></div>
+                              <div class="dropdown-item cursor-pointer">
+                                <a href="{{ route('front.getLogout') }}"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+                              </div>
+                            </div>
+                          </div>
+
                       @else
                           <a data-toggle="modal" data-target="#myModal" href="#"><i class="fa fa-sign-in"></i>  Đăng nhập/Đăng ký
                           </a>
@@ -153,6 +168,9 @@
                 <script src="{{ asset('/js/custom.js') }}"></script>
                 <script type="text/javascript">
                   $(function(){
+                    $(".js-dropdown").click(function(){
+                      $("#myDropdown").toggle();
+                    });
                     $("#login").click(function(e) {
                       e.preventDefault();
                       $.ajaxSetup({

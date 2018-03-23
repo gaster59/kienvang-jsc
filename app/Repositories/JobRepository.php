@@ -28,4 +28,5 @@ interface JobRepository extends RepositoryInterface
      * @return array
      */
     public function getJobAboutNum($status = 1, $num);
+    public function getNewsCustomize($where = null, $limit = 20);
 }

@@ -132,7 +132,7 @@ class JobController extends BaseController
             if (count($job) == 0) {
                 return redirect(route('job'));
             }
-
+            $job[0]->slug = '';
             $this->handleEditJob($request, $job);
             return redirect(route('job'));
         }

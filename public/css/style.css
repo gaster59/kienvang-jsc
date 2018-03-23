@@ -568,6 +568,24 @@ article .cover img {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
+.navbar ul.nav-items .nav-user img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+.js-dropdown .dropdown-item {
+    cursor: pointer;
+}
+.show>.dropdown-menu {
+    display: block;
+}
+.js-dropdown{
+    cursor: pointer;
+}
 @media screen and (max-width: 1000px){
     #news .news-operation article header .title {
         /*font-family: sans-serif;*/

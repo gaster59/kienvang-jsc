@@ -54,7 +54,6 @@ class UserRequest extends FormRequest
             }
             
         }*/
-        dd(1);
         return [
             'id',
             'name'         => 'bail|required|max:100',

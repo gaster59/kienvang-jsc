@@ -327,6 +327,22 @@ Route::group([
             'as' => 'job.delete',
             'uses' => 'JobController@delete'
         ]);
+
+        /**
+         * Contact
+         */
+        Route::get('contact', [
+            'as' => 'contact',
+            'uses' => 'ContactController@index'
+        ]);
+        Route::get('contact/updatestatus/{id}', [
+            'as' => 'contact.updatestatus',
+            'uses' => 'ContactController@updatestatus'
+        ]);
+        Route::get('contact/delete/{id}', [
+            'as' => 'contact.delete',
+            'uses' => 'ContactController@delete'
+        ]);
     }
 );
 /*Route admin/... */

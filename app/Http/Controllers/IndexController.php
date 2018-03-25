@@ -30,8 +30,6 @@ class IndexController extends Controller
      */
     var $newsRepository;
 
-    var $contactRepository;
-
 
     public function __construct(JobRepository $jobRepository, BannerRepository $bannerRepository, NewsRepository $newsRepository
     )
@@ -87,7 +85,7 @@ class IndexController extends Controller
             $contact = [
                 'name'          => $name,
                 'email'         => $email,
-                'message'       => $message
+                'message'       => nl2br($message)
             ];
             DB::table('contacts')->insertGetId($contact);
             $request->session()->flash('alert-success', 'Thông tin đã được gửi, chúng tôi sẽ liên hệ sớm');

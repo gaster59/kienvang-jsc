@@ -36,6 +36,13 @@
                 </svg> Công ty
             </a>
         </li>
+        <li>
+            <a href="{{ route('contact') }}">
+                <svg class="glyph stroked table">
+                    <use xlink:href="#stroked-table"></use>
+                </svg> Liên hệ
+            </a>
+        </li>
         <li role="presentation" class="divider"></li>
     </ul>
 

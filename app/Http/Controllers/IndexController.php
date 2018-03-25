@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\BannerRepository;
-use App\Repositories\CompaniesRepository;
 use App\Repositories\JobRepository;
 use App\Repositories\NewsRepository;
 use Illuminate\Http\Request;
+use App\Http\Requests\UserRequest;
+use Validator;
+use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
@@ -16,10 +18,6 @@ class IndexController extends Controller
      */
     var $jobRepository;
 
-    /**
-     * @var CompaniesRepository $companiesRepository
-     */
-    var $companiesRepository;
 
     /**
      * @var BannerRepository $bannerRepository
@@ -31,12 +29,13 @@ class IndexController extends Controller
      */
     var $newsRepository;
 
+    var $contactRepository;
 
-    public function __construct(JobRepository $jobRepository, CompaniesRepository $companiesRepository, BannerRepository $bannerRepository, NewsRepository $newsRepository
+
+    public function __construct(JobRepository $jobRepository, BannerRepository $bannerRepository, NewsRepository $newsRepository
     )
     {
         $this->jobRepository = $jobRepository;
-        $this->companiesRepository = $companiesRepository;
         $this->bannerRepository = $bannerRepository;
         $this->newsRepository = $newsRepository;
     }
@@ -44,8 +43,6 @@ class IndexController extends Controller
     public function index()
     {
         $jobs = $this->jobRepository->getJobAboutNum(1, 20);
-        $arr = [['companies.status', '=', '1'], ['companies.is_home', '=', '1']];
-        $companies = $this->companiesRepository->getAllCompanyCustomize($arr);
         /**
          * Banner Slider
          */
@@ -56,8 +53,46 @@ class IndexController extends Controller
         return view('index.index',[
             'slider'   => $slider,
             'jobs' => $jobs,
-            'companies' => $companies,
             'news'      => $news
         ]);
+    }
+    public function about(){
+        return view('index.about');
+    }
+    public function contact(){
+        return view('index.contact');
+    }
+    public function postContact(Request $request)
+    {
+        $rules = [
+            'email'             => 'required|email',
+            'name'              => 'required',
+            'message'           => 'required'
+        ];
+        $message = [
+            'email.required'    => "Vui lòng nhập email",
+            'email.email'       => "Email không đúng định dạng",
+            'name.required'     => "Vui lòng nhập tên",
+            'message.required'  => "Vui lòng nhập nội dung liên hệ"
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $message);
+        if($validator->fails()){
+            return  view('index.contact',[
+                'error' => redirect()->back()->withErrors($validator->errors())
+                ]);
+        }else{
+            $name           = $request->post('name');
+            $email          = $request->post('email');
+            $message        = $request->post('message', '');
+            $contact = [
+                'name'          => $name,
+                'email'         => $email,
+                'message'       => $message
+            ];
+            DB::table('contacts')->insertGetId($contact);
+            $request->session()->flash('alert-success', 'Thông tin đã được gửi, chúng tôi sẽ liên hệ sớm');
+            return redirect(route('front.contact'));
+        }
     }
 }

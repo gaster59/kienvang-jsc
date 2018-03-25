@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\CompaniesRepository;
-use App\Repositories\BannerRepository;
 use App\Repositories\UserRepository;
 
 use App\Http\Requests;
@@ -17,38 +15,18 @@ class UsersController extends Controller
 {
 
     /**
-     * @var CompaniesRepository $companiesRepository
-     */
-    var $companiesRepository;
-
-    /**
-     * @var BannerRepository $bannerRepository
-     */
-    var $bannerMain;
-
-    /**
      * @var UserRepository $userRepository
      */
     var $userRepository;
 
-    public function __construct( CompaniesRepository $companiesRepository, BannerRepository $bannerMain, UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository)
     {
-        $this->companiesRepository = $companiesRepository;
-        $this->bannerMain = $bannerMain;
         $this->userRepository = $userRepository;
     }
 
     public function index()
     {
-        $arr = [['companies.status', '=', '1'], ['companies.is_home', '=', '1']];
-        $companies = $this->companiesRepository->getAllCompanyCustomize($arr);
-        //Banner main
-        $w = [['banners.type', '=', '2']];
-        $bannerMain = $this->bannerMain->getBannerMain($w);
-        return view('users.index',[
-            'companies' => $companies,
-            'bannerMain'=> $bannerMain
-        ]);
+        return view('users.index');
     }
     public function checkRegister(UserRequest $request)
     {

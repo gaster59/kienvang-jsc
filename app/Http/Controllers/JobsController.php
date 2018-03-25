@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\JobRepository;
-use App\Repositories\CompaniesRepository;
-use App\Repositories\BannerRepository;
 
 class JobsController extends Controller
 {
@@ -15,20 +13,13 @@ class JobsController extends Controller
     var $jobRepository;
 
     /**
-     * @var CompaniesRepository $companiesRepository
-     */
-    var $companiesRepository;
-
-    /**
      * @var BannerRepository $bannerRepository
      */
     var $bannerMain;
 
-    public function __construct(JobRepository $jobRepository, CompaniesRepository $companiesRepository, BannerRepository $bannerMain)
+    public function __construct(JobRepository $jobRepository)
     {
         $this->jobRepository = $jobRepository;
-        $this->companiesRepository = $companiesRepository;
-        $this->bannerMain = $bannerMain;
     }
 
     public function detail($id, $slug=null)
@@ -50,15 +41,9 @@ class JobsController extends Controller
          */
         $ar = [['jobs.status', '=', '1'],['jobs.id', '<>', $id]];
         $jobsList = $this->jobRepository->getNewsCustomize( $ar  , 10);
-        $arr = [['companies.status', '=', '1'], ['companies.is_home', '=', '1']];
-        $companies = $this->companiesRepository->getAllCompanyCustomize($arr);
-        $w = [['banners.type', '=', '2']];
-        $bannerMain = $this->bannerMain->getBannerMain($w);
         return view('jobs.detail', [
             'dataJob'  => $dataJob[0],
-            'jobsList'  => $jobsList,
-            'companies' => $companies,
-            'bannerMain'=> $bannerMain
+            'jobsList'  => $jobsList
         ]);
     }
 }

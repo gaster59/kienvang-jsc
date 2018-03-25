@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Request;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,9 +18,28 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        $bannersfooter = DB::table('banners')->where('type', 3)->get();
-        View::share('bannersfooter', $bannersfooter);
-        //dd($bannersfooter);
+        if( !in_array(Request::segment(1), array('admin'))){
+            /**
+             * [$bannersfooter description]
+             * @var [type]
+             */
+            $bannersfooter = DB::table('banners')->where('type', 3)->get();
+            View::share('bannersfooter', $bannersfooter);
+            /**
+             * [$companies_right description]
+             * @var [type]
+             */
+            $arr = [['status', '=', '1'], ['is_home', '=', '1']];
+            $companies_right = DB::table('companies')->select('id','name', 'avatar','website')->where($arr)->orderByRaw('id DESC')->get();
+            View::share('companies_right', $companies_right);
+            /**
+             * [$bannermain description]
+             */
+            $w = [['banners.type', '=', '2']];
+            $bannerMain = DB::table('banners')->where($w)->first();
+            View::share('bannerMain', $bannerMain);
+
+        }
         
 
 

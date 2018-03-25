@@ -13,14 +13,7 @@
 @endsection
 
 @section('content')
-@if(!empty($bannerMain))
-<div class="row">
-    <div class="col-lg-12 text-center margin-top10">
-        <a title="" href="" target="_self">
-            <img class="img-fluid" src="{{ url('/banner/'.$bannerMain->avatar) }}" title="{{ $bannerMain->title }}"></a>
-    </div>
-</div>
-@endif
+@include('layouts.home.bannermain')
 <div class="row">
     <div class="col-lg-12 margin-top10">
       <nav class="breadcrumb">
@@ -106,18 +99,8 @@
     <div class="col-lg-3 col-md-12">
       <div class="tabs-pane" style="margin-top: 0;">
         <div class="block background text-center">
-
-            @foreach($companies as $company)
-                <div class="block-1 margin-bottom5">
-                    <a title="{{$company->name}}" class="" target="_blank" href="{{$company->website}}">
-                        <img style="width: 238px;"
-                             src="{{ url('/company/'.$company->avatar) }}" alt="{{$company->name}}">
-                    </a>
-                </div>
-            @endforeach
-
+          @include('layouts.home.nav_right')
         </div>
-          
       </div>
       
     </div>

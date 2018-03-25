@@ -90,17 +90,16 @@
                 <footer id="footer">
                     <div class="row">
 
-                        @include('layouts.bannerfooter')
+                        @include('layouts.home.bannerfooter')
 
 
                         <div class="col-lg-12 margin-top10">
                             <ul class="list-unstyled">
                                 <li class="float-lg-right"><a href="#top">Back to top</a></li>
-                                <li><a href="">Trang chủ</a></li>
-                                <li><a href="">Tin tức</a></li>
-                                <li><a href="">Giới thiệu</a></li>
-                                <li><a href="">Dịch vụ</a></li>
-                                <li><a href="">Thông tin việc làm và đào tạo</a></li>
+                                <li><a href="{{ route('front.index')}}">Trang chủ</a></li>
+                                <li><a href="{{ route('front.news') }}">Tin tức</a></li>
+                                <li><a href="{{ route('front.about-us') }}">Giới thiệu</a></li>
+                                <li><a href="{{ route('front.contact') }}">Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -168,9 +167,7 @@
                 <script src="{{ asset('/js/custom.js') }}"></script>
                 <script type="text/javascript">
                   $(function(){
-                    $(".js-dropdown").click(function(){
-                      $("#myDropdown").toggle();
-                    });
+                    @if(!\Illuminate\Support\Facades\Auth::check())
                     $("#login").click(function(e) {
                       e.preventDefault();
                       $.ajaxSetup({
@@ -186,7 +183,7 @@
                             'password'  : $("#password").val()
                           },
                           success: function(data){
-                            console.log(data);
+                            //console.log(data);
                             if (data.error == true) {
                               $('.error').hide();
                               if (data.message.email != undefined) {
@@ -203,7 +200,12 @@
                             }
                           }
                       });
-                    })
+                    });
+                    @else
+                    $(".js-dropdown").click(function(){
+                      $("#myDropdown").toggle();
+                    });
+                    @endif
                   });
                 </script>
             @show

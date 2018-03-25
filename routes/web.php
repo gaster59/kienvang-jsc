@@ -54,6 +54,18 @@ Route::get('/jobs/{id}/{slug?}.html', [
     'as' => 'front.jobs.detail',
     'uses' => 'JobsController@detail'
 ]);
+Route::get('/gioi-thieu.html', [
+    'as' => 'front.about-us',
+    'uses' => 'IndexController@about'
+]);
+Route::get('/lien-he', [
+    'as' => 'front.contact',
+    'uses' => 'IndexController@contact'
+]);
+Route::post('/checkContact', [
+    'as' => 'front.checkContact',
+    'uses' => 'IndexController@postContact'
+]);
 // Route::group(['middleware' => 'checkUserLogin', 'prefix' => '', 'namespace' => ''], function() {
 //     Route::get('/', function() {
 //         return view('front.index');

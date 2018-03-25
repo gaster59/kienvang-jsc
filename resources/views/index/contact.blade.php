@@ -34,15 +34,15 @@
             @endif
           @endforeach
         </div> <!-- end .flash-message -->
-          <form method="post" action="{{ url(route('front.checkContact')) }}">
+          <form method="POST" action="{{ url('lien-he.html') }}">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <fieldset>
             <legend class="text-center">Liên hệ</legend>
             <!-- Name input-->
             <div class="form-group">
-              <label class="col-md-3 control-label" for="name">Name</label>
+              <label class="col-md-3 control-label" for="name">Họ và tên</label>
               <div class="col-md-9">
-                <input value="{{ old('name') }}" name="name" type="text" placeholder="Your name" class="form-control">
+                <input value="{{ old('name') }}" name="name" type="text" placeholder="Họ và tên" class="form-control">
                 @if ($errors->has('name'))
                   <div class="error" style="color: red">{{ $errors->first('name') }}</div>
                 @endif
@@ -51,9 +51,9 @@
     
             <!-- Email input-->
             <div class="form-group">
-              <label class="col-md-3 control-label" for="email">Your E-mail</label>
+              <label class="col-md-3 control-label" for="email">E-mail</label>
               <div class="col-md-9">
-                <input value="{{ old('email') }}" name="email" type="text" placeholder="Your email" class="form-control">
+                <input value="{{ old('email') }}" name="email" type="text" placeholder="Email" class="form-control">
                 @if ($errors->has('email'))
                   <div class="error" style="color: red">{{ $errors->first('email') }}</div>
                 @endif
@@ -62,9 +62,9 @@
     
             <!-- Message body -->
             <div class="form-group">
-              <label class="col-md-3 control-label" for="message">Your message</label>
+              <label class="col-md-3 control-label" for="message">Nội dung</label>
               <div class="col-md-9">
-                <textarea value="{{ old('message') }}" class="form-control" id="message" name="message" placeholder="Please enter your message here..." rows="5"></textarea>
+                <textarea value="{{ old('message') }}" class="form-control" id="message" name="message" placeholder="Nội dung..." rows="5"></textarea>
                 @if ($errors->has('message'))
                   <div class="error" style="color: red">{{ $errors->first('message') }}</div>
                 @endif
@@ -73,7 +73,7 @@
     
             <!-- Form actions -->
             <div class="form-group">
-              <div class="col-md-12 text-right">
+              <div class="col-md-12 text-left">
                 <button type="submit" class="btn btn-primary">Đăng ký</button>
               </div>
             </div>

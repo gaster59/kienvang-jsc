@@ -7,6 +7,7 @@ use App\Repositories\JobRepository;
 use App\Repositories\NewsRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests;
 use Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -59,7 +60,7 @@ class IndexController extends Controller
     public function about(){
         return view('index.about');
     }
-    public function contact(){
+    public function getContact(){
         return view('index.contact');
     }
     public function postContact(Request $request)
@@ -78,9 +79,7 @@ class IndexController extends Controller
 
         $validator = Validator::make($request->all(), $rules, $message);
         if($validator->fails()){
-            return  view('index.contact',[
-                'error' => redirect()->back()->withErrors($validator->errors())
-                ]);
+            return redirect()->back()->withErrors($validator->errors());
         }else{
             $name           = $request->post('name');
             $email          = $request->post('email');

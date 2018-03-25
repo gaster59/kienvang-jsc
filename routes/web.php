@@ -58,11 +58,11 @@ Route::get('/gioi-thieu.html', [
     'as' => 'front.about-us',
     'uses' => 'IndexController@about'
 ]);
-Route::get('/lien-he', [
+Route::get('/lien-he.html', [
     'as' => 'front.contact',
-    'uses' => 'IndexController@contact'
+    'uses' => 'IndexController@getContact'
 ]);
-Route::post('/checkContact', [
+Route::post('/lien-he.html', [
     'as' => 'front.checkContact',
     'uses' => 'IndexController@postContact'
 ]);

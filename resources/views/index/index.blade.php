@@ -259,13 +259,14 @@
                 </div>
             </div>
         </section>
-        <section>
-            <div class="title-slogan">
-              <strong>Sau khi đăng nhập sẽ xem được thông tin việc làm dành cho thành viên</strong><br><br> <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Đăng nhập</a>
-            </div>
-            
-        </section>
-
+        @if(!\Illuminate\Support\Facades\Auth::check())
+            <section>
+                <div class="title-slogan">
+                  <strong>Sau khi đăng nhập sẽ xem được thông tin việc làm dành cho thành viên</strong><br><br> <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Đăng nhập</a>
+                </div>
+                
+            </section>
+        @endif
         <section>
             <div class="" id="page-news">
                 <div class="col-lg-12 reset_padding">

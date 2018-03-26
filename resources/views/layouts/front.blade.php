@@ -65,7 +65,7 @@
                               </div>
                             </div>
                             <div id="myDropdown" class="dropdown-menu dropdown-menu-right">
-                              <a href="#" class="dropdown-item">
+                              <a href="{{ route('front.userinfo') }}" class="dropdown-item">
                                 <i class="fa fa-user"></i> Thông tin
                               </a>
                               <div class="dropdown-divider"></div>

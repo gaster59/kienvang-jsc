@@ -64,7 +64,7 @@ class UserRequest extends FormRequest
             'password_confirmation'=> 'bail|required|min:8',
             'school'        => 'bail|required',
             'major'         => 'bail|required',
-            'cv'            => 'bail|required|max:10240|mimetypes:application/msword'
+            'cv'            => 'bail|required|max:10240|mimes:pdf,doc,docx,txt'
         ];
     }
 

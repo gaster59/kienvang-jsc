@@ -29,7 +29,7 @@ Route::get('/tin-tuc/{id}/{slug?}.html', [
     'uses' => 'NewsController@detail'
 ]);
 
-Route::get('/dang-ky', [
+Route::get('/dang-ky.html', [
     'as' => 'front.register',
     'uses' => 'UsersController@index'
 ]);
@@ -49,6 +49,10 @@ Route::post('/checkDangNhap',[
 Route::get('/dang-xuat',[
     'as'    => 'front.getLogout',
     'uses'  => 'UsersController@getLogout'
+]);
+Route::get('/userinfo.html', [
+    'as' => 'front.userinfo',
+    'uses' => 'UsersController@getUserinfo'
 ]);
 Route::get('/jobs/{id}/{slug?}.html', [
     'as' => 'front.jobs.detail',

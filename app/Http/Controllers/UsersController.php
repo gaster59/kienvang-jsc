@@ -26,6 +26,15 @@ class UsersController extends Controller
 
     public function index()
     {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $status = $user['status'];
+            if ($status == 1) {
+                return redirect(route('category'));
+            }elseif($status == 2){
+                return redirect(route('front.userinfo'));
+            }
+        }
         return view('users.index');
     }
     public function checkRegister(UserRequest $request)
@@ -84,7 +93,7 @@ class UsersController extends Controller
         $request->session()->flash('alert-success', 'Đăng ký tài khoản thành công');
         return redirect(route('front.register'));
     }
-    public function getLogin(){
+    /*public function getLogin(){
         //return view('users.login');
         $arr = [['companies.status', '=', '1'], ['companies.is_home', '=', '1']];
         $companies = $this->companiesRepository->getAllCompanyCustomize($arr);
@@ -95,7 +104,7 @@ class UsersController extends Controller
             'companies' => $companies,
             'bannerMain'=> $bannerMain
         ]);
-    }
+    }*/
     public function postLogin(Request $request)
     {
         $rules = [
@@ -136,6 +145,26 @@ class UsersController extends Controller
     public function getLogout(){
         Auth::logout();
         return redirect()->route('front.index');
+    }
+    public function getUserinfo(){
+        if (Auth::check()) {
+            $user = Auth::user();
+            $status = $user['status'];
+            if ($status == 1) {
+                return redirect(route('category'));
+            }
+
+            $info = json_decode($user->info);
+            unset($user['info']);
+            //dd($info);
+            $user['info'] = $info;
+            //echo $info->academiccareer;exit;
+            return view('users.userinfo', [
+                'user'      => $user
+            ]);
+        }else{
+            return redirect(route('front.index'));
+        }
     }
 
 }

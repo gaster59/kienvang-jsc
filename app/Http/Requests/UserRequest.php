@@ -64,8 +64,8 @@ class UserRequest extends FormRequest
             'password_confirmation'=> 'bail|required|min:8',
             'school'        => 'bail|required',
             'major'         => 'bail|required',
+            'cv'            => 'bail|required|max:10240|mimetypes:application/msword'
         ];
-        
     }
 
     /**
@@ -90,6 +90,10 @@ class UserRequest extends FormRequest
             'password_confirmation.same'  => 'Mật khẩu xác nhận không chính xác',
             'school.required'   => 'Nhập trường học của bạn',
             'major.required'    => 'Nhập ngành học của bạn',
+            'cv.required'       => 'Vui lòng CV của bạn',
+            //'cv.mimes'          => 'Định dạng CV không chính xác(.doc, docx)',
+            'cv.mimetypes'      => 'Định dạng CV không chính xác(.doc, docx)',
+            'cv.max'           => 'CV của bạn vượt quá dung lượng cho phép'
         ];
     }
 }

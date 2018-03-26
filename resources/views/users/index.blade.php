@@ -44,7 +44,7 @@
           <div class="title"> Đăng ký làm thành viên</div>
           <h3>Thông tin cơ bản</h3>
           <div class="res_notes">Các mục có dấu <span class="red"> * </span>  là bắt buộc</div>
-          <form method="post" action="{{ url(route('front.checkRegister')) }}">
+          <form method="post" action="{{ url(route('front.checkRegister')) }}" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="method" value="register">
             <div class="form-row">
@@ -157,6 +157,14 @@
             <div class="form-group">
               <label for="inputqualifications">Bằng cấp khác</label>
               <textarea name="qualifications" class="form-control">{{ old('qualifications') }}</textarea>
+            </div>
+
+            <div class="form-group col-md-6">
+              <label for="inputqualifications">Gửi CV của bạn</label><span class="red"> (*) </span>
+              <input type="file" name="cv" class="form-control">
+              @if ($errors->has('cv'))
+                  <div class="error">{{ $errors->first('cv') }}</div>
+                @endif
             </div>
 
             <button type="submit" class="btn btn-primary">Đăng ký</button>

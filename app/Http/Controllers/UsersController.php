@@ -45,6 +45,8 @@ class UsersController extends Controller
         $school         = $request->post('school','');
         $major          = $request->post('major','');
         $qualifications = $request->post('qualifications','');
+        $cv             = $request->file('cv');
+        $destination    = public_path('/cv');
 
         $info = array(
             'city'          => $city,
@@ -54,6 +56,11 @@ class UsersController extends Controller
             'major'         => $major,
             'qualifications'=> $qualifications
         );
+        $fileName = '';
+        if (!is_null($cv)) {
+            $fileName = time().'.'.$cv->getClientOriginalExtension();
+            
+        }
         $user = [
             'name'          => $name,
             'email'         => $email,
@@ -65,11 +72,15 @@ class UsersController extends Controller
             'gender'        => $gender,
             'couple'        => $couple,
             'info'          => json_encode($info),
+            'cv'            => $fileName,
             'remember_token'=> '',
             'created_at'    => date("Y-m-d H:i:s"),
 
         ];//dd($user);
         $this->userRepository->create($user);
+        if(!empty($fileName)){
+            $cv->move($destination, $fileName);
+        }
         $request->session()->flash('alert-success', 'Đăng ký tài khoản thành công');
         return redirect(route('front.register'));
     }

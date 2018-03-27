@@ -44,20 +44,21 @@
           <div class="title"> Đăng ký làm thành viên</div>
           <h3>Thông tin cơ bản</h3>
           <div class="res_notes">Các mục có dấu <span class="red"> * </span>  là bắt buộc</div>
-          <form method="post" action="" enctype="multipart/form-data">
+          <form method="post" action="{{ url(route('front.checkUserinfo')) }}" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="method" value="updateuser">
+            <input type="hidden" name="userid" value="{{$user->id}}">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputName">Họ và tên</label><span class="red"> (*) </span>
-                <input name="name" type="text" class="form-control" id="inputName" placeholder="Họ và tên" value="{{ old('name', $user->name) }}">
+                <input maxlength="100" name="name" type="text" class="form-control" id="inputName" placeholder="Họ và tên" value="{{ old('name', $user->name) }}">
                 @if ($errors->has('name'))
                   <div class="error">{{ $errors->first('name') }}</div>
                 @endif
               </div>
               <div class="form-group col-md-6">
                 <label for="inputEmail">Email</label><span class="red"> (*) </span>
-                <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email" value="{{ old('email', $user->email) }}">
+                <input maxlength="100" name="email" type="email" class="form-control" id="inputEmail" placeholder="Email" value="{{ old('email', $user->email) }}">
                 @if ($errors->has('email'))
                   <div class="error">{{ $errors->first('email') }}</div>
                 @endif
@@ -65,7 +66,7 @@
             </div>
             <div class="form-group">
               <label for="inputAddress">Địa chỉ</label><span class="red"> (*) </span>
-              <input name="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Nguyễn Thị MInh Khai" value="{{ old('address', $user->address) }}">
+              <input maxlength="100" name="address" type="text" class="form-control" id="inputAddress" placeholder="1234 Nguyễn Thị MInh Khai" value="{{ old('address', $user->address) }}">
               @if ($errors->has('address'))
                   <div class="error">{{ $errors->first('address') }}</div>
                 @endif
@@ -73,11 +74,11 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputBirthday">Ngày tháng năm sinh</label>
-                <input name="birthday" type="text" class="form-control datepicker" id="inputBirthday" value="{{ old('birthday', $user->birthday) }}">
+                <input maxlength="20" name="birthday" type="text" class="form-control datepicker" id="inputBirthday" value="{{ old('birthday', $user->birthday) }}">
               </div>
               <div class="form-group col-md-6">
                 <label for="inputPhone">Điện thoại</label><span class="red"> (*) </span>
-                <input name="phone" type="text" class="form-control" id="inputPhone" placeholder="Số điện thoại" value="{{ old('phone', $user->phone) }}">
+                <input maxlength="20" name="phone" type="text" class="form-control" id="inputPhone" placeholder="Số điện thoại" value="{{ old('phone', $user->phone) }}">
                 @if ($errors->has('phone'))
                   <div class="error">{{ $errors->first('phone') }}</div>
                 @endif
@@ -85,12 +86,12 @@
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <label for="inputCity">Thành Phố</label>
-                <input name="city" type="text" class="form-control" id="inputCity" value="{{ old('city', $user['info']->city)}}">
+                <label for="inputCity">Tỉnh/Thành Phố</label>
+                <input maxlength="20" name="city" type="text" class="form-control" id="inputCity" value="{{ old('city', $user['info']->city)}}">
               </div>
               <div class="form-group col-md-6">
-                <label for="inputState">Quận</label>
-                <input name="state" type="text" class="form-control" id="inputState" value="{{ old('state', $user['info']->state)}}">
+                <label for="inputState">Quận/Huyện</label>
+                <input maxlength="20" name="state" type="text" class="form-control" id="inputState" value="{{ old('state', $user['info']->state)}}">
               </div>
             </div>
             <div class="form-row">
@@ -123,7 +124,7 @@
               </div>
               <div class="form-group col-md-6">
                 <label for="inputSchool">Trường</label><span class="red"> (*) </span>
-                <input name="school" type="text" class="form-control" id="inputSchool" placeholder="Trường học" value="{{ old('school', $user['info']->school) }}">
+                <input maxlength="50" name="school" type="text" class="form-control" id="inputSchool" placeholder="Trường học" value="{{ old('school', $user['info']->school) }}">
                 @if ($errors->has('school'))
                   <div class="error">{{ $errors->first('school') }}</div>
                 @endif
@@ -131,7 +132,7 @@
             </div>
             <div class="form-group">
               <label for="inputMajor">Ngành</label><span class="red"> (*) </span>
-              <input name="major" type="text" class="form-control" id="inputMajor" placeholder="Công nghệ thông tin" value="{{ old('major', $user['info']->major) }}">
+              <input maxlength="50" name="major" type="text" class="form-control" id="inputMajor" placeholder="Công nghệ thông tin" value="{{ old('major', $user['info']->major) }}">
               @if ($errors->has('major'))
                   <div class="error">{{ $errors->first('major') }}</div>
                 @endif
@@ -139,18 +140,18 @@
 
             <div class="form-group">
               <label for="inputqualifications">Bằng cấp khác</label>
-              <textarea name="qualifications" class="form-control">{{ old('qualifications', $user['info']->qualifications) }}</textarea>
+              <textarea  maxlength="200" name="qualifications" class="form-control">{{ old('qualifications', $user['info']->qualifications) }}</textarea>
             </div>
 
-            <div class="form-group col-md-6">
-              <label for="inputqualifications">Gửi CV của bạn</label><span class="red"> (*) </span>
+            <div class="form-group">
+              <label for="inputqualifications">Gửi CV của bạn</label>
               <input type="file" name="cv" class="form-control">
               @if ($errors->has('cv'))
                   <div class="error">{{ $errors->first('cv') }}</div>
                 @endif
             </div>
 
-           {{--  <button type="submit" class="btn btn-primary">Đăng ký</button> --}}
+           <button type="submit" class="btn btn-primary">Cập nhật</button>
           </form>
         </div>
         

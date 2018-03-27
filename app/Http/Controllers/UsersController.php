@@ -67,8 +67,7 @@ class UsersController extends Controller
         );
         $fileName = '';
         if (!is_null($cv)) {
-            $fileName = time().'.'.$cv->getClientOriginalExtension();
-            
+            $fileName = str_slug($name, '_')."_".date("Y-m-d").'.'.$cv->getClientOriginalExtension();
         }
         $user = [
             'name'          => $name,
@@ -165,6 +164,9 @@ class UsersController extends Controller
         }else{
             return redirect(route('front.index'));
         }
+    }
+    public function postUserinfo(UserRequest $request){
+        dd($request->all);
     }
 
 }

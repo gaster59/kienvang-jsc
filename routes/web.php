@@ -54,6 +54,10 @@ Route::get('/userinfo.html', [
     'as' => 'front.userinfo',
     'uses' => 'UsersController@getUserinfo'
 ]);
+Route::post('/userinfo.html', [
+    'as' => 'front.checkUserinfo',
+    'uses' => 'UsersController@postUserinfo'
+]);
 Route::get('/jobs/{id}/{slug?}.html', [
     'as' => 'front.jobs.detail',
     'uses' => 'JobsController@detail'

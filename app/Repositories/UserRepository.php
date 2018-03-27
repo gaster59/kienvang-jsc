@@ -15,4 +15,5 @@ interface UserRepository extends RepositoryInterface
      *
      * @return mixed
      */
+    public function getUser($id);
 }

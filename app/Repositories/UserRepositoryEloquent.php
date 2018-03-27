@@ -22,6 +22,13 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     {
         return User::class;
     }
+    public function getUser($id)
+    {
+        $res = $this->scopeQuery(function($query) use($id) {
+                    return $query->where('id', $id);
+                })->first();
+        return $res;
+    }
     /**
      * Boot up the repository, pushing criteria
      */

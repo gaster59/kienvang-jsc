@@ -62,6 +62,14 @@ Route::get('/jobs/{id}/{slug?}.html', [
     'as' => 'front.jobs.detail',
     'uses' => 'JobsController@detail'
 ]);
+Route::get('/apply/{id}/{slug?}.html', [
+    'as' => 'front.jobs.apply',
+    'uses' => 'JobsController@apply'
+]);
+Route::post('/checkApply', [
+    'as' => 'front.jobs.checkApply',
+    'uses' => 'JobsController@checkApply'
+]);
 Route::get('/gioi-thieu.html', [
     'as' => 'front.about-us',
     'uses' => 'IndexController@about'

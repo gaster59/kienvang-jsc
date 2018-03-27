@@ -44,8 +44,8 @@ class UserRequest extends FormRequest
                 'email'        => 'bail|required|max:100|email|unique:users,email,'.$this->post('userid'),
                 'phone'        => 'bail|required|numeric|phone',
                 'address'      => 'bail|required|max:100',
-                'password'     => 'bail|required|min:8|confirmed',
-                'password_confirmation'=> 'bail|required|min:8',
+                //'password'     => 'bail|required|min:8|confirmed',
+                //'password_confirmation'=> 'bail|required|min:8',
                 'school'        => 'bail|required',
                 'major'         => 'bail|required',
                 'cv'            => 'bail|max:10240'

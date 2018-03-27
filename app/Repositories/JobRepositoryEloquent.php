@@ -96,6 +96,7 @@ class JobRepositoryEloquent extends BaseRepository implements JobRepository
         })->paginate( $limit, [
             'jobs.id',
             'jobs.name',
+            'jobs.major_id',
             'majors.name as major_name',
             'companies.name as company_name',
             'jobs.slug',

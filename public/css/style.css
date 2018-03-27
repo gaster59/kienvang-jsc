@@ -24,7 +24,7 @@ a:hover{
 .nav>li>a {
     position: relative;
     display: block;
-    padding: 10px 15px;
+    padding: 5px 0px;
 }
 .nav-tabs>li>a {
     margin-right: 2px;
@@ -415,7 +415,7 @@ article .cover img {
 #page-news-detail .content{
     padding-left: 30px;
 }
-#page-news-detail .content .title, #rigister .title{
+#page-news-detail .content .title, #rigister .title, #page-news-detail .title{
     color: #0081a1;
     font-size: 16px;
     border-bottom: 1px solid #0081a1;
@@ -425,21 +425,21 @@ article .cover img {
 #page-news-detail .content .des .time{
     color: #a4adb5;
 }
-#rigister .res_notes{
+#rigister .res_notes, #page-news-detail .res_notes{
     width: 80%;
     margin: 5px 0;
     color: #5a9301;
 }
-#rigister .res_notes .red{
+#rigister .res_notes .red, #page-news-detail .res_notes .red{
     color: red;
 }
-#rigister .red, #userinfo .red{
+#rigister .red, #userinfo .red, #page-news-detail .red{
     color: red;
 }
-#rigister form{
+#rigister form, #page-news-detail form{
     padding-bottom: 10px;
 }
-#rigister .error{
+#rigister .error, #page-news-detail .error{
     color: red;
 }
 

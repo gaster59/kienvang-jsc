@@ -10,6 +10,7 @@ use App\Http\Requests\UserRequest;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\MessageBag;
+use Illuminate\Filesystem\Filesystem;
 
 class UsersController extends Controller
 {
@@ -152,21 +153,78 @@ class UsersController extends Controller
             if ($status == 1) {
                 return redirect(route('category'));
             }
-
-            $info = json_decode($user->info);
-            unset($user['info']);
+            $iduser         = $user['id'];
+            $dataUser       = $this->userRepository->getUser($iduser);
+            $info = json_decode($dataUser->info);
+            unset($dataUser['info']);
             //dd($info);
-            $user['info'] = $info;
+            $dataUser['info'] = $info;
             //echo $info->academiccareer;exit;
             return view('users.userinfo', [
-                'user'      => $user
+                'user'      => $dataUser
             ]);
         }else{
             return redirect(route('front.index'));
         }
     }
     public function postUserinfo(UserRequest $request){
-        dd($request->all);
+        $iduser         = $request->post('userid');
+        $data           = $this->userRepository->getUser($iduser);
+        if(empty($data->id)){
+            Auth::logout();
+            return redirect(route('front.index'));
+        }
+        
+        $name           = $request->post('name');
+        $email          = $request->post('email');
+        $address        = $request->post('address', '');
+        $birthday       = $request->post('birthday', '');
+        $phone          = $request->post('phone');
+        $city           = $request->post('city','');
+        $state          = $request->post('state','');
+        $gender         = $request->post('gender', 1);
+        $couple         = $request->post('couple', 0);
+        $academiccareer = $request->post('academiccareer',2);
+        $school         = $request->post('school','');
+        $major          = $request->post('major','');
+        $qualifications = $request->post('qualifications','');
+        $cv             = $request->file('cv');
+        $destination    = public_path('/cv');
+        $info = array(
+            'city'          => $city,
+            'state'         => $state,
+            'academiccareer'=> $academiccareer,
+            'school'        => $school,
+            'major'         => $major,
+            'qualifications'=> $qualifications
+        );
+        $fileName = $data->cv;
+        if (!is_null($cv)) {
+            $fileSystem = new Filesystem();
+            if ($fileSystem->exists($destination.'/'.$fileName)) {
+                $fileSystem->delete($destination.'/'.$fileName);
+            }
+            $fileNameNew = str_slug($name, '_')."_".date("Y-m-d").'.'.$cv->getClientOriginalExtension();
+            if(!empty($fileNameNew)){
+                $cv->move($destination, $fileNameNew);
+            }
+            $fileName = $fileNameNew;
+        }
+        $user = [
+            'name'          => $name,
+            'email'         => $email,
+            'address'       => $address,
+            'phone'         => $phone,
+            'birthday'      => $birthday,
+            'gender'        => $gender,
+            'couple'        => $couple,
+            'info'          => json_encode($info),
+            'cv'            => $fileName,
+            'updated_at'    => date("Y-m-d H:i:s"),
+        ];
+        $this->userRepository->update($user, $iduser);
+        $request->session()->flash('alert-success', 'Cập nhật tài khoản thành công');
+        return redirect(route('front.userinfo'));
     }
 
 }

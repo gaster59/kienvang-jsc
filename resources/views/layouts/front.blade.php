@@ -202,7 +202,7 @@
                                 $('.errorLogin').show().text(data.message.errorlogin[0]);
                               }
                             } else {
-                              window.location.href = "/"
+                              location.reload();
                             }
                           }
                       });

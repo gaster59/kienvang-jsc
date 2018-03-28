@@ -40,13 +40,11 @@
           <div class="title"> Ưng tuyển : {{$dataJob->name}}</div>
           <form method="post" action="{{ url(route('front.jobs.checkApply')) }}" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <input type="hidden" name="method" value="apply">
+            <input type="hidden" name="namejob" value="{{$dataJob->name}}">
+            <input type="hidden" name="job_id" value="{{$dataJob->id}}">
             <div class="form-group">
-              <label for="inputAddress">Ghi chú</label><span class="red"> (*) </span>
+              <label for="inputAddress">Ghi chú</label>
               <textarea maxlength="100" name="note" type="text" class="form-control">{{old('note')}}</textarea>
-              @if ($errors->has('note'))
-                  <div class="error">{{ $errors->first('note') }}</div>
-                @endif
             </div>
 
             <div class="form-group">
@@ -57,7 +55,7 @@
                 @endif
             </div>
 
-            <button type="button" class="btn btn-primary">Apply</button>
+            <button type="submit" class="btn btn-primary">Apply</button>
           </form>
         </div>
         

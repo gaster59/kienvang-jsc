@@ -29,6 +29,15 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
                 })->first();
         return $res;
     }
+    public function getAllUser($where ,$limit = 20, $field= null)
+    {
+        $res = $this->scopeQuery(function($query) use ($where) {
+        return $query
+                ->where($where)
+                ->orderBy('id','desc');
+        })->paginate($limit, $field);
+        return $res;
+    }
     /**
      * Boot up the repository, pushing criteria
      */

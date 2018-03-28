@@ -41,9 +41,9 @@
 
             </div>
           </div>
-
-          @if(\Illuminate\Support\Facades\Auth::check())
           <div class="col-lg-12 reset_padding" style="padding-left: 10px;">
+          @if(\Illuminate\Support\Facades\Auth::check())
+          
             <div class="title-slogan">
               @php
                 $slug = str_slug($dataJob->name);
@@ -51,8 +51,17 @@
                 <strong>Bạn cảm thấy mình phù hợp với yêu cầu trên, hãy ứng tuyển ngay.</strong><br>
                 <a href="{{ url(route('front.jobs.apply', ['id'=>$dataJob->id, 'slug'=> $slug] )) }}" title="ứng tuyển" class="btn btn-primary">ứng Tuyển</a>
             </div>
-          </div>
+          
+          @else
+              <section>
+                <div class="title-slogan">
+                  <strong>Đăng nhập để ứng tuyển việc làm này ngay</strong><br><br> <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Đăng nhập</a>
+                </div>
+                
+              </section>
+
           @endif
+          </div>
           <div class="col-lg-12 reset_padding" style="padding-left: 10px;">
             <div class="yellow_title_box">
               <div class="yellow_title_left">Tin tuyển dụng khác</div>

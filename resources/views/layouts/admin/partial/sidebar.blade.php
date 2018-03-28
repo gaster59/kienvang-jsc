@@ -43,6 +43,13 @@
                 </svg> Liên hệ
             </a>
         </li>
+        <li>
+            <a href="{{ route('user') }}">
+                <svg class="glyph stroked table">
+                    <use xlink:href="#stroked-table"></use>
+                </svg> User
+            </a>
+        </li>
         <li role="presentation" class="divider"></li>
     </ul>
 

@@ -359,6 +359,22 @@ Route::group([
             'as' => 'contact.delete',
             'uses' => 'ContactController@delete'
         ]);
+        /**
+         * User
+         */
+        Route::get('user', [
+            'as' => 'user',
+            'uses' => 'UserController@index'
+        ]);
+        Route::get('user/view/{id}', [
+            'as' => 'user.view',
+            'uses' => 'UserController@view'
+        ]);
+        Route::get('user/delete/{id}', [
+            'as' => 'user.delete',
+            'uses' => 'UserController@delete'
+        ]);
+        
     }
 );
 /*Route admin/... */

@@ -50,6 +50,13 @@
                 </svg> User
             </a>
         </li>
+        <li>
+            <a href="{{ route('applyjob') }}">
+                <svg class="glyph stroked table">
+                    <use xlink:href="#stroked-table"></use>
+                </svg> Apply Job
+            </a>
+        </li>
         <li role="presentation" class="divider"></li>
     </ul>
 

@@ -27,13 +27,13 @@
                     </svg>
                 </a>
             </li>
-            <li class="active">Users</li>
+            <li class="active">Applies</li>
         </ol>
     </div>
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Users</h1>
+            <h1 class="page-header">Applies</h1>
         </div>
     </div>
 
@@ -41,7 +41,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Danh sách User
+                    Danh sách Apply công việc
                     {{-- <div style="float:right;">
                         <a class="btn btn-primary" href="{{ url(route('banner.add')) }}">
                             Thêm
@@ -58,31 +58,31 @@
                             <tr>
                                 <th class="bs-checkbox ">
                                 </th>
-                                <th>Tên</th>
+                                <th>Tên ứng viên</th>
                                 <th>
-                                    Email
+                                    Công việc ứng tuyển
                                 </th>
-                                <th>Địa chỉ</th>
-                                <th>Số điện thoại</th>
+                                <th>Ghi chú</th>
+                                <th>Ngày ứng tuyển</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $item)
+                            @foreach($applies as $item)
                             <tr>
                                 <td>
                                 </td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->email }}</td>
-                                <td>{{ $item->address }}</td>
+                                <td>{{ $item->username }}</td>
+                                <td>{{ $item->jobname }}</td>
+                                <td>{{ $item->text }}</td>
                                 <td>
-                                    {{ $item->phone }}
+                                    {{ $item->created_at }}
                                 </td>
                                 <td>
-                                        <a href="{{ route('user.view',['id'=>$item->id])  }}">Xem chi tiết</a>
+                                        <a href="{{ route('apply.view',['id'=>$item->id])  }}">Xem chi tiết</a>
                                         |
                                         @php(
-                                            $urlDelete = route('user.delete',['id'=>$item->id])
+                                            $urlDelete = route('apply.delete',['id'=>$item->id])
                                             )
                                             <a data-link="#"
                                                href="javascript:void(0)"
@@ -95,7 +95,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                            {{ $users->links() }}
+                            {{ $applies->links() }}
                             </tr>
                         </tfoot>
                     </table>

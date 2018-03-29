@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 24, 2018 at 12:15 AM
+-- Generation Time: Mar 30, 2018 at 12:39 AM
 -- Server version: 5.7.21-0ubuntu0.17.10.1
 -- PHP Version: 7.0.28-1+ubuntu17.10.1+deb.sury.org+1
 
@@ -19,6 +19,23 @@ SET time_zone = "+00:00";
 --
 -- Database: `kienvang.dev`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `applies`
+--
+
+CREATE TABLE `applies` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `job_id` int(11) NOT NULL,
+  `cv` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `text` text COLLATE utf8_unicode_ci,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -41,7 +58,6 @@ CREATE TABLE `banners` (
 --
 
 INSERT INTO `banners` (`id`, `title`, `type`, `avatar`, `description`, `created_at`, `updated_at`) VALUES
-(1, '1 slide label', 1, '1521299250.jpg', 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.', '2018-03-17 15:59:05', '2018-03-17 17:04:01'),
 (2, '2 slide label', 1, '1520751869.jpg', 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.', '2018-03-17 15:59:05', '2018-03-17 17:04:08'),
 (3, '3 slide label', 1, '1521303649.jpg', 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.', '2018-03-17 16:20:49', '2018-03-17 17:04:14'),
 (4, NULL, 2, '1521389662.png', NULL, '2018-03-18 08:53:12', '2018-03-20 16:36:15'),
@@ -111,6 +127,29 @@ INSERT INTO `companies` (`id`, `name`, `summary`, `scale`, `founding`, `meta_key
 (7, 'ILA - VIETNAM', '<p>ILA Vietnam l&agrave; một c&ocirc;ng ty hoạt động trong lĩnh vực gi&aacute;o dục v&agrave; đ&agrave;o tạo tiếng Anh c&oacute; vốn sở hữu nước ngo&agrave;i, chuy&ecirc;n cung cấp c&aacute;c chương tr&igrave;nh học v&agrave; dịch vụ bao gồm:<br />\r\n&bull; Chương tr&igrave;nh giảng dạy Anh ngữ d&agrave;nh cho trẻ em v&agrave; người lớn<br />\r\n&bull; Chương tr&igrave;nh luyện thi c&aacute;c kỳ thi quốc tế<br />\r\n&bull; Chương tr&igrave;nh đ&agrave;o tạo gi&aacute;o vi&ecirc;n<br />\r\n&bull; Đ&agrave;o tạo doanh nghiệp<br />\r\n&bull; Trung T&acirc;m Du Học ILA<br />\r\nNăm 2014, ILA c&oacute; hơn 35.000 học vi&ecirc;n đang theo học tại tất cả c&aacute;c trung t&acirc;m ở th&agrave;nh phố Hồ Ch&iacute; Minh, H&agrave; Nội, Đ&agrave; Nẵng v&agrave; Vũng T&agrave;u.<br />\r\nILA lu&ocirc;n ch&uacute; trọng đầu tư v&agrave; cập nhật li&ecirc;n tục đối với c&aacute;c chương tr&igrave;nh học, dịch vụ, trang thiết bị dạy v&agrave; học tại tất cả c&aacute;c cơ sở nhằm đảm bảo mỗi học vi&ecirc;n theo học với ILA đều nhận được sự đ&agrave;o tạo theo ti&ecirc;u chuẩn cao v&agrave; chuy&ecirc;n nghiệp.</p>\r\n\r\n<p>Địa chỉ:&nbsp;146 Nguyen Dinh Chieu, Ward 6, Dist. 3, HCMC</p>', '1000-4999', NULL, 'ILA - VIETNAM tuyển dụng', 'ILA - VIETNAM tuyển dụng lương hấp dẫn, phúc lợi tốt, môi trường làm việc chuyên nghiệp.', 1, '1521168325.jpg', 1, 'http://nongdanit.info', '2018-03-19 15:57:20', '2018-03-20 17:02:38'),
 (8, 'Công Ty Cổ Phần Khoa Học Môi Trường Và Công Nghệ CRM', '<p>C&ocirc;ng Ty Cổ Phần Khoa Học M&ocirc;i Trường V&agrave; C&ocirc;ng Nghệ CRM được th&agrave;nh lập năm 2016, c&oacute; văn ph&ograve;ng l&agrave;m việc tại quận Ph&uacute; Nhuận TPHCM, v&agrave; xưởng sản xuất tại Long An.<br />\r\nC&ocirc;ng Ty CRM l&agrave; một doanh nghiệp c&ocirc;ng nghệ cao c&oacute; vốn đầu tư nước ngo&agrave;i 100%, chuy&ecirc;n sản xuất h&oacute;a chất l&agrave;m giấy, h&oacute;a chất ng&agrave;nh dệt, chất phụ trợ n&ocirc;ng dược, sản lượng mỗi chất đạt 10.000 tấn một năm.</p>', NULL, NULL, 'Công Ty Cổ Phần Khoa Học Môi Trường Và Công Nghệ CRM tuyển dụng', 'Công Ty Cổ Phần Khoa Học Môi Trường Và Công Nghệ CRM tuyển dụng lương hấp dẫn, chế độ tốt.', 1, '1521168546.png', 1, 'http://nongdanit.info', '2018-03-19 15:57:20', '2018-03-20 17:02:40'),
 (9, 'CÔNG TY TNHH ATEAM VIỆT NAM', '<p>&bull; Ateam l&agrave; một trong những c&ocirc;ng ty về Game lớn nhất Nhật Bản. Đến với Ateam bạn c&oacute; cơ hội trải nghiệm to&agrave;n bộ quy tr&igrave;nh v&agrave; c&ocirc;ng nghệ Game do Ateam ph&aacute;t triển độc lập. Ngo&agrave;i ra, bạn sẽ c&oacute; cơ hội được cử đi học tập tại Nhật v&agrave; ph&aacute;t triển kỹ năng của bản th&acirc;n.<br />\r\n&bull; Tại Việt Nam, Ateam l&agrave; một c&ocirc;ng ty mới th&agrave;nh lập. Do đ&oacute;, ch&uacute;ng t&ocirc;i cần bạn để c&ugrave;ng nhau tạo n&ecirc;n một văn h&oacute;a độc đ&aacute;o cho ri&ecirc;ng Ateam.<br />\r\n&bull; L&agrave; một trong những c&ocirc;ng ty đi đầu trong ng&agrave;nh c&ocirc;ng nghệ Mobile Game tại Nhật Bản, ch&uacute;ng t&ocirc;i tin rằng Ateam sẽ nhanh ch&oacute;ng ph&aacute;t triển lớn mạnh tại Việt Nam. Đ&acirc;y sẽ l&agrave; cơ hội để bạn đ&oacute;ng g&oacute;p cho ch&uacute;ng t&ocirc;i v&agrave; c&oacute; được mức lương đ&aacute;ng ngưỡng mộ.</p>\r\n\r\n<p>Địa chỉ:&nbsp;Ph&ograve;ng số 1, Tầng 18, T&ograve;a nh&agrave; Saigon Centre, Số 67 đường L&ecirc; Lợi, Phường Bến Ngh&eacute;, Quận 1, Th&agrave;nh phố Hồ Ch&iacute; Minh, Việt Nam</p>', NULL, '', 'CÔNG TY TNHH ATEAM VIỆT NAM tuyển dụng', 'CÔNG TY TNHH ATEAM VIỆT NAM tuyển dụng', 1, '1521169096.png', 1, 'http://nongdanit.info', '2018-03-19 15:57:20', '2018-03-20 10:19:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `contacts`
+--
+
+INSERT INTO `contacts` (`id`, `name`, `email`, `message`, `status`, `created_at`) VALUES
+(1, 'Nguyễn Quốc Sử', 'trantuananh198610@gmail.com', 'dq&#x1B0;d q&#x1B0; d d qwd d q', 1, '2018-03-25 23:39:30'),
+(2, 'Kỹ sư Việt Nam', 'add@yahoo.com', '&#x111;á dq&#x1B0; d<br />\r\ndlqpow jq<br />\r\n dqodhoq<br />\r\n q&#x1B0;hdo', 1, '2018-03-25 23:39:42');
 
 -- --------------------------------------------------------
 
@@ -399,11 +438,18 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `address`, `phone`, `status`, `birthday`, `gender`, `couple`, `info`, `curriculum_vitae`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'tuan anh', 'trantuananh198610@gmail.com', '$2y$10$eJTy5S3fhU1K2fLoqP3eIex/HV9vfRyT/yxZAVuiXov3dw0k40V2O', 'day la address', '123123333', 1, NULL, 1, 1, NULL, '', 'v6l4BvRgvQKRfPlOWIh8vaXlKE5rumLf9FQgGaYKYHf9tbIZisME2Ra1yU7K', '2017-10-13 09:17:50', '2017-10-13 09:17:50');
+(1, 'tuan anh', 'trantuananh198610@gmail.com', '$2y$10$eJTy5S3fhU1K2fLoqP3eIex/HV9vfRyT/yxZAVuiXov3dw0k40V2O', 'day la address', '123123333', 1, NULL, 1, 1, NULL, '', 'v6l4BvRgvQKRfPlOWIh8vaXlKE5rumLf9FQgGaYKYHf9tbIZisME2Ra1yU7K', '2017-10-13 02:17:50', '2017-10-13 02:17:50'),
+(2, 'Nguyễn Quốc Sử', 'su.nq@barista.co.jp', '$2y$10$DWeIWfd8VCthCXJwSnmMh.nkR/zRZPZiO3lGCjQ6sdndDZbM/j0GS', '121212', '01674147774', 2, '03/06/2018', 0, 0, '{\"city\":null,\"state\":\"su.nq@barista.co.jp\",\"academiccareer\":\"1\",\"school\":\"cas\",\"major\":\"dasd\",\"qualifications\":\"&#x111;&#x1EA5;\"}', 'nguyen_quoc_su_2018-03-29.docx', 'OXprTJxrCjkDIrslmgnVzqQ18AYi0v1PiFMfSrQf2USwX2emhy5jz6d0WJG6', '2018-03-29 06:38:59', '2018-03-29 06:38:59');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `applies`
+--
+ALTER TABLE `applies`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `banners`
@@ -421,6 +467,12 @@ ALTER TABLE `categories`
 -- Indexes for table `companies`
 --
 ALTER TABLE `companies`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -477,6 +529,11 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `applies`
+--
+ALTER TABLE `applies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `banners`
 --
 ALTER TABLE `banners`
@@ -491,6 +548,11 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `companies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `contacts`
+--
+ALTER TABLE `contacts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jobs`
 --
@@ -525,68 +587,7 @@ ALTER TABLE `recruitments`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
-CREATE TABLE `contacts` (
-  `id` int(11) NOT NULL,
-  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `message` text COLLATE utf8_unicode_ci NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT '1',
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `contacts`
---
-ALTER TABLE `contacts`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `contacts`
---
-ALTER TABLE `contacts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-  
-
-ALTER TABLE `users` ADD `cv` VARCHAR(220) NULL AFTER `info`;
-CREATE TABLE `applies` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `job_id` int(11) NOT NULL,
-  `cv` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `text` text COLLATE utf8_unicode_ci,
-  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `applies`
---
-ALTER TABLE `applies`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `applies`
---
-ALTER TABLE `applies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

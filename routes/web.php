@@ -374,6 +374,21 @@ Route::group([
             'as' => 'user.delete',
             'uses' => 'UserController@delete'
         ]);
+        /**
+         * Apply Job
+         */
+        Route::get('applyjob', [
+            'as' => 'applyjob',
+            'uses' => 'ApplyController@index'
+        ]);
+        Route::get('apply/view/{id}', [
+            'as' => 'apply.view',
+            'uses' => 'ApplyController@view'
+        ]);
+        Route::get('apply/delete/{id}', [
+            'as' => 'apply.delete',
+            'uses' => 'ApplyController@delete'
+        ]);
         
     }
 );

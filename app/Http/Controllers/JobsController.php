@@ -99,7 +99,7 @@ class JobsController extends Controller
             $info = array(
                 'job_id'          => $job_id,
                 'user_id'         => $user_id,
-                'text'            => $note,
+                'text'            => nl2br($note),
                 'cv'              => $fileName
             );
 

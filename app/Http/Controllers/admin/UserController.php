@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Contracts\View\View;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\DB;
 use App\Repositories\UserRepository;
 
 class UserController extends BaseController
@@ -42,14 +41,19 @@ class UserController extends BaseController
     }
     public function delete($id)
     {
-        // $contact = DB::table('contacts')->where('id', $id)->first();
-        // if(empty($contact)){
-        //     return redirect(route('contact'));
-        // }
-        // DB::table('contacts')
-        //     ->where('id', $id)
-        //     ->delete();
-        // return redirect(route('contact'));
+        $user = $this->userRepository->getUser($id);
+        if (count($user) == 0) {
+            return redirect(route('user'));
+        }
+
+        $destination = public_path('/cv');
+        $fileName = $user->curriculum_vitae;
+        $fileSystem = new Filesystem();
+        if ($fileSystem->exists($destination.'/'.$fileName)) {
+            $fileSystem->delete($destination.'/'.$fileName);
+        }
+        $this->userRepository->delete($id);
+        return redirect(route('user'));
     }
 
 }

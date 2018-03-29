@@ -32,6 +32,9 @@ class UserController extends BaseController
     public function view($id)
     {
         $user = $this->userRepository->getUser($id);
+        $info = json_decode($user->info);
+        unset($user['info']);
+        $user['info'] = $info;
         return \view('admin.user.view',[
             'user' => $user,
             'title' => 'Thông tin user'
@@ -39,14 +42,14 @@ class UserController extends BaseController
     }
     public function delete($id)
     {
-        $contact = DB::table('contacts')->where('id', $id)->first();
-        if(empty($contact)){
-            return redirect(route('contact'));
-        }
-        DB::table('contacts')
-            ->where('id', $id)
-            ->delete();
-        return redirect(route('contact'));
+        // $contact = DB::table('contacts')->where('id', $id)->first();
+        // if(empty($contact)){
+        //     return redirect(route('contact'));
+        // }
+        // DB::table('contacts')
+        //     ->where('id', $id)
+        //     ->delete();
+        // return redirect(route('contact'));
     }
 
 }

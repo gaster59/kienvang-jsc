@@ -388,6 +388,7 @@ CREATE TABLE `users` (
   `gender` tinyint(1) NOT NULL DEFAULT '1',
   `couple` tinyint(1) NOT NULL DEFAULT '1',
   `info` text COLLATE utf8_unicode_ci,
+  `curriculum_vitae` text COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -397,10 +398,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `address`, `phone`, `status`, `birthday`, `gender`, `couple`, `info`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'tuan anh', 'trantuananh198610@gmail.com', '$2y$10$eJTy5S3fhU1K2fLoqP3eIex/HV9vfRyT/yxZAVuiXov3dw0k40V2O', 'day la address', '123123333', 1, NULL, 1, 1, NULL, 'v6l4BvRgvQKRfPlOWIh8vaXlKE5rumLf9FQgGaYKYHf9tbIZisME2Ra1yU7K', '2017-10-13 09:17:50', '2017-10-13 09:17:50'),
-(2, 'Nguyễn Quốc Sử', 'su.nq@barista.co.jp', '$2y$10$buYJgqVGsDAzSBvR83nuneqFB1fp7O0cm/RrNQZ0PHYpOM5qTi5TS', 'abnd', '01674147774', 2, '09/07/2017', 0, 0, '{\"city\":null,\"state\":null,\"academiccareer\":\"2\",\"school\":\"d\\u00e1\",\"major\":\"cntt\",\"qualifications\":null}', 'euVoVHvad8LyXQBnwC0fgeuVSQAWMj8co0jYeQk4zKTBPk8QwdjB9ahxLu3R', '2018-03-22 07:45:16', '2018-03-22 07:45:16'),
-(3, 'Kỹ sư Việt Nam', 'add@yahoo.com', '$2y$10$RUvuGmShL0TGKn4JhWldier7qSbnNEC8UVHf/Lt2NW2qNT0qEDVm6', '121212', '0908989186', 2, NULL, 0, 0, '{\"city\":null,\"state\":null,\"academiccareer\":\"1\",\"school\":\"d\\u00e1d\",\"major\":\"\\u01b0q\\u01b0eq\\u01b0e\",\"qualifications\":null}', '', '2018-03-22 08:01:20', '2018-03-22 08:01:20');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `address`, `phone`, `status`, `birthday`, `gender`, `couple`, `info`, `curriculum_vitae`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'tuan anh', 'trantuananh198610@gmail.com', '$2y$10$eJTy5S3fhU1K2fLoqP3eIex/HV9vfRyT/yxZAVuiXov3dw0k40V2O', 'day la address', '123123333', 1, NULL, 1, 1, NULL, '', 'v6l4BvRgvQKRfPlOWIh8vaXlKE5rumLf9FQgGaYKYHf9tbIZisME2Ra1yU7K', '2017-10-13 09:17:50', '2017-10-13 09:17:50');
 
 --
 -- Indexes for dumped tables
@@ -526,7 +525,7 @@ ALTER TABLE `recruitments`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 CREATE TABLE `contacts` (
   `id` int(11) NOT NULL,

@@ -81,7 +81,7 @@ class UsersController extends Controller
             'gender'        => $gender,
             'couple'        => $couple,
             'info'          => json_encode($info),
-            'cv'            => $fileName,
+            'curriculum_vitae'            => $fileName,
             'remember_token'=> '',
             'created_at'    => date("Y-m-d H:i:s"),
 
@@ -198,7 +198,7 @@ class UsersController extends Controller
             'major'         => $major,
             'qualifications'=> $qualifications
         );
-        $fileName = $data->cv;
+        $fileName = $data->curriculum_vitae;
         if (!is_null($cv)) {
             $fileSystem = new Filesystem();
             if ($fileSystem->exists($destination.'/'.$fileName)) {
@@ -219,8 +219,8 @@ class UsersController extends Controller
             'gender'        => $gender,
             'couple'        => $couple,
             'info'          => json_encode($info),
-            'cv'            => $fileName,
-            'updated_at'    => date("Y-m-d H:i:s"),
+            'curriculum_vitae'            => $fileName,
+            'updated_at'    => date("Y-m-d H:i:s")
         ];
         $this->userRepository->update($user, $iduser);
         $request->session()->flash('alert-success', 'Cập nhật tài khoản thành công');

@@ -180,6 +180,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         //Slug EloquentSluggable
         Cviebrock\EloquentSluggable\ServiceProvider::class,
+        App\Providers\MyhelpersServiceProvider::class,
 
     ],
 
@@ -229,8 +230,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Myhelpers' => App\Helpers\Myhelpers::class,
 
     ],
 

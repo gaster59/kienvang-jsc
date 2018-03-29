@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-@section('title', 'Ưng tuyển | Kiến vàng')
+@section('title', 'Ứng tuyển | Kiến vàng')
 
 @section('css_path')
     @parent
@@ -17,7 +17,7 @@
     <div class="col-lg-12 margin-top10">
         <nav class="breadcrumb">
             <a class="breadcrumb-item" href="{{ url(route('front.index')) }}">Trang chủ</a>
-            <span class="breadcrumb-item active">Ưng tuyển</span>
+            <span class="breadcrumb-item active">Ứng tuyển</span>
         </nav>
     </div>
 </div>
@@ -37,7 +37,7 @@
         </div> <!-- end .flash-message -->
       </div>
         <div class="col-lg-12">
-          <div class="title"> Ưng tuyển : {{$dataJob->name}}</div>
+          <div class="title"> Ứng tuyển : {{$dataJob->name}}</div>
           <form method="post" action="{{ url(route('front.jobs.checkApply')) }}" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="namejob" value="{{$dataJob->name}}">

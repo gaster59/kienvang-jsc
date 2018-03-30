@@ -159,7 +159,7 @@
               <textarea maxlength="200" name="qualifications" class="form-control">{{ old('qualifications') }}</textarea>
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group">
               <label for="inputqualifications">Gửi CV của bạn</label><span class="red"> (*) </span>
               <input type="file" name="cv" class="form-control">
               @if ($errors->has('cv'))

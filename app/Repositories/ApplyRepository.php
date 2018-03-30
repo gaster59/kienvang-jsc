@@ -15,6 +15,7 @@ interface ApplyRepository extends RepositoryInterface
      *
      * @return mixed
      */
+    public function getApplyFirst($id);
     public function getApply($where, $field= null);
     public function getAllApply($where, $limit = 20, $field= null);
 }

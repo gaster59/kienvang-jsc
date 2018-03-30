@@ -52,7 +52,7 @@
                                 </tr>
                                 <tr>
                                     <td>Ghi chú</td>
-                                    <td>{{ $apply->text }}</td>
+                                    <td>{!!html_entity_decode($apply->text)!!}</td>
                                 </tr>
                                 <tr>
                                     <td>Ngày ứng tuyển</td>

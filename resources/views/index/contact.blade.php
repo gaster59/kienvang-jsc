@@ -42,7 +42,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label" for="name">Họ và tên</label>
               <div class="col-md-9">
-                <input value="{{ old('name') }}" name="name" type="text" placeholder="Họ và tên" class="form-control">
+                <input maxlength="100" value="{{ old('name') }}" name="name" type="text" placeholder="Họ và tên" class="form-control">
                 @if ($errors->has('name'))
                   <div class="error" style="color: red">{{ $errors->first('name') }}</div>
                 @endif
@@ -53,7 +53,7 @@
             <div class="form-group">
               <label class="col-md-3 control-label" for="email">E-mail</label>
               <div class="col-md-9">
-                <input value="{{ old('email') }}" name="email" type="text" placeholder="Email" class="form-control">
+                <input maxlength="100" value="{{ old('email') }}" name="email" type="text" placeholder="Email" class="form-control">
                 @if ($errors->has('email'))
                   <div class="error" style="color: red">{{ $errors->first('email') }}</div>
                 @endif

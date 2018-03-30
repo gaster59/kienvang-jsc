@@ -25,7 +25,7 @@
 </div>
 
 <div class="row" id="page-news-detail">
-    <div class="col-lg-9 col-md-12 reset_padding_l_r">
+    <div class="col-lg-9 col-md-12">
         <div class="col-lg-12 reset_padding_l_r">
           <div class="content">
             <h1 class="title">

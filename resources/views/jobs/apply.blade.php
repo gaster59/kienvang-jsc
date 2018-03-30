@@ -44,7 +44,7 @@
             <input type="hidden" name="job_id" value="{{$dataJob->id}}">
             <div class="form-group">
               <label for="inputAddress">Ghi chú</label>
-              <textarea maxlength="100" name="note" type="text" class="form-control">{{old('note')}}</textarea>
+              <textarea maxlength="500" name="note" type="text" class="form-control">{{old('note')}}</textarea>
             </div>
 
             <div class="form-group">

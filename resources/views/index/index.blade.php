@@ -57,7 +57,7 @@
         </a>
     </div>
     <div class="title-slogan">
-        <strong>Dịch vụ hỗ trợ tìm việc miễn phí của Webtest</strong>
+        <strong>Dịch vụ hỗ trợ tìm việc miễn phí của Kiến Vàng</strong>
         <samp>Đăng nhập làm thành viên sẽ được chuyên viên hỗ trợ tìm việc miễn phí</samp>
     </div>
 </div>

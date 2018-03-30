@@ -82,6 +82,10 @@ Route::post('/lien-he.html', [
     'as' => 'front.checkContact',
     'uses' => 'IndexController@postContact'
 ]);
+Route::get('/search', [
+    'as' => 'front.search',
+    'uses' => 'JobsController@getSearch'
+]);
 // Route::group(['middleware' => 'checkUserLogin', 'prefix' => '', 'namespace' => ''], function() {
 //     Route::get('/', function() {
 //         return view('front.index');
@@ -388,6 +392,10 @@ Route::group([
         Route::get('apply/delete/{id}', [
             'as' => 'apply.delete',
             'uses' => 'ApplyController@delete'
+        ]);
+        Route::get('apply/read/{id}', [
+            'as' => 'apply.read',
+            'uses' => 'ApplyController@read'
         ]);
         
     }

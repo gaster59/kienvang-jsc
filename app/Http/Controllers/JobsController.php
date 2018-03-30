@@ -94,7 +94,7 @@ class JobsController extends Controller
 
             $fileName = '';
             if (!is_null($cv)) {
-                $fileName = str_slug($name, '_')."_".date("Y-m-d").'.'.$cv->getClientOriginalExtension();
+                $fileName = str_slug($name, '_')."_".str_slug($namejob, '_')."_".date("Y-m-d").'.'.$cv->getClientOriginalExtension();
             }
             $info = array(
                 'job_id'          => $job_id,
@@ -111,5 +111,11 @@ class JobsController extends Controller
             return redirect(route('front.jobs.apply', ['id'=>$job_id, 'slug'=> str_slug($namejob)]));
         }
 
+    }
+    public function getSearch(Request $request){
+        $val = $request->name;
+        $ar = [['jobs.status', '=', '1'], ['jobs.name', 'like', '%' .$val . '%'] ];
+        $jobsList = $this->jobRepository->getNewsCustomize( $ar  , 5);
+        return  $jobsList;
     }
 }

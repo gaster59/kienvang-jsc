@@ -22,7 +22,12 @@ class ApplyRepositoryEloquent extends BaseRepository implements ApplyRepository
     {
         return Apply::class;
     }
-
+    public function getApplyFirst($id){
+        $res = $this->scopeQuery(function($query) use($id) {
+                    return $query->where('id', $id);
+                })->first();
+        return $res;
+    }
     public function getApply($where, $field= null)
     {
         $res = $this->scopeQuery(function($query) use($where) {

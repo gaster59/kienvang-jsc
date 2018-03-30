@@ -62,7 +62,6 @@
                                 <th>
                                     Công việc ứng tuyển
                                 </th>
-                                <th>Ghi chú</th>
                                 <th>Ngày ứng tuyển</th>
                                 <th></th>
                             </tr>
@@ -71,15 +70,25 @@
                             @foreach($applies as $item)
                             <tr>
                                 <td>
+                                    @if($item->view == 0)
+                                        <i class="glyphicon glyphicon-eye-close"></i>
+                                    @else
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                    @endif
                                 </td>
                                 <td>{{ $item->username }}</td>
                                 <td>{{ $item->jobname }}</td>
-                                <td>{{ $item->text }}</td>
                                 <td>
                                     {{ $item->created_at }}
                                 </td>
                                 <td>
-                                        <a href="{{ route('apply.view',['id'=>$item->id])  }}">Xem chi tiết</a>
+                                        <a href="{{ route('apply.view',['id'=>$item->id])  }}">Chi tiết</a>
+                                        | 
+                                        @if($item->view == 0)
+                                            <a href="{{ route('apply.read',['id'=>$item->id])  }}">Đã xem</a>
+                                        @else
+                                            <a href="{{ route('apply.read',['id'=>$item->id])  }}">Chưa xem</a>
+                                        @endif
                                         |
                                         @php(
                                             $urlDelete = route('apply.delete',['id'=>$item->id])

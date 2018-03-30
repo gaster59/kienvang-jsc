@@ -108,6 +108,12 @@ class JobRepositoryEloquent extends BaseRepository implements JobRepository
         ]);
         return $res;
     }
+    public function getJobSearch($where = null, $limit = 20){
+        $res = $this->scopeQuery(function($query) use ($where) {
+                return $query->where($where);
+            })->get();
+        return $res;
+    }
 
     /**
      * Boot up the repository, pushing criteria

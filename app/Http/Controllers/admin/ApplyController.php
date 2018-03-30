@@ -19,8 +19,8 @@ class ApplyController extends BaseController
     }
     public function index()
     {
-        $where = [['applies.status', '=', 1]];
-        $filed = ['applies.id', 'users.name as username', 'jobs.name as jobname', 'applies.cv','applies.text', 'applies.created_at'];
+        $where = [['applies.id', '>', 0]];
+        $filed = ['applies.id', 'users.name as username', 'jobs.name as jobname', 'applies.cv','applies.text', 'applies.created_at', 'applies.view'];
         $applies = $this->applyRepository->getAllApply($where, 20, $filed);
         return \view('admin.applyjob.index',[
             'applies' => $applies,
@@ -40,18 +40,30 @@ class ApplyController extends BaseController
     }
     public function delete($id)
     {
-        // $user = $this->applyRepository->getUser($id);
-        // if (count($user) == 0) {
-        //     return redirect(route('user'));
-        // }
+        $data = $this->applyRepository->getApplyFirst($id);
+        if (count($data) == 0) {
+            return redirect(route('applyjob'));
+        }
 
-        // $destination = public_path('/cv');
-        // $fileName = $user->curriculum_vitae;
-        // $fileSystem = new Filesystem();
-        // if ($fileSystem->exists($destination.'/'.$fileName)) {
-        //     $fileSystem->delete($destination.'/'.$fileName);
-        // }
-        // $this->applyRepository->delete($id);
+        $destination = public_path('/cvapply');
+        $fileName = $data->cv;
+        $fileSystem = new Filesystem();
+        if ($fileSystem->exists($destination.'/'.$fileName)) {
+            $fileSystem->delete($destination.'/'.$fileName);
+        }
+        $this->applyRepository->delete($id);
+        return redirect(route('applyjob'));
+    }
+    public function read($id)
+    {
+        $data = $this->applyRepository->getApplyFirst($id);
+        if (count($data) == 0) {
+            return redirect(route('applyjob'));
+        }
+        $apply = [
+            'view' => 1 - $data->view
+        ];
+        $this->applyRepository->update($apply, $id);
         return redirect(route('applyjob'));
     }
 

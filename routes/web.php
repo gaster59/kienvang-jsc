@@ -86,6 +86,14 @@ Route::get('/search', [
     'as' => 'front.search',
     'uses' => 'JobsController@getSearch'
 ]);
+Route::get('/pagesearch.html', [
+    'as' => 'front.pagesearch',
+    'uses' => 'JobsController@getPageSearch'
+]);
+Route::post('/pagesearch.html', [
+    'as' => 'front.postpagesearch',
+    'uses' => 'JobsController@postPageSearch'
+]);
 // Route::group(['middleware' => 'checkUserLogin', 'prefix' => '', 'namespace' => ''], function() {
 //     Route::get('/', function() {
 //         return view('front.index');

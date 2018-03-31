@@ -58,7 +58,7 @@ class NewsRepositoryEloquent extends BaseRepository implements NewsRepository
     public function getNewsCustomize($where = null, $limit = 20){
         $res = $this->scopeQuery(function($query) use($where) {
             return $query
-                ->orderBy('id','desc')
+                ->orderBy('updated_at','desc')
                 ->where($where);
         })->paginate( $limit, [
             'news.id',

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Contracts\View\View;
-use Illuminate\Filesystem\Filesystem;
+// use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Request;
 use App\Repositories\UserRepository;
 
@@ -46,12 +46,12 @@ class UserController extends BaseController
             return redirect(route('user'));
         }
 
-        $destination = public_path('/cv');
-        $fileName = $user->curriculum_vitae;
-        $fileSystem = new Filesystem();
-        if ($fileSystem->exists($destination.'/'.$fileName)) {
-            $fileSystem->delete($destination.'/'.$fileName);
-        }
+        // $destination = public_path('/cv');
+        // $fileName = $user->curriculum_vitae;
+        // $fileSystem = new Filesystem();
+        // if ($fileSystem->exists($destination.'/'.$fileName)) {
+        //     $fileSystem->delete($destination.'/'.$fileName);
+        // }
         $this->userRepository->delete($id);
         return redirect(route('user'));
     }

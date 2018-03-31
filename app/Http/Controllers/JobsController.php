@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\JobRepository;
+use App\Repositories\NewsRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Validator;
@@ -16,11 +17,12 @@ class JobsController extends Controller
      * @var JobRepository $jobRepository
      */
     var $jobRepository;
+    var $newsRepository;
 
-
-    public function __construct(JobRepository $jobRepository)
+    public function __construct(JobRepository $jobRepository, NewsRepository $newsRepository)
     {
         $this->jobRepository = $jobRepository;
+        $this->newsRepository= $newsRepository;
     }
 
     public function detail($id, $slug=null)
@@ -115,7 +117,79 @@ class JobsController extends Controller
     public function getSearch(Request $request){
         $val = $request->name;
         $ar = [['jobs.status', '=', '1'], ['jobs.name', 'like', '%' .$val . '%'] ];
-        $jobsList = $this->jobRepository->getNewsCustomize( $ar  , 5);
-        return  $jobsList;
+        $jobsList = $this->jobRepository->getNewsCustomize( $ar  , 3);
+        $arnews = [['type', '=', '1'],['status', '=', '1'], ['name', 'like', '%' .$val . '%']];
+        $news = $this->newsRepository->getNewsCustomize($arnews, 3);
+        $html = '';
+
+        if(!empty($jobsList[0]->id)){
+        $html.='<div>
+                <div class="sb__suggestions-group">
+                <header class="sb__suggestions-group__name">Tin tuyển dụng</header>
+                <ul class="sb__suggestions-list">
+                ';
+            foreach ($jobsList as $key => $value) {
+                $url = url(route('front.jobs.detail', ['id'=>$value->id, 'slug'=> $value->slug] ));
+                $html.= '
+                  <li class="sb__suggestions-item"><a href="'.$url.'" class="link d-block"><div><h6 class="font-weight-bold mb-0 suggestion-identifier"><div>'.$value->name.'</div></h6><div><span class="has-primary-color">'.$value->major_name.'</span><span class="has-gray-color"> posted on '.$value->created_at.'</span></div><div class="has-inverse-color"><div>'.str_limit($value->description, 90, '...').'</div></div></div></a></li>
+                ';
+            }
+
+        $html.='</ul></div>
+                </div>';
+        }
+
+        if(!empty($news[0]->id)){
+        $html.='<div>
+                <div class="sb__suggestions-group">
+                <header class="sb__suggestions-group__name">Tin tức</header>
+                <ul class="sb__suggestions-list">
+                ';
+            foreach ($news as $key => $value) {
+                $url = url(route('front.news.detail', ['id'=>$value->id, 'slug'=> $value->slug] ));
+                $html.= '
+                  <li class="sb__suggestions-item"><a href="'.$url.'" class="link d-block"><div><h6 class="font-weight-bold mb-0 suggestion-identifier"><div>'.$value->name.'</div></h6><div><span class="has-gray-color"> posted on '.$value->updated_at.'</span></div><div class="has-inverse-color"><div>'.str_limit($value->description, 90, '...').'</div></div></div></a></li>
+                ';
+            }
+
+        $html.='</ul></div>
+                </div>';
+        }
+
+        return response()->json([
+            'error' => false,
+            'html'=> $html
+        ], 200);
+    }
+    public function getPageSearch(Request $request){
+        $q      = $request->get('q');
+        $tab    = $request->get('tab');
+        $jobsList = [];
+        $news     = [];
+        if(!empty($q)):
+            $ar = [['jobs.status', '=', '1'], ['jobs.name', 'like', '%' .$q . '%'] ];
+            $jobsList = $this->jobRepository->getNewsCustomize( $ar  , 20);
+            $arnews = [['type', '=', '1'],['status', '=', '1'], ['name', 'like', '%' .$q . '%']];
+            $news = $this->newsRepository->getNewsCustomize($arnews, 20);
+        endif;
+        return view('index.search', [
+            'tab'       => $tab,
+            'jobs'      => $jobsList,
+            'news'      => $news,
+            'keysearch' => $q
+        ]);
+    }
+    public function postPageSearch(Request $request){
+        $keysearch = $request->name;
+        $ar = [['jobs.status', '=', '1'], ['jobs.name', 'like', '%' .$keysearch . '%'] ];
+        $jobs = $this->jobRepository->getNewsCustomize( $ar  , 20);
+        $arnews = [['type', '=', '1'],['status', '=', '1'], ['name', 'like', '%' .$keysearch . '%']];
+        $news = $this->newsRepository->getNewsCustomize($arnews, 20);
+
+        $view = view("index._itemlist",compact('jobs', 'news', 'keysearch'))->render();
+        return response()->json([
+            'error' => false,
+            'html'=> $view
+        ], 200);
     }
 }

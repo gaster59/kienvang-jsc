@@ -21,7 +21,6 @@ class User extends Model implements Transformable
         'gender',
         'couple',
         'info',
-        'curriculum_vitae',
         'remember_token',
         'created_at'
     ];

@@ -159,13 +159,6 @@
               <textarea maxlength="200" name="qualifications" class="form-control">{{ old('qualifications') }}</textarea>
             </div>
 
-            <div class="form-group">
-              <label for="inputqualifications">Gửi CV của bạn</label><span class="red"> (*) </span>
-              <input type="file" name="cv" class="form-control">
-              @if ($errors->has('cv'))
-                  <div class="error">{{ $errors->first('cv') }}</div>
-                @endif
-            </div>
 
             <button type="submit" class="btn btn-primary">Đăng ký</button>
           </form>

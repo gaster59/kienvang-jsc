@@ -54,26 +54,17 @@
                 </div>
                 <ul class="nav-items nav-container navbar-right">
                     <li class="nav-item hidden-md-up">
-                        <a href="#" class="nav-icon"><i aria-hidden="true" class="fa fa-search"></i></a>
+                        <a href="{{ url(route('front.pagesearch')) }}" class="nav-icon"><i aria-hidden="true" class="fa fa-search"></i></a>
                     </li>
                     <li class="nav-item hidden-sm-down">
                         <div class="search">
                             <input id="search-input" placeholder="Tìm kiếm" value="" class="search-input">
-                            <button class="btn btn-primary" style=""><i class="fa fa-search"></i></button>
+                            <button class="btn btn-primary" style="">
+                              <a class="f-search" href="{{ url(route('front.pagesearch')) }}"><i class="fa fa-search"></i></a>
+                            </button>
                             <i aria-hidden="true" class="fa fa-times sb-icon clr text-muted" style="display: none"></i>
-
-
                             <div class="sb__suggestions" style="display: none;">
-                              <div>
-                                <div class="sb__suggestions-group">
-                                  <header class="sb__suggestions-group__name">Posts</header>
-                                  <ul class="sb__suggestions-list"><li class="sb__suggestions-item"><a href="/p/tong-quan-ve-stream-api-trong-java-8-E375zBwd5GW" class="link d-block"><div>
-                                  <h6 class="font-weight-bold mb-0 suggestion-identifier"><div>Tổng quan về stream API trong java 8</div></h6>
-                                  <div><span class="has-gray-color">posted on Feb 22nd, 2017</span></div>
-
-                                  <div class="has-inverse-color"><div>Stream API là một trong những feature chính của java 8 khi nó được giới thiệu, toàn bộ nằm trong package java.util.strea...</div></div></div></a></li><li class="sb__suggestions-item"><a href="/p/es6-features-every-javascript-developer-must-know-GrLZDbE35k0" class="link d-block"><div><h6 class="font-weight-bold mb-0 suggestion-identifier"><div>ES6 Features Every JavaScript Developer Must Know</div></h6><div><span class="has-primary-color">Long Nhu Tran </span><span class="has-gray-color">posted on Oct 24th, 2017</span></div><div class="has-inverse-color"><div> Trong bài viết này, tôi sẽ cover những tính năng mới của ES6 mà tôi nghĩ bất cứ JavaScript Developer nào cũng cần phải ...</div></div></div></a></li><li class="sb__suggestions-item"><a href="/p/benchmarking-trong-ruby-maGK7WAeKj2" class="link d-block"><div><h6 class="font-weight-bold mb-0 suggestion-identifier"><div>Benchmarking trong Ruby</div></h6><div><span class="has-primary-color">Ngoc Nguyễn </span><span class="has-gray-color">posted on Mar 28th</span></div><div class="has-inverse-color"><div>Benchmarking là một việc cần thiết khi chúng ta muốn kiểm chứng performance của một function hay một method nào đó. Và R...</div></div></div></a></li></ul>
-                                </div>
-                              </div>
+                              
                             </div>
 
 
@@ -231,14 +222,12 @@
                     });
                     @endif
 
-                      //$('.sb__suggestions').show();
                       // Khai báo đối tượng timeout để dùng cho hàm
                       // clearTimeout
                       var timeout = null;
                    
                       // Sự kiện keyup
-                      $('#search-input').keyup(function()
-                      {
+                      $('#search-input').keyup(function(){
                           // Xóa đi những gì ta đã thiết lập ở sự kiện 
                           // keyup của ký tự trước (nếu có)
                           clearTimeout(timeout);
@@ -250,22 +239,36 @@
                               var data = {
                                   name : $('#search-input').val()
                               };
-
                               // Gửi ajax search
                               $.ajax({
                                   type : 'GET',
                                   dataType : 'json',
                                   data : data,
+                                  async: false,
                                   url : '{{ url(route('front.search')) }}',
                                   success : function (result){
-                                      //$('#result').html(result);
-                                      console.log(result);
+                                      if (result.error == false && result.html != '') {
+                                        $('.text-muted').show();
+                                        $('.sb__suggestions').html(result.html);
+                                        $('.sb__suggestions').show();
+
+                                        //console.log(result.html);
+                                      }else{
+                                        $('.text-muted').show();
+                                        $('.sb__suggestions').html('<div><div class="sb__suggestions-group"><header class="sb__suggestions-group__name">Không có kết quả</header></div></div>');
+                                        $('.sb__suggestions').show();
+                                      }
                                   }
                               });
 
                           }, 1000);
                       });
-
+                      $('.text-muted').click(function(){
+                        $('.sb__suggestions').html('');
+                        $('.sb__suggestions').hide();
+                        $(this).hide();
+                        $('#search-input').val('');
+                      });
 
                   });
                 </script>

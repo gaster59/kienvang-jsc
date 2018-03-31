@@ -667,6 +667,15 @@ article .cover img {
 .error-template {padding: 40px 15px;text-align: center;}
     .error-actions {margin-top:15px;margin-bottom:15px;}
     .error-actions .btn { margin-right:10px; }
+#exTab2 .nav>li>a{
+        padding: 10px 15px;
+}
+.f-search{
+    color: #fff;
+}
+.content-search{
+    margin-bottom: 20px;
+}
 @media screen and (max-width: 1000px){
     #news .news-operation article header .title {
         /*font-family: sans-serif;*/

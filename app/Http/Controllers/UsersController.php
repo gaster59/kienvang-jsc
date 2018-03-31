@@ -10,7 +10,7 @@ use App\Http\Requests\UserRequest;
 use Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\MessageBag;
-use Illuminate\Filesystem\Filesystem;
+// use Illuminate\Filesystem\Filesystem;
 
 class UsersController extends Controller
 {
@@ -55,8 +55,8 @@ class UsersController extends Controller
         $school         = $request->post('school','');
         $major          = $request->post('major','');
         $qualifications = $request->post('qualifications','');
-        $cv             = $request->file('cv');
-        $destination    = public_path('/cv');
+        // $cv             = $request->file('cv');
+        // $destination    = public_path('/cv');
 
         $info = array(
             'city'          => $city,
@@ -66,10 +66,10 @@ class UsersController extends Controller
             'major'         => $major,
             'qualifications'=> $qualifications
         );
-        $fileName = '';
-        if (!is_null($cv)) {
-            $fileName = str_slug($name, '_')."_".date("Y-m-d").'.'.$cv->getClientOriginalExtension();
-        }
+        // $fileName = '';
+        // if (!is_null($cv)) {
+        //     $fileName = str_slug($name, '_')."_".date("Y-m-d").'.'.$cv->getClientOriginalExtension();
+        // }
         $user = [
             'name'          => $name,
             'email'         => $email,
@@ -81,15 +81,15 @@ class UsersController extends Controller
             'gender'        => $gender,
             'couple'        => $couple,
             'info'          => json_encode($info),
-            'curriculum_vitae'            => $fileName,
+            // 'curriculum_vitae'            => $fileName,
             'remember_token'=> '',
             'created_at'    => date("Y-m-d H:i:s"),
 
         ];//dd($user);
         $this->userRepository->create($user);
-        if(!empty($fileName)){
-            $cv->move($destination, $fileName);
-        }
+        // if(!empty($fileName)){
+        //     $cv->move($destination, $fileName);
+        // }
         $request->session()->flash('alert-success', 'Đăng ký tài khoản thành công');
         return redirect(route('front.register'));
     }
@@ -188,8 +188,8 @@ class UsersController extends Controller
         $school         = $request->post('school','');
         $major          = $request->post('major','');
         $qualifications = $request->post('qualifications','');
-        $cv             = $request->file('cv');
-        $destination    = public_path('/cv');
+        // $cv             = $request->file('cv');
+        // $destination    = public_path('/cv');
         $info = array(
             'city'          => $city,
             'state'         => $state,
@@ -198,18 +198,18 @@ class UsersController extends Controller
             'major'         => $major,
             'qualifications'=> $qualifications
         );
-        $fileName = $data->curriculum_vitae;
-        if (!is_null($cv)) {
-            $fileSystem = new Filesystem();
-            if ($fileSystem->exists($destination.'/'.$fileName)) {
-                $fileSystem->delete($destination.'/'.$fileName);
-            }
-            $fileNameNew = str_slug($name, '_')."_".date("Y-m-d").'.'.$cv->getClientOriginalExtension();
-            if(!empty($fileNameNew)){
-                $cv->move($destination, $fileNameNew);
-            }
-            $fileName = $fileNameNew;
-        }
+        // $fileName = $data->curriculum_vitae;
+        // if (!is_null($cv)) {
+        //     $fileSystem = new Filesystem();
+        //     if ($fileSystem->exists($destination.'/'.$fileName)) {
+        //         $fileSystem->delete($destination.'/'.$fileName);
+        //     }
+        //     $fileNameNew = str_slug($name, '_')."_".date("Y-m-d").'.'.$cv->getClientOriginalExtension();
+        //     if(!empty($fileNameNew)){
+        //         $cv->move($destination, $fileNameNew);
+        //     }
+        //     $fileName = $fileNameNew;
+        // }
         $user = [
             'name'          => $name,
             'email'         => $email,
@@ -219,7 +219,7 @@ class UsersController extends Controller
             'gender'        => $gender,
             'couple'        => $couple,
             'info'          => json_encode($info),
-            'curriculum_vitae'            => $fileName,
+            // 'curriculum_vitae'            => $fileName,
             'updated_at'    => date("Y-m-d H:i:s")
         ];
         $this->userRepository->update($user, $iduser);

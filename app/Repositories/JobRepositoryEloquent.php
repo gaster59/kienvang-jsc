@@ -91,7 +91,7 @@ class JobRepositoryEloquent extends BaseRepository implements JobRepository
                     $join->on('jobs.company_id', '=', 'companies.id')
                         ->where('companies.status','=', '1');
                 })
-                ->orderBy('id','desc')
+                ->orderBy('jobs.created_at','desc')
                 ->where($where);
         })->paginate( $limit, [
             'jobs.id',
@@ -106,12 +106,6 @@ class JobRepositoryEloquent extends BaseRepository implements JobRepository
             'jobs.meta_description',
             'jobs.created_at'
         ]);
-        return $res;
-    }
-    public function getJobSearch($where = null, $limit = 20){
-        $res = $this->scopeQuery(function($query) use ($where) {
-                return $query->where($where);
-            })->get();
         return $res;
     }
 

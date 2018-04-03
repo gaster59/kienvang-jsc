@@ -6,6 +6,7 @@ use App\Http\Requests\JobRequest;
 use App\Repositories\CompaniesRepository;
 use App\Repositories\JobRepository;
 use App\Repositories\MajorRepository;
+use App\Repositories\CategoriesRepository;
 use Illuminate\Contracts\View\View;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Request;
@@ -32,14 +33,20 @@ class JobController extends BaseController
      */
     var $companiesRepository;
 
+    /**
+     * @var CategoriesRepository $companiesRepository
+     */
+    var $categoryRepository;
+
     public function __construct(JobRepository $jobRepository,
         MajorRepository $majorRepository,
-        CompaniesRepository $companiesRepository)
+        CompaniesRepository $companiesRepository, CategoriesRepository $categoryRepository)
     {
         parent::__construct();
         $this->jobRepository = $jobRepository;
         $this->majorRepository = $majorRepository;
         $this->companiesRepository = $companiesRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -69,9 +76,11 @@ class JobController extends BaseController
     {
         $majors = $this->majorRepository->getMajor();
         $companies = $this->companiesRepository->getAllCompany();
+        $category = $this->categoryRepository->getCategory();
         return \view('admin.job.add', [
             'majors' => $majors,
             'companies' => $companies,
+            'category' => $category,
             'title' => 'Thêm việc làm'
         ]);
     }
@@ -99,10 +108,12 @@ class JobController extends BaseController
         $majors = $this->majorRepository->getMajor();
         $arr = [['companies.status', '=', '1']];
         $companies = $this->companiesRepository->getAllCompany();
+        $category = $this->categoryRepository->getCategory();
         return \view('admin.job.edit', [
             'job' => $job,
             'majors' => $majors,
             'companies' => $companies,
+            'category' => $category,
             'title' => 'Cập nhật việc làm'
         ]);
     }
@@ -152,6 +163,7 @@ class JobController extends BaseController
         $summary = $request->post('summary', '');
         $majorId = $request->post('major_id', '');
         $companyId = $request->post('company_id', '');
+        $categoryId = $request->post('category_id', '');
         $metaKeyword = $request->post('meta_keyword', '');
         $metaDescription = $request->post('meta_description', '');
         $status = 1;
@@ -162,6 +174,7 @@ class JobController extends BaseController
             'summary' => $summary,
             'major_id' => $majorId,
             'company_id' => $companyId,
+            'category_id'=> $categoryId,
             'meta_keyword' => $metaKeyword,
             'meta_description' => $metaDescription,
             'status' => $status
@@ -184,6 +197,7 @@ class JobController extends BaseController
         $summary = $request->post('summary', '');
         $majorId = $request->post('major_id', '');
         $companyId = $request->post('company_id', '');
+        $categoryId = $request->post('category_id', '');
         $metaKeyword = $request->post('meta_keyword', '');
         $metaDescription = $request->post('meta_description', '');
         $status = 1;
@@ -194,6 +208,7 @@ class JobController extends BaseController
             'summary' => $summary,
             'major_id' => $majorId,
             'company_id' => $companyId,
+            'category_id'=> $categoryId,
             'meta_keyword' => $metaKeyword,
             'meta_description' => $metaDescription,
             'status' => $status

@@ -154,6 +154,28 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="name">
+                                        Danh mục
+                                    </label>
+                                    <div class="col-md-9">
+                                        <select name="category_id">
+                                            @foreach($category as $item)
+                                                @php
+                                                    $selected = ''
+                                                @endphp
+                                                @if ($item->id == old('category_id', $job->category_id))
+                                                    @php
+                                                        $selected = 'selected'
+                                                    @endphp
+                                                @endif
+                                                <option {{ $selected }} value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
+                                
+                                    </div>
+                                </div>
+
                                 <!-- Meta keyword -->
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="name">

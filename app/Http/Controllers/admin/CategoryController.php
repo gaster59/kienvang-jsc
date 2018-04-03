@@ -93,7 +93,6 @@ class CategoryController extends BaseController
         if ($method == 'add') {
             $attributes = [
                 'name' => $request->post('name'),
-                'slug' => $request->post('name'),
                 'parent_id' => 0,
                 'status' => 1
             ];
@@ -111,15 +110,27 @@ class CategoryController extends BaseController
             if (count($category) == 0) {
                 return redirect(route('category'));
             }
-
-            $attributes = [
+            $category[0]->slug = '';
+            $category = [
                 'name' => $request->post('name'),
-                'slug' => $request->post('name'),
                 'parent_id' => 0,
                 'status' => 1
             ];
-            $this->categoryRepository->update($attributes, $id);
+            $this->categoryRepository->update($category, $id);
             return redirect(route('category'));
         }
+    }
+    public function delete($id)
+    {
+        $category = $this->categoryRepository->findWhere([
+            'id' => $id,
+        ]);
+
+        if (count($category) == 0) {
+            return redirect(route('category'));
+        }
+
+        $this->categoryRepository->delete($id);
+        return redirect(route('category'));
     }
 }

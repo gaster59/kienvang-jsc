@@ -32,6 +32,14 @@ class CategoriesRepositoryEloquent extends BaseRepository implements CategoriesR
                 })->all();
         return $res;
     }
+    public function getCategorySlug($where)
+    {
+        $res = $this->scopeQuery(function($query) use($where) {
+                    return $query->where($where);
+                })->first();
+        return $res;
+    }
+
 
     /**
      * Boot up the repository, pushing criteria

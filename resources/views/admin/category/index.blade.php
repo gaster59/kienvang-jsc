@@ -8,6 +8,13 @@
 
 @section('js_path')
     @parent
+    <script type="text/javascript">
+        function fnDelete(urlDelete) {
+            if (confirm('Bạn có muốn xóa không')) {
+                window.location.href = urlDelete;
+            }
+        }
+    </script>
 @endsection
 
 @section('content')
@@ -72,9 +79,12 @@
                                 <td>
                                     <a href="{{ route('category.edit',['id'=>$item->id])  }}">Edit</a>
                                     |
+                                    @php(
+                                        $urlDelete = route('category.delete', ['id'=>$item->id])
+                                    )
                                     <a data-link="#"
                                        href="javascript:void(0)"
-                                       onclick="common.fnDelete(this)">Delete</a>
+                                       onclick="fnDelete('{{ $urlDelete }}')">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

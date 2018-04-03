@@ -62,6 +62,10 @@ Route::get('/jobs/{id}/{slug?}.html', [
     'as' => 'front.jobs.detail',
     'uses' => 'JobsController@detail'
 ]);
+Route::get('/jobs/{slug}.html', [
+    'as' => 'front.jobs.category',
+    'uses' => 'JobsController@getCategory'
+]);
 Route::get('/apply/{id}/{slug?}.html', [
     'as' => 'front.jobs.apply',
     'uses' => 'JobsController@apply'

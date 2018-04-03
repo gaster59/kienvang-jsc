@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\JobRepository;
 use App\Repositories\NewsRepository;
+use App\Repositories\CategoriesRepository;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Validator;
@@ -18,11 +19,13 @@ class JobsController extends Controller
      */
     var $jobRepository;
     var $newsRepository;
+    var $categoryRepository;
 
-    public function __construct(JobRepository $jobRepository, NewsRepository $newsRepository)
+    public function __construct(JobRepository $jobRepository, NewsRepository $newsRepository, CategoriesRepository $categoryRepository)
     {
         $this->jobRepository = $jobRepository;
         $this->newsRepository= $newsRepository;
+        $this->categoryRepository= $categoryRepository;
     }
 
     public function detail($id, $slug=null)
@@ -191,5 +194,9 @@ class JobsController extends Controller
             'error' => false,
             'html'=> $view
         ], 200);
+    }
+    public function getCategory($slug){
+        $data = $this->categoryRepository->getCategorySlug([['slug' ,'like', $slug]]);
+        dd($data);
     }
 }

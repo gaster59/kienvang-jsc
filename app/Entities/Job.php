@@ -18,6 +18,7 @@ class Job extends Model implements Transformable
         'summary',
         'major_id',
         'company_id',
+        'category_id',
         'status',
         'meta_keyword',
         'meta_description'

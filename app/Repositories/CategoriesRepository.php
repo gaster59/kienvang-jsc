@@ -17,4 +17,5 @@ interface CategoriesRepository extends RepositoryInterface
      * @return mixed
      */
     public function getCategory($status = 1);
+    public function getCategorySlug($where);
 }

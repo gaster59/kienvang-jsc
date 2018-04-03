@@ -4,7 +4,9 @@ namespace App\Http\Requests;
 
 use App\Repositories\CompaniesRepository;
 use App\Repositories\MajorRepository;
+use App\Repositories\CategoriesRepository;
 use App\Rules\CheckInCategory;
+use App\Rules\CheckInCompany;
 use App\Rules\CheckInMajor;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -21,10 +23,17 @@ class JobRequest extends FormRequest
      */
     var $companiesRepository;
 
-    public function __construct(MajorRepository $majorRepository, CompaniesRepository $companiesRepository)
+    /**
+     * @var CategoriesRepository $companiesRepository
+     */
+    var $categoryRepository;
+
+
+    public function __construct(MajorRepository $majorRepository, CompaniesRepository $companiesRepository, CategoriesRepository $categoryRepository)
     {
         $this->majorRepository = $majorRepository;
         $this->companiesRepository = $companiesRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -46,6 +55,7 @@ class JobRequest extends FormRequest
     {
         $majors = $this->majorRepository->getMajor();
         $companies = $this->companiesRepository->getAllCompany();
+        $category = $this->categoryRepository->getCategory();
         return [
             'id',
             'name' => 'required|max:50',
@@ -57,7 +67,11 @@ class JobRequest extends FormRequest
             ],
             'company_id' => [
                 'required',
-                new CheckInCategory($companies)
+                new CheckInCompany($companies)
+            ],
+            'category_id' => [
+                'required',
+                new CheckInCategory($category)
             ],
             'method'
         ];

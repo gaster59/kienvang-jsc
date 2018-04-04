@@ -39,6 +39,9 @@ class AppServiceProvider extends ServiceProvider
             $bannerMain = DB::table('banners')->where($w)->first();
             View::share('bannerMain', $bannerMain);
 
+            $categories = DB::table('categories')->where([['status','=',1], ['parent_id', '=', 0]])->orderByRaw('id DESC')->get();
+            View::share('categories', $categories);
+
         }
         
 

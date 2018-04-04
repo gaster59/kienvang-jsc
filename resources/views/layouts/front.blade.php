@@ -32,15 +32,14 @@
                         <li class="nav-item">
                             <a class="nav-link" target="_self" href="{{ url(route('front.index')) }}">Trang chủ</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" target="_self" href="#">Thực tập sinh</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" target="_self">Kỹ sư</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" target="_self">Du học sinh</a>
-                        </li>
+
+                        @if(!empty($categories[0]->id))
+                        @foreach($categories as $key=> $val)
+                          <li class="nav-item">
+                              <a class="nav-link" target="_self" href="{{ url(route('front.jobs.category',['slug'=> $val->slug] )) }}">{{$val->name}}</a>
+                          </li>
+                        @endforeach
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('front.news') }}" target="_self">Tin tức</a>
                         </li>

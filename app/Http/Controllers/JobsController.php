@@ -197,6 +197,11 @@ class JobsController extends Controller
     }
     public function getCategory($slug){
         $data = $this->categoryRepository->getCategorySlug([['slug' ,'like', $slug]]);
-        dd($data);
+        $ar = [['jobs.status', '=', '1'], ['jobs.category_id', '=', $data->id] ];
+        $jobs = $this->jobRepository->getNewsCustomize( $ar  , 20);
+        return view('jobs.category', [
+            'data'             => $data,
+            'jobs'             => $jobs
+        ]);
     }
 }

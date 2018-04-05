@@ -590,7 +590,8 @@ ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 ALTER TABLE `applies` ADD `view` TINYINT(1) NOT NULL DEFAULT '0' AFTER `status`;
 ALTER TABLE `applies` CHANGE `cv` `cv` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL;
-ALTER TABLE `users` DROP `remember_token`;
+ALTER TABLE `users` ADD `curriculum_vitae` VARCHAR(220) NULL AFTER `info`;
+ALTER TABLE `users` ADD `category_id` INT(11) NOT NULL DEFAULT '1' AFTER `curriculum_vitae`;
 
 ALTER TABLE `jobs` ADD `category_id` INT(11) NOT NULL AFTER `company_id`;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

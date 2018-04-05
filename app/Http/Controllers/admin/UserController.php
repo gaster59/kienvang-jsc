@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Contracts\View\View;
-// use Illuminate\Filesystem\Filesystem;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Request;
 use App\Repositories\UserRepository;
 
@@ -34,8 +34,16 @@ class UserController extends BaseController
         $info = json_decode($user->info);
         unset($user['info']);
         $user['info'] = $info;
+        $academiccareer = array(
+            "1"   => "Sau đại học",
+            "2"   => "Cử nhân",
+            "3"   => "Cao đẳng",
+            "4"   => "Trung học chuyên nghiệp",
+            "5"   => "Phổ thông trung học"
+        );
         return \view('admin.user.view',[
             'user' => $user,
+            "academiccareer"=> $academiccareer,
             'title' => 'Thông tin user'
         ]);
     }
@@ -46,12 +54,12 @@ class UserController extends BaseController
             return redirect(route('user'));
         }
 
-        // $destination = public_path('/cv');
-        // $fileName = $user->curriculum_vitae;
-        // $fileSystem = new Filesystem();
-        // if ($fileSystem->exists($destination.'/'.$fileName)) {
-        //     $fileSystem->delete($destination.'/'.$fileName);
-        // }
+        $destination = public_path('/cv');
+        $fileName = $user->curriculum_vitae;
+        $fileSystem = new Filesystem();
+        if ($fileSystem->exists($destination.'/'.$fileName)) {
+            $fileSystem->delete($destination.'/'.$fileName);
+        }
         $this->userRepository->delete($id);
         return redirect(route('user'));
     }

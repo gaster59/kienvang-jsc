@@ -12,6 +12,14 @@
     <script src="{{ asset('/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript">
       $('.datepicker').datepicker();
+      $('#category_id').on('change', function() {
+        var val = this.value;
+        if(val == 2){
+          $(".uploadcv").css("display", "block");
+        }else{
+          $(".uploadcv").css("display", "none");
+        }
+      })
     </script>
 @endsection
 
@@ -142,7 +150,21 @@
               <label for="inputqualifications">Bằng cấp khác</label>
               <textarea  maxlength="200" name="qualifications" class="form-control">{{ old('qualifications', $user['info']->qualifications) }}</textarea>
             </div>
-
+            <div class="form-group">
+              <label for="inputMajor">Bạn là?</label><span class="red"> (*) </span>
+              <select name="category_id" id="category_id" class="form-control">
+                @foreach($categories as $val)
+                  <option @if ($val->id ==  old('category_id', $user->category_id) ) {!!"selected"!!} @endif value="{{$val->id}}">{{$val->name}}</option>
+                @endforeach
+              </select>
+            </div>
+            <div class="form-group uploadcv" style="@if ($user->category_id == 2 ) {!!"display: block"!!} @else {!!"display: none"!!} @endif">
+              <label for="inputqualifications">Gửi CV của bạn</label>
+              <input type="file" name="cv" class="form-control">
+              @if ($errors->has('cv'))
+                  <div class="error">{{ $errors->first('cv') }}</div>
+                @endif
+            </div>
            <button type="submit" class="btn btn-primary">Cập nhật</button>
           </form>
         </div>

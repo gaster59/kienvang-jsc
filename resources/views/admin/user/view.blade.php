@@ -80,7 +80,7 @@
                                 </tr>
                                 <tr>
                                     <td>Học vấn</td>
-                                    <td>{{ $user['info']->academiccareer }}</td>
+                                    <td>{{ $academiccareer[$user['info']->academiccareer]  }}</td>
                                 </tr>
                                 <tr>
                                     <td>Trường</td>
@@ -94,14 +94,16 @@
                                     <td>Bằng cấp khác</td>
                                     <td>{{ $user['info']->qualifications }}</td>
                                 </tr>
-                                {{-- <tr>
+                                @if($user->category_id == 2 && !empty($user->curriculum_vitae))
+                                <tr>
                                     <td>CV</td>
                                     <td>
                                         <a href="{{ url('/cv/')}}/{{$user->curriculum_vitae}}" download="{{ url('/cv/')}}/{{$user->curriculum_vitae}}">
                                             <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-download">Download</i></button>
                                         </a>
                                     </td>
-                                </tr> --}}
+                                </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

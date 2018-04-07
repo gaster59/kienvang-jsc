@@ -44,7 +44,7 @@
                             <a class="nav-link" href="{{ route('front.news') }}" target="_self">Tin tức</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="">Nenkin</a>
+                          <a class="nav-link" href="{{ route('front.nenkin') }}">Nenkin</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="{{ route('front.contact') }}">Liên hệ</a>

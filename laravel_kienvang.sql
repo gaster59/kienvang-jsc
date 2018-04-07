@@ -594,6 +594,28 @@ ALTER TABLE `users` ADD `curriculum_vitae` VARCHAR(220) NULL AFTER `info`;
 ALTER TABLE `users` ADD `category_id` INT(11) NOT NULL DEFAULT '1' AFTER `curriculum_vitae`;
 
 ALTER TABLE `jobs` ADD `category_id` INT(11) NOT NULL AFTER `company_id`;
+CREATE TABLE `nenkin` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+ `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+ `message` text COLLATE utf8_unicode_ci NOT NULL,
+ `status` tinyint(1) NOT NULL DEFAULT '1',
+ `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+CREATE TABLE `pages` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `name` varchar(220) COLLATE utf8_unicode_ci DEFAULT NULL,
+ `description` text COLLATE utf8_unicode_ci,
+ `status` tinyint(1) NOT NULL DEFAULT '1',
+ `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ `update_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+
+INSERT INTO `pages` (`id`, `name`, `description`, `status`, `created_at`, `update_at`) VALUES
+(1, 'Nenkin', '<h1><span style=\"color:#006400\"><span style=\"font-family:Arial,Helvetica,sans-serif\">N&ocirc;i dung Nenkin</span></span></h1>', 1, '2018-04-06 23:04:03', '2018-04-06 23:04:03');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

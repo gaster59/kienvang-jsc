@@ -64,6 +64,20 @@
                 </svg> Apply Job
             </a>
         </li>
+        <li>
+            <a href="{{ route('pages') }}">
+                <svg class="glyph stroked table">
+                    <use xlink:href="#stroked-table"></use>
+                </svg> Pages
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('nenkin') }}">
+                <svg class="glyph stroked table">
+                    <use xlink:href="#stroked-table"></use>
+                </svg> Ninken
+            </a>
+        </li>
         <li role="presentation" class="divider"></li>
     </ul>
 

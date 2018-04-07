@@ -92,4 +92,39 @@ class IndexController extends Controller
             return redirect(route('front.contact'));
         }
     }
+    public function getNenkin(){
+        $page = DB::table('pages')->where('id', 1)->first();
+        return view('index.nenkin', ['data' => $page]);
+    }
+    public function postNenkin(Request $request)
+    {
+        $rules = [
+            'email'             => 'required|email',
+            'name'              => 'required',
+            'message'           => 'required'
+        ];
+        $message = [
+            'email.required'    => "Vui lòng nhập email",
+            'email.email'       => "Email không đúng định dạng",
+            'name.required'     => "Vui lòng nhập tên",
+            'message.required'  => "Vui lòng nhập nội dung liên hệ"
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $message);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator->errors());
+        }else{
+            $name           = $request->post('name');
+            $email          = $request->post('email');
+            $message        = $request->post('message', '');
+            $nenkin = [
+                'name'          => $name,
+                'email'         => $email,
+                'message'       => nl2br($message)
+            ];
+            DB::table('nenkin')->insertGetId($nenkin);
+            $request->session()->flash('alert-success', 'Thông tin đã được gửi, chúng tôi sẽ liên hệ sớm');
+            return redirect(route('front.nenkin'));
+        }
+    }
 }

@@ -18,7 +18,14 @@ Route::get('/', [
     'as' => 'front.index',
     'uses' => 'IndexController@index'
 ]);
-
+Route::get('/nenkin.html', [
+    'as' => 'front.nenkin',
+    'uses' => 'IndexController@getNenkin'
+]);
+Route::post('/nenkin.html', [
+    'as' => 'front.checknenkin',
+    'uses' => 'IndexController@postNenkin'
+]);
 Route::get('/tin-tuc.html', [
     'as' => 'front.news',
     'uses' => 'NewsController@index'
@@ -408,6 +415,33 @@ Route::group([
         Route::get('apply/read/{id}', [
             'as' => 'apply.read',
             'uses' => 'ApplyController@read'
+        ]);
+        /*
+        Nenkin
+         */
+        Route::get('pages', [
+            'as' => 'pages',
+            'uses' => 'PagesController@index'
+        ]);
+        Route::get('pages/edit/{id}', [
+            'as' => 'pages.edit',
+            'uses' => 'PagesController@edit'
+        ]);
+        Route::post('pages/store', [
+            'as' => 'pages.store',
+            'uses' => 'PagesController@store'
+        ]);
+        Route::get('nenkin', [
+            'as' => 'nenkin',
+            'uses' => 'NenkinController@index'
+        ]);
+        Route::get('nenkin/updatestatus/{id}', [
+            'as' => 'nenkin.updatestatus',
+            'uses' => 'NenkinController@updatestatus'
+        ]);
+        Route::get('nenkin/delete/{id}', [
+            'as' => 'nenkin.delete',
+            'uses' => 'NenkinController@delete'
         ]);
         
     }

@@ -29,16 +29,19 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
 
                     <ul class="nav navbar-nav">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" target="_self" href="{{ url(route('front.index')) }}">Trang chủ</a>
-                        </li>
+                        </li> --}}
 
                         @if(!empty($categories[0]->id))
-                        @foreach($categories as $key=> $val)
-                          <li class="nav-item">
-                              <a class="nav-link" target="_self" href="{{ url(route('front.jobs.category',['slug'=> $val->slug] )) }}">{{$val->name}}</a>
-                          </li>
-                        @endforeach
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Tìm việc <span class="caret"></span></a>
+                          <div class="dropdown-menu" aria-labelledby="themes">
+                              @foreach($categories as $key=> $val)
+                                <a class="dropdown-item" href="{{ url(route('front.jobs.category',['slug'=> $val->slug] )) }}">{{$val->name}}</a>
+                              @endforeach
+                          </div>
+                        </li>
                         @endif
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('front.news') }}" target="_self">Tin tức</a>

@@ -41,7 +41,10 @@ class JobsController extends Controller
         if (count($dataJob) == 0) {
             return redirect(route('front.index'));
         }
-
+        /**
+         * Categories
+         */
+        $category = $this->categoryRepository->getCategorySlug([['id','=',$dataJob[0]->category_id]]);
         /**
          * List news
          */
@@ -49,6 +52,7 @@ class JobsController extends Controller
         $jobsList = $this->jobRepository->getNewsCustomize( $ar  , 10);
         return view('jobs.detail', [
             'dataJob'  => $dataJob[0],
+            'category' => $category,
             'jobsList'  => $jobsList
         ]);
     }

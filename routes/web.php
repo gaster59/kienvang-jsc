@@ -389,6 +389,26 @@ Route::group([
             'as' => 'user',
             'uses' => 'UserController@index'
         ]);
+        Route::get('useradmin', [
+            'as' => 'useradmin',
+            'uses' => 'UserController@useradmin'
+        ]);
+        Route::get('user/add', [
+            'as' => 'user.add',
+            'uses' => 'UserController@add'
+        ]);
+        Route::get('user/edit/{id}', [
+            'as' => 'user.edit',
+            'uses' => 'UserController@edit'
+        ]);
+        Route::post('user/store', [
+            'as' => 'user.store',
+            'uses' => 'UserController@store'
+        ]);
+        Route::get('user/deleteadmin/{id}', [
+            'as' => 'user.deleteadmin',
+            'uses' => 'UserController@deleteadmin'
+        ]);
         Route::get('user/view/{id}', [
             'as' => 'user.view',
             'uses' => 'UserController@view'

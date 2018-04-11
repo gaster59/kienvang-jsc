@@ -78,6 +78,13 @@
                 </svg> Ninken
             </a>
         </li>
+        <li>
+            <a href="{{ route('useradmin') }}">
+                <svg class="glyph stroked table">
+                    <use xlink:href="#stroked-table"></use>
+                </svg> User Admin
+            </a>
+        </li>
         <li role="presentation" class="divider"></li>
     </ul>
 

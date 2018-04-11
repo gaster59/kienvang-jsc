@@ -18,7 +18,7 @@
     <div class="col-lg-12 margin-top10">
       <nav class="breadcrumb">
         <a class="breadcrumb-item" href="{{ url(route('front.index')) }}">Trang chủ</a>
-        <a class="breadcrumb-item" href="{{ url(route('front.news')) }}">Tin tuyển dụng</a>
+        <a class="breadcrumb-item" href="{{ url(route('front.jobs.category',['slug'=> $category->slug] )) }}">{{$category->name}}</a>
         <span class="breadcrumb-item active">{{$dataJob->name}}</span>
       </nav>
     </div>

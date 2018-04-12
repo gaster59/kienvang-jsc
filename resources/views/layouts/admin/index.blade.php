@@ -69,19 +69,19 @@
                             </a>
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('user.edit',['id'=> \Illuminate\Support\Facades\Auth::user()['id'] ])  }}">
                                         <svg class="glyph stroked male-user">
                                             <use xlink:href="#stroked-male-user"></use>
                                         </svg> Profile
                                     </a>
                                 </li>
-                                <li>
+                                {{-- <li>
                                     <a href="#">
                                         <svg class="glyph stroked gear">
                                             <use xlink:href="#stroked-gear"></use>
                                         </svg> Settings
                                     </a>
-                                </li>
+                                </li> --}}
                                 <li>
                                     <a href="{{ route('admin.logout') }}">
                                         <svg class="glyph stroked cancel">

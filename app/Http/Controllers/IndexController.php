@@ -56,7 +56,8 @@ class IndexController extends Controller
         ]);
     }
     public function about(){
-        return view('index.about');
+        $about = DB::table('pages')->where('id', 2)->first();
+        return view('index.about', ['about'=> $about]);
     }
     public function getContact(){
         return view('index.contact');

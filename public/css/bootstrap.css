@@ -6102,17 +6102,21 @@ button.close {
 }
 
 .carousel-caption {
+  width: 100%;
   position: absolute;
-  right: 15%;
   bottom: 20px;
-  left: 15%;
+  /*right: 15%;
+  left: 15%;*/
   z-index: 10;
   padding-top: 20px;
   padding-bottom: 20px;
   color: #fff;
   text-align: center;
+  background-color: rgba(80, 80, 80, 0.75);
 }
-
+.carousel-caption h3 {
+    font-weight: 500;
+}
 .align-baseline {
   vertical-align: baseline !important;
 }

@@ -215,4 +215,16 @@ class JobController extends BaseController
         ];
         $this->jobRepository->update($product, $request->id);
     }
+    public function delete($id)
+    {
+        $job = $this->jobRepository->findWhere([
+            'id' => $id,
+        ]);
+
+        if (count($job) == 0) {
+            return redirect(route('job'));
+        }
+        $this->jobRepository->delete($id);
+        return redirect(route('job'));
+    }
 }

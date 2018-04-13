@@ -60,6 +60,8 @@ class JobRequest extends FormRequest
             'id',
             'name' => 'required|max:50',
             'description' => 'max:255',
+            'meta_keyword'=> 'required',
+            'meta_description'=>'required',
             'summary',
             'major_id' => [
                 'required',
@@ -87,6 +89,8 @@ class JobRequest extends FormRequest
         return [
             'name.required' => 'Bạn chưa nhập tên sản phẩm',
             'name.max' => 'Bạn chỉ nhập tối đa :max ký tự',
+            'meta_keyword.required'=>'Bạn chưa nhập meta keyword',
+            'meta_description.required'=>'Bạn chưa nhập meta description',
 
             'description.max' => 'Bạn chỉ nhập tối đa :max ký tự',
         ];

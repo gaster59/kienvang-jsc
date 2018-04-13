@@ -45,7 +45,7 @@ class IndexController extends Controller
         /**
          * Banner Slider
          */
-        $slider = $this->bannerRepository->getBannerAboutNum(3, array('title', 'description', 'avatar'));
+        $slider = $this->bannerRepository->getBannerAboutNum(20, array('title', 'description', 'avatar'));
 
         //News
         $news = $this->newsRepository->getNews(1, 5);

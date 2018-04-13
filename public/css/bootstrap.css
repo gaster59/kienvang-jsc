@@ -6102,17 +6102,17 @@ button.close {
 }
 
 .carousel-caption {
-  width: 100%;
-  position: absolute;
-  bottom: 20px;
-  /*right: 15%;
-  left: 15%;*/
-  z-index: 10;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  color: #fff;
-  text-align: center;
-  background-color: rgba(80, 80, 80, 0.75);
+  /*width: 100%; */
+    position: absolute;
+    bottom: 20px;
+    right: 15%;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #000;
+    text-align: center;
+    /* background-color: rgba(80, 80, 80, 0.75);*/
 }
 .carousel-caption h3 {
     font-weight: 500;

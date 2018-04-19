@@ -66,12 +66,15 @@ class IndexController extends Controller
     {
         $rules = [
             'email'             => 'required|email',
+            'phone'             => 'required|numeric|phone',
             'name'              => 'required',
             'message'           => 'required'
         ];
         $message = [
             'email.required'    => "Vui lòng nhập email",
             'email.email'       => "Email không đúng định dạng",
+            'phone.required'    => "Nhập số điện thoại của bạn",
+            'phone.numeric'     => "Số điện thoại không đúng",
             'name.required'     => "Vui lòng nhập tên",
             'message.required'  => "Vui lòng nhập nội dung liên hệ"
         ];
@@ -82,10 +85,12 @@ class IndexController extends Controller
         }else{
             $name           = $request->post('name');
             $email          = $request->post('email');
+            $phone          = $request->post('phone');
             $message        = $request->post('message', '');
             $contact = [
                 'name'          => $name,
                 'email'         => $email,
+                'phone'         => $phone,
                 'message'       => nl2br($message)
             ];
             DB::table('contacts')->insertGetId($contact);
@@ -101,12 +106,15 @@ class IndexController extends Controller
     {
         $rules = [
             'email'             => 'required|email',
+            'phone'             => 'required|numeric|phone',
             'name'              => 'required',
             'message'           => 'required'
         ];
         $message = [
             'email.required'    => "Vui lòng nhập email",
             'email.email'       => "Email không đúng định dạng",
+            'phone.required'    => "Nhập số điện thoại của bạn",
+            'phone.numeric'     => "Số điện thoại không đúng",
             'name.required'     => "Vui lòng nhập tên",
             'message.required'  => "Vui lòng nhập nội dung liên hệ"
         ];
@@ -117,10 +125,12 @@ class IndexController extends Controller
         }else{
             $name           = $request->post('name');
             $email          = $request->post('email');
+            $phone          = $request->post('phone');
             $message        = $request->post('message', '');
             $nenkin = [
                 'name'          => $name,
                 'email'         => $email,
+                'phone'         => $phone,
                 'message'       => nl2br($message)
             ];
             DB::table('nenkin')->insertGetId($nenkin);

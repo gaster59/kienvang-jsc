@@ -616,6 +616,7 @@ CREATE TABLE `pages` (
 INSERT INTO `pages` (`id`, `name`, `description`, `status`, `created_at`, `update_at`) VALUES
 (1, 'Nenkin', '<h1><span style=\"color:#006400\"><span style=\"font-family:Arial,Helvetica,sans-serif\">N&ocirc;i dung Nenkin</span></span></h1>', 1, '2018-04-06 23:04:03', '2018-04-06 23:04:03');
 
+ALTER TABLE `nenkin` ADD `phone` VARCHAR(20) NULL AFTER `email`;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

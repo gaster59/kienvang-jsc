@@ -65,6 +65,18 @@
                 @endif
               </div>
             </div>
+
+            <!-- Phone input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="phone">Số điện thoại</label>
+              <div class="col-md-9">
+                <input maxlength="20" value="{{ old('phone') }}" name="phone" type="text" placeholder="Số điện thoại" class="form-control">
+                @if ($errors->has('phone'))
+                  <div class="error" style="color: red">{{ $errors->first('phone') }}</div>
+                @endif
+
+              </div>
+            </div>
     
             <!-- Message body -->
             <div class="form-group">

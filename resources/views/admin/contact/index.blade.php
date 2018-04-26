@@ -62,6 +62,9 @@
                                 <th>
                                     Email
                                 </th>
+                                <th>
+                                    Số điện thoại
+                                </th>
                                 <th>Tiêu đề</th>
                                 <th>Mô tả</th>
                                 <th></th>
@@ -73,6 +76,7 @@
                                 <td>
                                 </td>
                                 <td>{{ $item->email }}</td>
+                                <td>{{ $item->phone }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>
                                     {!!html_entity_decode($item->message)!!}

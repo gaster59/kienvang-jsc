@@ -126,14 +126,12 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="footer_info">
-                                <p><strong>WebTest Co., Ltd.</strong></p>
+                                <p><strong>Công ty cổ phần Tư Vấn và Thương mại Kiến Vàng</strong></p>
 
-                                <div class="font_weight">Giấy phép ĐKKD số: 0102852740 cấp bởi Sở Kế hoạch và Đầu tư Hà Nội.<br>
-                                    Giấy phép đào tạo tiếng Anh số: 9816/QĐ-SGD&amp;ĐT cấp bởi Sở Giáo dục và Đào tạo Hà Nội.<br>
-                                    Giấy phép cung cấp dịch vụ mạng xã hội học tiếng Anh trực tuyến số: 549/GP-BTTTT cấp bởi Bộ Thông tin &amp; Truyền thông. <br>
-                                    Địa chỉ: <span class="black1"> số nhà 13,15,23, Nguyễn Thị Minh Khai, Quận 1, Tp. Hồ Chí Minh.<br>
-                Tel: 0123 12 3123  hoặc  312 31 2312.</span> <br>
-                                    <a href="" target="_self" title="Chính sách bảo mật thông tin">Chính sách bảo mật thông tin</a>&nbsp;|&nbsp;<a href="" target="_self" title="Quy định sử dụng">Quy định sử dụng</a>
+                                <div class="font_weight">Mã số doanh nghiệp: 0314283503 cấp bởi Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh.<br>
+                                    Địa chỉ: <span class="black1"> 2038/3 Phạm Thế Hiển, Phường 6, Quận 8, Thành phố Hồ Chí Minh, Việt Nam.<br>
+                Tel: 08 3981 0426</span> <br>
+                                    <!-- <a href="" target="_self" title="Chính sách bảo mật thông tin">Chính sách bảo mật thông tin</a>&nbsp;|&nbsp;<a href="" target="_self" title="Quy định sử dụng">Quy định sử dụng</a> -->
                                 </div>
                             </div>
                         </div>

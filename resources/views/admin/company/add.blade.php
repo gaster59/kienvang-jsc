@@ -159,7 +159,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label" for="name">
-                                    Show home
+                                    Show right banner
                                 </label>
                                 <div class="col-md-3">
                                     <select name="is_home" class="form-control">

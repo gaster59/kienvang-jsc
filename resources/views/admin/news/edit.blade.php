@@ -153,6 +153,16 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label" for="name">
+                                        Tin hot
+                                    </label>
+                                    <div class="col-md-9">
+                                        <input type="checkbox" name="is_hot" value="1" @if($news->is_hot == 1) checked  @endif />
+
+                                    </div>
+                                </div>
+
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 widget-right" style="text-align:right;">

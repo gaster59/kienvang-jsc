@@ -50,7 +50,8 @@
                                     <span class="h1">{{ $item->name }}</span>
                                 </a>
                                 @if($item->is_hot == 1)
-                                    <span class="newtag">Hot</span>
+                                    <!-- <span class="newtag">Hot</span> -->
+                                    <img class="imghot" src="{{ url('/images/hot.gif') }}">
                                 @endif
                                 <p class="des">
                                     {{ $item->description }}

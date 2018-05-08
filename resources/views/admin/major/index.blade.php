@@ -27,13 +27,13 @@
                     </svg>
                 </a>
             </li>
-            <li class="active">Chuyên môn</li>
+            <li class="active">Ngành nghề</li>
         </ol>
     </div>
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Chuyên môn</h1>
+            <h1 class="page-header">Ngành nghề</h1>
         </div>
     </div>
 
@@ -41,15 +41,15 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Danh sách chuyên môn
+                    Danh sách Ngành nghề
                     <div style="float:right;">
                         <a class="btn btn-primary" href="{{ url(route('major.add')) }}">
                             Thêm
                         </a>
-                        |
+                        {{-- |
                         <a class="btn btn-primary" href="javascript:void(0);">
                             Xóa
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
                 <div class="panel-body">
@@ -60,7 +60,7 @@
 
                                 </th>
                                 <th>
-                                    Tên chuyên môn
+                                    Tên Ngành nghề
                                 </th>
                                 <th></th>
                             </tr>

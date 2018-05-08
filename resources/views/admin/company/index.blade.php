@@ -46,10 +46,10 @@
                         <a class="btn btn-primary" href="{{ url(route('company.add')) }}">
                             Thêm
                         </a>
-                        |
+                        {{-- |
                         <a class="btn btn-primary" href="javascript:void(0);">
                             Xóa
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
                 <div class="panel-body">

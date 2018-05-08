@@ -140,8 +140,9 @@
                                     </label>
                                     <div class="col-md-3">
                                         <select name="status" class="form-control">
-                                            <option @if (0 == old('status', $company->status)) {!!"selected"!!} @endif value="0">Ẩn</option>
                                             <option @if (1 == old('status', $company->status)) {!!"selected"!!} @endif value="1">Hiện</option>
+                                            <option @if (0 == old('status', $company->status)) {!!"selected"!!} @endif value="0">Ẩn</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -151,8 +152,9 @@
                                     </label>
                                     <div class="col-md-3">
                                         <select name="is_home" class="form-control">
-                                            <option @if (0 == old('is_home', $company->is_home)) {!!"selected"!!} @endif value="0">Ẩn</option>
                                             <option @if (1 == old('is_home', $company->is_home)) {!!"selected"!!} @endif value="1">Hiện</option>
+                                            <option @if (0 == old('is_home', $company->is_home)) {!!"selected"!!} @endif value="0">Ẩn</option>
+                                            
                                         </select>
                                     </div>
                                 </div>

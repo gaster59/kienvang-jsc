@@ -57,7 +57,11 @@ class IndexController extends Controller
     }
     public function about(){
         $about = DB::table('pages')->where('id', 2)->first();
-        return view('index.about', ['about'=> $about]);
+        return view('index.about', ['about'=> $about, 'nav' => 'Thông tin về Kiến Vàng']);
+    }
+    public function aboutjapan(){
+        $about = DB::table('pages')->where('id', 3)->first();
+        return view('index.about', ['about'=> $about, 'nav' => 'Thông tin về Nhật Bản']);
     }
     public function getContact(){
         return view('index.contact');

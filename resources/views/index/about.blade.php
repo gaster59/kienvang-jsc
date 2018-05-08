@@ -20,7 +20,7 @@
     <div class="col-lg-12 margin-top10">
       <nav class="breadcrumb">
         <a class="breadcrumb-item" href="{{ url(route('front.index')) }}">Trang chủ</a>
-        <span class="breadcrumb-item active">Thông tin công ty</span>
+        <span class="breadcrumb-item active">{{$nav}}</span>
       </nav>
     </div>
 </div>

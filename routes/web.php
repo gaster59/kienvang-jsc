@@ -85,6 +85,10 @@ Route::get('/gioi-thieu.html', [
     'as' => 'front.about-us',
     'uses' => 'IndexController@about'
 ]);
+Route::get('/gioi-thieu-ve-nhat-ban.html', [
+    'as' => 'front.about-us-japan',
+    'uses' => 'IndexController@aboutjapan'
+]);
 Route::get('/lien-he.html', [
     'as' => 'front.contact',
     'uses' => 'IndexController@getContact'

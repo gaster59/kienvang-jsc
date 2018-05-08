@@ -50,7 +50,10 @@
                           <a class="nav-link" href="{{ route('front.nenkin') }}">Nenkin</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="{{ route('front.about-us') }}">Giới thiệu</a>
+                          <a class="nav-link" href="{{ route('front.about-us') }}">Kiến vàng</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="{{ route('front.about-us-japan') }}">Giới thiệu về Nhật Bản</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="{{ route('front.contact') }}">Liên hệ</a>

@@ -54,11 +54,11 @@ class JobRepositoryEloquent extends BaseRepository implements JobRepository
     {
         $res = $this->scopeQuery(function($query) use($status) {
             return $query
-                ->join('majors', function ($join) {
+                ->leftJoin('majors', function ($join) {
                     $join->on('jobs.major_id', '=', 'majors.id')
                         ->where('majors.status','=', '1');
                 })
-                ->join('companies', function ($join) {
+                ->leftJoin('companies', function ($join) {
                     $join->on('jobs.company_id', '=', 'companies.id')
                         ->where('companies.status','=', '1');
                 })

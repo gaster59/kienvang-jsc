@@ -6,7 +6,8 @@ use App\Http\Requests\NewsRequest;
 use App\Repositories\NewsRepository;
 use Illuminate\Contracts\View\View;
 use Illuminate\Filesystem\Filesystem;
-use Illuminate\Support\Facades\Request;
+//use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class NewsController extends BaseController
 {
@@ -27,10 +28,16 @@ class NewsController extends BaseController
      */
     public function index(Request $request)
     {
+        $keysearch      = $request->get('keysearch');
         $news = $this->newsRepository->getNews();
+        if(!empty($keysearch)){
+            $arnews = [['type', '=', '1'],['status', '=', '1'], ['name', 'like', '%' .$keysearch . '%']];
+            $news = $this->newsRepository->getNewsCustomize($arnews, 2);
+        }
         return \view('admin.news.index',[
             'news' => $news,
-            'title' => 'Danh sách tin tức'
+            'title' => 'Danh sách tin tức',
+            'keysearch' => $keysearch
         ]);
     }
 
@@ -182,5 +189,16 @@ class NewsController extends BaseController
         ];
         $this->newsRepository->update($attributes, $id);
         return redirect(route('news'));
+    }
+    public function postSearch(Request $request){
+        $keysearch = $request->keysearch;
+        $arnews = [['type', '=', '1'],['status', '=', '1'], ['name', 'like', '%' .$keysearch . '%']];
+        $news = $this->newsRepository->getNewsCustomize($arnews, 2);
+
+        $view = view("admin.news._itemlist",compact('news', 'keysearch'))->render();
+        return response()->json([
+            'error' => false,
+            'html'=> $view
+        ], 200);
     }
 }

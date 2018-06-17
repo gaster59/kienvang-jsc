@@ -282,6 +282,10 @@ Route::group([
             'as' => 'news',
             'uses' => 'NewsController@index'
         ]);
+        Route::post('/news', [
+            'as' => 'newssearch',
+            'uses' => 'NewsController@postSearch'
+        ]);
         Route::get('news/add', [
             'as' => 'news.add',
             'uses' => 'NewsController@add'

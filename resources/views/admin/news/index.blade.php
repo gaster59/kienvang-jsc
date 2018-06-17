@@ -9,10 +9,39 @@
 @section('js_path')
     @parent
     <script type="text/javascript">
+        $(function(){
+            $('#btn_search').click(function(){
+                search();
+            });
+        })
         function fnDelete(url) {
             if (confirm('Bạn có muốn xóa không ?')) {
                 window.location.href = url;
             }
+        }
+        function changeurl(string){
+            var new_url= "{{ url(route('newssearch')) }}" + string;
+            window.history.pushState("data","Title",new_url);
+        }
+        function search(){
+            var data = {
+                keysearch : $('#input_search').val()
+            };
+            $.ajax({
+                type : 'POST',
+                dataType : 'json',
+                data : data,
+                async: false,
+                url : '{{ url(route('newssearch')) }}',
+                success : function (result){
+                    if (result.error == false && result.html != '') {
+                      $(".result-search").html(result.html);
+                      changeurl("?keysearch="+$('#input_search').val());
+                      //console.log(result);
+
+                    }
+                }
+            });
         }
     </script>
 @endsection
@@ -43,6 +72,8 @@
                 <div class="panel-heading">
                     Danh sách tin tức
                     <div style="float:right;">
+                    <input value="{{ $keysearch  }}" style="padding: 5px;margin: 0;height: 30px;border: 1px solid #cdcdcd; font-size: 12px;" type="text" id="input_search">
+                    <button id="btn_search" class="btn btn-primary">Tìm</button>
                         <a class="btn btn-primary" href="{{ url(route('news.add')) }}">
                             Thêm
                         </a>
@@ -52,7 +83,7 @@
                         </a> --}}
                     </div>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body result-search">
                     <table class="table table-hover">
                         <thead>
                             <tr>

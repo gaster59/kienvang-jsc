@@ -8,6 +8,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="keywords" content="@hasSection('keywords')@yield('keywords'),Kiến Vàng @else Kiến Vàng @endif">
         <meta name="description" content="@hasSection('description')@yield('description') - Kiến Vàng @else Kiến Vàng @endif">
+        <link rel="shortcut icon" href="{{ url('/images/ico.ico') }}" type="image/x-icon" />
 
         @section('css_path')
             <link rel="stylesheet" href="{{ asset('/css/bootstrap.css') }}" media="screen">
@@ -20,8 +21,8 @@
     <body>
         <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <div class="container">
-                <a href="{{ url(route('front.index')) }}" class="navbar-brand">Kiến vàng
-                    {{-- <img class="logo" src="https://cdn.viblo.asia/img/logo_full.fbfe575.svg" alt="Kiến vàng"> --}}
+                <a href="{{ url(route('front.index')) }}" class="navbar-brand">
+                    <img class="logo" src="{{ url('/images/logo-04.png') }}" alt="Kiến vàng">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>

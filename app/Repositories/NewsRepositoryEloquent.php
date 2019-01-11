@@ -34,7 +34,7 @@ class NewsRepositoryEloquent extends BaseRepository implements NewsRepository
                 ->orderBy('id','desc')
                 ->where('news.type', 1)
                 ->where('news.status', $status);
-        })->paginate(env('PAGINATION', $numPage), [
+        })->paginate(2, [
             'news.id',
             'news.name',
             'news.slug',
